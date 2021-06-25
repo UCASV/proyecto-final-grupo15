@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="View\frmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\frmSideEffects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\frmVaccination.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\frmWaitingList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\frmNewAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\frmAppoinmentMonitoring.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\frmPreCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\frmRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
