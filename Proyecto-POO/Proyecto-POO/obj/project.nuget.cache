@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0BGyRx6V91GZL3kF09RJpwAJ3IHeQxLHKwTnwBUy/+E0aqxRm+pZHwpK+ATrnxjWhd1X4u7rZgE2BtSonxFd3Q==",
+  "dgSpecHash": "S1s7tButyoBbEvWz5Qz5GsYF9B8KHC9O19HebIKRdRHIV0zjrn64j5M53Rgf+Ghy22sFjingRiMQ99y9+PcIpg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\danie\\OneDrive\\Documents\\Proyecto POO\\proyecto-final-grupo15\\pruedaxd-master\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj",
+  "projectFilePath": "C:\\Users\\danie\\OneDrive\\Documents\\Proyecto POO\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\danie\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\danie\\.nuget\\packages\\google.protobuf\\3.14.0\\google.protobuf.3.14.0.nupkg.sha512",
