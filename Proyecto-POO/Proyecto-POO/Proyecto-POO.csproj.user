@@ -13,9 +13,6 @@
     <Compile Update="View\frmMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\frmNewAppointment.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="View\frmPreCheck.cs">
       <SubType>Form</SubType>
     </Compile>
