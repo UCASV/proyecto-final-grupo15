@@ -25,7 +25,7 @@ namespace Proyecto_POO
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            // usuario: txtUser, contraseña: txtPassword, olvidar contraseña: lblForgotPassword
+            
 
             var db = new ProyectoContext();
             string user = txtUser.Text;
@@ -47,7 +47,7 @@ namespace Proyecto_POO
                 frm.Show();
                 this.Hide();
             }
-            // sino, mostrar un mensaje de error
+            
             else
                 MessageBox.Show("ERROR!", "",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
