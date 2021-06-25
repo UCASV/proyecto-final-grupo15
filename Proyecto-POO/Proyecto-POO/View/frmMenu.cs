@@ -24,7 +24,7 @@ namespace Proyecto_POO
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            frmRegister frm = new frmRegister();
+            frmRegister frm = new frmRegister(IdManager);
             frm.Show();
             this.Hide();
         }

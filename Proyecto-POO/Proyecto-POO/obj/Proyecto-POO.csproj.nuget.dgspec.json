@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maria\\Videos\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj": {}
+    "C:\\Users\\Any\\OneDrive\\Pictures\\Proyecto final POO\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maria\\Videos\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj": {
+    "C:\\Users\\Any\\OneDrive\\Pictures\\Proyecto final POO\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maria\\Videos\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj",
+        "projectUniqueName": "C:\\Users\\Any\\OneDrive\\Pictures\\Proyecto final POO\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj",
         "projectName": "Proyecto-POO",
-        "projectPath": "C:\\Users\\maria\\Videos\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj",
-        "packagesPath": "C:\\Users\\maria\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maria\\Videos\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\obj\\",
+        "projectPath": "C:\\Users\\Any\\OneDrive\\Pictures\\Proyecto final POO\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj",
+        "packagesPath": "C:\\Users\\Any\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Any\\OneDrive\\Pictures\\Proyecto final POO\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\maria\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Any\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

@@ -209,6 +209,7 @@ namespace Proyecto_POO
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(351, 23);
             this.txtPhoneNumber.TabIndex = 27;
+            this.txtPhoneNumber.MaxLength = 8;
             // 
             // txtAddress
             // 
@@ -294,6 +295,7 @@ namespace Proyecto_POO
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(351, 23);
             this.textBox1.TabIndex = 19;
+            this.textBox1.MaxLength = 9;
             // 
             // label1
             // 
