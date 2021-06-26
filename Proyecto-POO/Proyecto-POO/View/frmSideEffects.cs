@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.EntityFrameworkCore;
 using Proyecto_POO.MySQLContext;
+using iText.IO;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
 
 namespace Proyecto_POO
 {
@@ -21,7 +25,12 @@ namespace Proyecto_POO
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            using (PdfWriter pdfWriter = new PdfWriter("hello.pdf"))
+            using (PdfDocument pdfDocument = new PdfDocument(pdfWriter))
+            using (Document document = new Document(pdfDocument))
+            {
+                document.Add(new Paragraph("Hello World!"));
+            }
         }
 
         private void frmSideEffects_FormClosing(object sender, FormClosingEventArgs e)
