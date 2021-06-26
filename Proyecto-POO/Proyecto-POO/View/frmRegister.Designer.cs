@@ -74,6 +74,7 @@ namespace Proyecto_POO
             this.button2.TabIndex = 33;
             this.button2.Text = "GENERAR PDF";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // txtIdentifier
             // 
@@ -206,10 +207,10 @@ namespace Proyecto_POO
             // 
             this.txtPhoneNumber.Location = new System.Drawing.Point(317, 200);
             this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtPhoneNumber.MaxLength = 8;
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(351, 23);
             this.txtPhoneNumber.TabIndex = 27;
-            this.txtPhoneNumber.MaxLength = 8;
             // 
             // txtAddress
             // 
@@ -292,10 +293,10 @@ namespace Proyecto_POO
             // 
             this.textBox1.Location = new System.Drawing.Point(317, 101);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBox1.MaxLength = 9;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(351, 23);
             this.textBox1.TabIndex = 19;
-            this.textBox1.MaxLength = 9;
             // 
             // label1
             // 

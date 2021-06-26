@@ -14,9 +14,12 @@ namespace Proyecto_POO
 {
     public partial class frmPreCheck : Form
     {
-        public frmPreCheck()
+        private Manager IdManager { get; set; }
+
+        public frmPreCheck(Manager? IdManager)
         {
             InitializeComponent();
+            this.IdManager = IdManager;
         }
 
         private void frmPreCheck_FormClosing(object sender, FormClosingEventArgs e)
@@ -111,7 +114,7 @@ namespace Proyecto_POO
                                     db.Update(c);
                                     db.SaveChanges();
                                     MessageBox.Show("Se han verificado los datos del/la ciudadano/a. Procediendo a monitoreo de citas.", "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    frmAppoinmentMonitoring frm = new frmAppoinmentMonitoring();
+                                    frmAppoinmentMonitoring frm = new frmAppoinmentMonitoring(IdManager);
                                     frm.Show();
                                     this.Hide();
                                 }
@@ -146,6 +149,7 @@ namespace Proyecto_POO
         private void frmPreCheck_Load(object sender, EventArgs e)
         {
             validateDate();
+            label10.Text = "" + IdManager.IdManager;
             var db = new ProyectoContext();
             List<Disease> diseases = db.Diseases.ToList();
             // Fijamos el texto de cada checkbox acorde a las enfermedades crónicas que complican o impiden el

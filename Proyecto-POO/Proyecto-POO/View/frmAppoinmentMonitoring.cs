@@ -32,9 +32,12 @@ namespace Proyecto_POO
             }
         }
 
-        public frmAppoinmentMonitoring()
+        private Manager IdManager { get; set; }
+        public frmAppoinmentMonitoring(Manager IdManager)
         {
             InitializeComponent();
+            this.IdManager = IdManager;
+
         }
 
         private void btnAddToList_Click(object sender, EventArgs e)
@@ -53,7 +56,7 @@ namespace Proyecto_POO
             model.hourNow = hourNow;
             addWaitingList.Enqueue(model);
             MessageBox.Show("Se agrego el " + dateNow + "a las " + hourNow);
-            frmVaccination frm = new frmVaccination(addWaitingList);
+            frmVaccination frm = new frmVaccination(addWaitingList, IdManager);
             frm.Show();
             this.Hide();
         }
@@ -65,7 +68,7 @@ namespace Proyecto_POO
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            frmPreCheck frm = new frmPreCheck();
+            frmPreCheck frm = new frmPreCheck(IdManager);
             frm.Show();
             this.Hide();
         }
@@ -73,6 +76,7 @@ namespace Proyecto_POO
         private void frmAppoinmentMonitoring_Load(object sender, EventArgs e)
         {
             showWaitingList();
+            label2.Text = "" + IdManager.IdManager;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

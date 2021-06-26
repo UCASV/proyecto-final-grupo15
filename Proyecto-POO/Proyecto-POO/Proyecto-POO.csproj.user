@@ -13,9 +13,6 @@
     <Compile Update="View\frmMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\frmNewAppointment.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="View\frmPreCheck.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -26,9 +23,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="View\frmVaccination.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="View\frmWaitingList.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

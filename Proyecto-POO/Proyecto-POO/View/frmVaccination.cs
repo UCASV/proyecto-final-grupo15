@@ -15,10 +15,12 @@ namespace Proyecto_POO
     public partial class frmVaccination : Form
     {
         int conteo = 0;
-        public frmVaccination(Queue<CitizenVm1> models)
+        private Manager IdManager { get; set; }
+        public frmVaccination(Queue<CitizenVm1> models, Manager IdManager)
         {
             InitializeComponent();
             dgvQueue.DataSource = models.ToList();
+            this.IdManager = IdManager;
         }
 
         private void frmVaccination_FormClosing(object sender, FormClosingEventArgs e)
@@ -28,11 +30,7 @@ namespace Proyecto_POO
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("El paciente ya ha sido vacunado, pasará al módulo de Observación.", "Vacunación realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //DateTime nuevaDate = Convert.ToDateTime("yyyy-MM-dd");
-            //nuevaDate = nuevaDate.AddDays(42);
-
-            //Creo un timer con un intervalo de 2000 milisegundos.
+        
             try
             {
                 conteo++;
@@ -55,11 +53,6 @@ namespace Proyecto_POO
             {
                 
             }
-
-
-          /*  frmSideEffects frm = new frmSideEffects();
-            frm.Show();
-            this.Hide();*/
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -71,7 +64,7 @@ namespace Proyecto_POO
 
         private void frmVaccination_Load(object sender, EventArgs e)
         {
-
+            label2.Text = "" + IdManager.IdManager;
         }
 
         private void prbProgress_Click(object sender, EventArgs e)

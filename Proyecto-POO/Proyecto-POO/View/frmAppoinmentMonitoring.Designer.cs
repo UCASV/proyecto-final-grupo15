@@ -37,6 +37,7 @@ namespace Proyecto_POO
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddToList = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMonitoring)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -125,11 +126,21 @@ namespace Proyecto_POO
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(17, 414);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 17);
+            this.label2.TabIndex = 54;
+            this.label2.Text = "label2";
+            // 
             // frmAppoinmentMonitoring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 505);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAddToList);
             this.Controls.Add(this.panel1);
@@ -164,5 +175,6 @@ namespace Proyecto_POO
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddToList;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label label2;
     }
 }

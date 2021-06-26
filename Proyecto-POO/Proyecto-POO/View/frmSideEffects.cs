@@ -31,9 +31,7 @@ namespace Proyecto_POO
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            frmWaitingList frm = new frmWaitingList();
-            frm.Show();
-            this.Hide();
+            
         }
 
         private void checkBox8_CheckedChanged(object sender, EventArgs e)
@@ -43,7 +41,7 @@ namespace Proyecto_POO
 
         private void btnAddEffects_Click(object sender, EventArgs e)
         {
-            var db = new ProyectoContext();
+            /*var db = new ProyectoContext();
             List<Effectsxcitizen> effectsxcitizens = db.Effectsxcitizens.ToList();
             bool cbx1 = cbxSensibility.Checked;
             bool cbx2 = cbxReddering.Checked;
@@ -91,8 +89,19 @@ namespace Proyecto_POO
                 }
                 Effects.ForEach(exc => db.Add(exc));
                 db.SaveChanges();
-                var savedEffects = db.Effectsxcitizens.OrderBy(dxc => dxc.IdCitizen).ToList();
-            }
+                var savedEffects = db.Effectsxcitizens.OrderBy(dxc => dxc.IdCitizen).ToList();*/
+                // Agregando segunda cita :)
+                Random rnd = new Random();
+                int idPlace = rnd.Next(1, 3);
+                var dateNow = DateTime.Now.ToString("yyyy-MM-dd");
+                label2.Text = " " + dateNow;
+                DateTime fecha = Convert.ToDateTime(label2.Text);
+                // DateTime nuevaFecha = Convert.ToDateTime(dateNow);
+                fecha = fecha.AddDays(3);
+                string resultado = fecha.ToString("yyyy-MM-dd");
+                MessageBox.Show("Fecha nueva:" + resultado + " "+ idPlace);
+                
+            
         }
 
         private void frmSideEffects_Load(object sender, EventArgs e)

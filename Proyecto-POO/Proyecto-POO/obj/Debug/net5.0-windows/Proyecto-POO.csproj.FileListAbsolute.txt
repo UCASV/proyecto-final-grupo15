@@ -127,12 +127,10 @@ C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-P
 C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto_POO.frmAppoinmentMonitoring.resources
 C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto_POO.frmChangePassword.resources
 C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto_POO.frmMenu.resources
-C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto_POO.frmNewAppointment.resources
 C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto_POO.frmPreCheck.resources
 C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto_POO.frmRegister.resources
 C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto_POO.frmSideEffects.resources
 C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto_POO.frmVaccination.resources
-C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto_POO.frmWaitingList.resources
 C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto-POO.csproj.GenerateResource.cache
 C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto-POO.dll
 C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\ref\Proyecto-POO.dll

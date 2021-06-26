@@ -63,6 +63,7 @@ namespace Proyecto_POO
             this.label6 = new System.Windows.Forms.Label();
             this.lblInstitution = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -416,10 +417,20 @@ namespace Proyecto_POO
             this.lblId.TabIndex = 56;
             this.lblId.Visible = false;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(28, 581);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(62, 17);
+            this.label10.TabIndex = 57;
+            this.label10.Text = "label10";
+            // 
             // frmPreCheck
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(668, 686);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.lblInstitution);
             this.Controls.Add(this.dtpBirthdate);
@@ -499,5 +510,6 @@ namespace Proyecto_POO
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblInstitution;
         private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Label label10;
     }
 }

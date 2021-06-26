@@ -43,7 +43,6 @@ namespace Proyecto_POO
             this.cbxSensibility = new System.Windows.Forms.CheckBox();
             this.btnAddEffects = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnBack = new System.Windows.Forms.Button();
             this.lblCitizen = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -204,18 +203,6 @@ namespace Proyecto_POO
             this.dataGridView1.Size = new System.Drawing.Size(684, 189);
             this.dataGridView1.TabIndex = 5;
             // 
-            // btnBack
-            // 
-            this.btnBack.BackColor = System.Drawing.Color.LightBlue;
-            this.btnBack.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(12, 612);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(80, 34);
-            this.btnBack.TabIndex = 54;
-            this.btnBack.Text = "VOLVER";
-            this.btnBack.UseVisualStyleBackColor = false;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
             // lblCitizen
             // 
             this.lblCitizen.AutoSize = true;
@@ -237,7 +224,7 @@ namespace Proyecto_POO
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(97, 516);
+            this.label3.Location = new System.Drawing.Point(173, 554);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 17);
             this.label3.TabIndex = 57;
@@ -292,7 +279,6 @@ namespace Proyecto_POO
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblCitizen);
             this.Controls.Add(this.btnAddEffects);
-            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
@@ -322,7 +308,6 @@ namespace Proyecto_POO
         private System.Windows.Forms.Button btnAddEffects;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.CheckBox cbxOthers;
         private System.Windows.Forms.CheckBox cbxAnaphylaxis;
         private System.Windows.Forms.CheckBox cbxArthrargia;

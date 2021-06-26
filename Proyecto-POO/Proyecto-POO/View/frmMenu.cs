@@ -13,6 +13,7 @@ namespace Proyecto_POO
 {
     public partial class frmMenu : Form
     {
+        
         private Manager IdManager { get; set; }
         private Booth IdBooth { get; set; }
 
@@ -31,23 +32,21 @@ namespace Proyecto_POO
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            frmPreCheck frm = new frmPreCheck();
+            frmPreCheck frm = new frmPreCheck(IdManager);
             frm.Show();
             this.Hide();
         }
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            frmVaccination frm = new frmVaccination(null);
+            frmVaccination frm = new frmVaccination(null, IdManager);
             frm.Show();
             this.Hide();
         }
 
         private void pictureBox8_Click(object sender, EventArgs e)
         {
-            frmNewAppointment frm = new frmNewAppointment();
-            frm.Show();
-            this.Hide();
+            
         }
 
         private void frmMenu_FormClosing(object sender, FormClosingEventArgs e)
@@ -82,6 +81,7 @@ namespace Proyecto_POO
 
             var hourNow = DateTime.Now.ToString("HH:mm:ss");
             var dateNow = DateTime.Now.ToString("yyyy-MM-dd");
+            label_id.Text = "" + IdManager.IdManager;
             lblFecha.Text = "" + dateNow;
             lblHora.Text = "" + hourNow;
             labelCabina.Text = "" + innerjoin.FirstOrDefault().IdB;

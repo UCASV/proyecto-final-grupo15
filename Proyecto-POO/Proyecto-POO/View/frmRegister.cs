@@ -256,5 +256,10 @@ namespace Proyecto_POO
             dtpBirthdate.MaxDate = DateTime.Today;
 
         }
+        // Este es el boton de generar pdf
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

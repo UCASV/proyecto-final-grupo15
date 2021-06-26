@@ -38,6 +38,7 @@ namespace Proyecto_POO
             this.btnBack = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.prbProgress = new System.Windows.Forms.ProgressBar();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQueue)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -116,11 +117,21 @@ namespace Proyecto_POO
             this.prbProgress.TabIndex = 8;
             this.prbProgress.Click += new System.EventHandler(this.prbProgress_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(25, 358);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 17);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "label2";
+            // 
             // frmVaccination
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1029, 530);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.prbProgress);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.panel1);
@@ -140,6 +151,7 @@ namespace Proyecto_POO
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -153,5 +165,6 @@ namespace Proyecto_POO
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ProgressBar prbProgress;
+        private System.Windows.Forms.Label label2;
     }
 }
