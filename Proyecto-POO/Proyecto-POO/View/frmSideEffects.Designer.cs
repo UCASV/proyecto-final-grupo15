@@ -42,7 +42,7 @@ namespace Proyecto_POO
             this.cbxReddering = new System.Windows.Forms.CheckBox();
             this.cbxSensibility = new System.Windows.Forms.CheckBox();
             this.btnAddEffects = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvObservation = new System.Windows.Forms.DataGridView();
             this.lblCitizen = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -52,7 +52,7 @@ namespace Proyecto_POO
             this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvObservation)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -194,14 +194,14 @@ namespace Proyecto_POO
             this.btnAddEffects.UseVisualStyleBackColor = false;
             this.btnAddEffects.Click += new System.EventHandler(this.btnAddEffects_Click);
             // 
-            // dataGridView1
+            // dgvObservation
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(73, 139);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(684, 189);
-            this.dataGridView1.TabIndex = 5;
+            this.dgvObservation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvObservation.Location = new System.Drawing.Point(73, 139);
+            this.dgvObservation.Name = "dgvObservation";
+            this.dgvObservation.RowTemplate.Height = 25;
+            this.dgvObservation.Size = new System.Drawing.Size(684, 189);
+            this.dgvObservation.TabIndex = 5;
             // 
             // lblCitizen
             // 
@@ -220,15 +220,17 @@ namespace Proyecto_POO
             this.label2.Size = new System.Drawing.Size(53, 17);
             this.label2.TabIndex = 56;
             this.label2.Text = "label2";
+            this.label2.Visible = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(173, 554);
+            this.label3.Location = new System.Drawing.Point(12, 592);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 17);
             this.label3.TabIndex = 57;
             this.label3.Text = "label3";
+            this.label3.Visible = false;
             // 
             // label4
             // 
@@ -238,33 +240,31 @@ namespace Proyecto_POO
             this.label4.Size = new System.Drawing.Size(53, 17);
             this.label4.TabIndex = 58;
             this.label4.Text = "label4";
+            this.label4.Visible = false;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(97, 554);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 17);
+            this.label5.Size = new System.Drawing.Size(0, 17);
             this.label5.TabIndex = 59;
-            this.label5.Text = "label5";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(13, 592);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 17);
+            this.label6.Size = new System.Drawing.Size(0, 17);
             this.label6.TabIndex = 60;
-            this.label6.Text = "label6";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(97, 592);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 17);
+            this.label7.Size = new System.Drawing.Size(0, 17);
             this.label7.TabIndex = 61;
-            this.label7.Text = "label7";
             // 
             // frmSideEffects
             // 
@@ -281,7 +281,7 @@ namespace Proyecto_POO
             this.Controls.Add(this.btnAddEffects);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvObservation);
             this.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -295,7 +295,7 @@ namespace Proyecto_POO
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvObservation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -306,7 +306,7 @@ namespace Proyecto_POO
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnAddEffects;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvObservation;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox cbxOthers;
         private System.Windows.Forms.CheckBox cbxAnaphylaxis;

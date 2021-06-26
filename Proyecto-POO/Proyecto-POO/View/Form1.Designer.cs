@@ -37,7 +37,6 @@ namespace Proyecto_POO
             this.btnLogin = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblForgotPassword = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,25 +114,12 @@ namespace Proyecto_POO
             this.label3.TabIndex = 1;
             this.label3.Text = "BIENVENIDO/A";
             // 
-            // lblForgotPassword
-            // 
-            this.lblForgotPassword.AutoSize = true;
-            this.lblForgotPassword.Location = new System.Drawing.Point(198, 347);
-            this.lblForgotPassword.Name = "lblForgotPassword";
-            this.lblForgotPassword.Size = new System.Drawing.Size(220, 17);
-            this.lblForgotPassword.TabIndex = 6;
-            this.lblForgotPassword.TabStop = true;
-            this.lblForgotPassword.Text = "¿Has olvidado tu contraseña?";
-            this.lblForgotPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblForgotPassword_LinkClicked);
-            this.lblForgotPassword.Click += new System.EventHandler(this.lblForgotPassword_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(623, 411);
-            this.Controls.Add(this.lblForgotPassword);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
@@ -165,7 +151,6 @@ namespace Proyecto_POO
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.LinkLabel lblForgotPassword;
     }
 }
 

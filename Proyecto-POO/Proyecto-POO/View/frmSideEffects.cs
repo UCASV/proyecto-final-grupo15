@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.EntityFrameworkCore;
 using Proyecto_POO.MySQLContext;
+using Proyecto_POO.ViewModels;
 
 namespace Proyecto_POO
 {
@@ -19,10 +20,11 @@ namespace Proyecto_POO
         int hora14;
         string Horariofinal;
         private Manager IdManager { get; set; }
-        public frmSideEffects(Manager IdManager)
+        public frmSideEffects(Queue<CitizenVm1> models, Manager IdManager)
         {
             InitializeComponent();
             this.IdManager = IdManager;
+            dgvObservation.DataSource = models.ToList();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -95,17 +97,16 @@ namespace Proyecto_POO
                 }
                 Effects.ForEach(exc => db.Add(exc));
                 db.SaveChanges();
-                var savedEffects = db.Effectsxcitizens.OrderBy(dxc => dxc.IdCitizen).ToList();*/
+                var savedEffects = db.Effectsxcitizens.OrderBy(dxc => dxc.IdCitizen).ToList();
+            }*/
 
             var db = new ProyectoContext();
             // Agregando segunda cita :)
-
             Random rnd = new Random();
             int idPlace = rnd.Next(1, 3);
             var dateNow = DateTime.Now.ToString("yyyy-MM-dd");
             label2.Text = " " + dateNow;
             DateTime fecha = Convert.ToDateTime(label2.Text);
-            // DateTime nuevaFecha = Convert.ToDateTime(dateNow);
             fecha = fecha.AddDays(3);
             string resultado = fecha.ToString("yyyy-MM-dd");
             Random aleatorio = new Random();
@@ -114,6 +115,10 @@ namespace Proyecto_POO
             hora13 = aleatorio.Next(10, 59);
             hora14 = aleatorio.Next(00, 50);
 
+            var place = db.VaccinationPlaces
+                .ToList()
+                .Find(model => model.IdPlace == idPlace)
+                .PlaceName;
 
             if (Horario == 13)
             {
@@ -124,24 +129,25 @@ namespace Proyecto_POO
             {
                 Horariofinal = Horario + ":" + hora14;
             }
-            MessageBox.Show("Fecha nueva:" + resultado + " " + idPlace + " " + Horariofinal);
+            MessageBox.Show("La fecha de su nueva cita es: " + 
+                resultado + ", en el lugar: " + place + " en la hora: " + Horariofinal);
 
-                label4.Text = "" + IdManager.IdManager;
-                int manager = Convert.ToInt32(label4.Text);
-                label3.Text = "" + Horariofinal;
-                string hour = label3.Text;               
-                Appointment a = new();
-                a.AppointmentDate = fecha;
-                a.AppointmentHour = TimeSpan.Parse(hour);
-                a.IdDose = 2;
-                a.IdPlatform = 1;
-                a.IdPlace = idPlace;
-                a.IdManager = manager;
-
-                db.Add(a);
-                db.SaveChanges();
-                MessageBox.Show("Guardado en base");
-
+            label4.Text = "" + IdManager.IdManager;
+            int manager = Convert.ToInt32(label4.Text);
+            label3.Text = "" + Horariofinal;
+            string hour = label3.Text;               
+            Appointment a = new();
+            a.AppointmentDate = fecha;
+            a.AppointmentHour = TimeSpan.Parse(hour);
+            a.IdDose = 2;
+            a.IdPlatform = 1;
+            a.IdPlace = idPlace;
+            a.IdManager = manager;
+            db.Add(a);
+            db.SaveChanges();
+            frmMenu frm = new frmMenu(IdManager);
+            frm.Show();
+            this.Hide();
         }
 
         private void frmSideEffects_Load(object sender, EventArgs e)

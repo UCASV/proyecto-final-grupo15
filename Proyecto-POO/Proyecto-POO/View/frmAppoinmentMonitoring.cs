@@ -24,41 +24,45 @@ namespace Proyecto_POO
             {
                 var showCitizens = context.Citizens
                     .ToList();
-
                 var mappedDs = new List<CitizenVm>();
 
                 showCitizens.ForEach(e => mappedDs.Add(CitizenMapper.MapCitizenToCitizenVm(e)));
                 dgvMonitoring.DataSource = mappedDs;
             }
         }
-
         private Manager IdManager { get; set; }
         public frmAppoinmentMonitoring(Manager IdManager)
         {
             InitializeComponent();
             this.IdManager = IdManager;
-
         }
 
         private void btnAddToList_Click(object sender, EventArgs e)
         {
-            var hourNow = DateTime.Now.ToString("HH:mm:ss");
-            var dateNow = DateTime.Now.ToString("dd-MM-yyyy");
-            CitizenVm1 model = new();
-            model.Dui = Convert.ToInt32(dgvMonitoring.CurrentRow.Cells[0].Value);
-            model.CitizenName = dgvMonitoring.CurrentRow.Cells[1].Value.ToString();
-            model.Address = dgvMonitoring.CurrentRow.Cells[2].Value.ToString();
-            model.Birthdate = Convert.ToDateTime(dgvMonitoring.CurrentRow.Cells[3].Value);
-            model.Email = dgvMonitoring.CurrentRow.Cells[4].Value.ToString();
-            model.Phone = Convert.ToInt32(dgvMonitoring.CurrentRow.Cells[5].Value);
-            model.IdInstitution = Convert.ToInt32(dgvMonitoring.CurrentRow.Cells[6].Value);
-            model.dateNow = dateNow;
-            model.hourNow = hourNow;
-            addWaitingList.Enqueue(model);
-            MessageBox.Show("Se agrego el " + dateNow + "a las " + hourNow);
-            frmVaccination frm = new frmVaccination(addWaitingList, IdManager);
-            frm.Show();
-            this.Hide();
+            try
+            {
+                var hourNow = DateTime.Now.ToString("HH:mm:ss");
+                var dateNow = DateTime.Now.ToString("dd-MM-yyyy");
+                CitizenVm1 model = new();
+                model.Dui = Convert.ToInt32(dgvMonitoring.CurrentRow.Cells[0].Value);
+                model.CitizenName = dgvMonitoring.CurrentRow.Cells[1].Value.ToString();
+                model.Address = dgvMonitoring.CurrentRow.Cells[2].Value.ToString();
+                model.Birthdate = Convert.ToDateTime(dgvMonitoring.CurrentRow.Cells[3].Value);
+                model.Email = dgvMonitoring.CurrentRow.Cells[4].Value.ToString();
+                model.Phone = Convert.ToInt32(dgvMonitoring.CurrentRow.Cells[5].Value);
+                model.IdInstitution = Convert.ToInt32(dgvMonitoring.CurrentRow.Cells[6].Value);
+                model.dateNow = dateNow;
+                model.hourNow = hourNow;
+                addWaitingList.Enqueue(model);
+                MessageBox.Show("Se agrego en la fecha " + dateNow + " a hora " + hourNow);
+                frmVaccination frm = new frmVaccination(addWaitingList, IdManager);
+                frm.Show();
+                this.Hide();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No selecciono ningun usuario");
+            }
         }
 
         private void frmAppoinmentMonitoring_FormClosing(object sender, FormClosingEventArgs e)

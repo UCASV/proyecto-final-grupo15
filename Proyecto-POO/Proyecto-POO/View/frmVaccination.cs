@@ -16,9 +16,12 @@ namespace Proyecto_POO
     {
         int conteo = 0;
         private Manager IdManager { get; set; }
+
+        Queue<CitizenVm1> vaccination;
         public frmVaccination(Queue<CitizenVm1> models, Manager IdManager)
         {
             InitializeComponent();
+            vaccination = models;
             dgvQueue.DataSource = models.ToList();
             this.IdManager = IdManager;
         }
@@ -30,16 +33,17 @@ namespace Proyecto_POO
 
         private void button1_Click(object sender, EventArgs e)
         {
-        
             try
             {
-                conteo++;
+                prbProgress.Visible = true;
+                label3.Visible = true;
                 timer1.Enabled = true;
+                conteo++;
                 if (conteo == 10)
                 {
                     timer1.Enabled = false;
                     MessageBox.Show("El tiempo de observacion ha terminado");
-                    frmSideEffects frm = new frmSideEffects(IdManager);
+                    frmSideEffects frm = new frmSideEffects(vaccination, IdManager);
                     frm.Show();
                     this.Hide();
                 }

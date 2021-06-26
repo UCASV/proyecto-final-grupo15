@@ -425,6 +425,7 @@ namespace Proyecto_POO
             this.label10.Size = new System.Drawing.Size(62, 17);
             this.label10.TabIndex = 57;
             this.label10.Text = "label10";
+            this.label10.Visible = false;
             // 
             // frmPreCheck
             // 

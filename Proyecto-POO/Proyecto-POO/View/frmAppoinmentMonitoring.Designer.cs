@@ -134,6 +134,7 @@ namespace Proyecto_POO
             this.label2.Size = new System.Drawing.Size(53, 17);
             this.label2.TabIndex = 54;
             this.label2.Text = "label2";
+            this.label2.Visible = false;
             // 
             // frmAppoinmentMonitoring
             // 

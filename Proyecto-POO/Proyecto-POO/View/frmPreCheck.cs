@@ -141,7 +141,7 @@ namespace Proyecto_POO
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            frmMenu frm = new frmMenu(null);
+            frmMenu frm = new frmMenu(IdManager);
             frm.Show();
             this.Hide();
         }

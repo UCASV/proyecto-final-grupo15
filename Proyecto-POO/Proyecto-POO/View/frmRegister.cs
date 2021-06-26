@@ -15,8 +15,6 @@ namespace Proyecto_POO
     public partial class frmRegister : Form
     {
         private Manager IdManager { get; set; }
-        private Booth IdBooth { get; set; }
-
         public frmRegister(Manager? manager)
         {
             InitializeComponent();
@@ -33,7 +31,6 @@ namespace Proyecto_POO
 
             try
             {
-
                 bool verify = (textBox1.Text.Length == 9 && txtPhoneNumber.Text.Length == 8
                                     && txtIdentifier.Text.Length != 0 && cmbInstitution.SelectedIndex > 0);
                 if (verify)
@@ -231,7 +228,6 @@ namespace Proyecto_POO
             }
         }
 
-
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -239,7 +235,7 @@ namespace Proyecto_POO
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            frmMenu frm = new frmMenu(null);
+            frmMenu frm = new frmMenu(IdManager);
             frm.Show();
             this.Hide();
         }
