@@ -39,7 +39,7 @@ namespace Proyecto_POO
                 {
                     timer1.Enabled = false;
                     MessageBox.Show("El tiempo de observacion ha terminado");
-                    frmSideEffects frm = new frmSideEffects();
+                    frmSideEffects frm = new frmSideEffects(IdManager);
                     frm.Show();
                     this.Hide();
                 }

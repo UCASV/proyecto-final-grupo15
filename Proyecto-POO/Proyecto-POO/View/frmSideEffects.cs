@@ -14,9 +14,15 @@ namespace Proyecto_POO
 {
     public partial class frmSideEffects : Form
     {
-        public frmSideEffects()
+        int Horario;
+        int hora13;
+        int hora14;
+        string Horariofinal;
+        private Manager IdManager { get; set; }
+        public frmSideEffects(Manager IdManager)
         {
             InitializeComponent();
+            this.IdManager = IdManager;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -90,18 +96,52 @@ namespace Proyecto_POO
                 Effects.ForEach(exc => db.Add(exc));
                 db.SaveChanges();
                 var savedEffects = db.Effectsxcitizens.OrderBy(dxc => dxc.IdCitizen).ToList();*/
-                // Agregando segunda cita :)
-                Random rnd = new Random();
-                int idPlace = rnd.Next(1, 3);
-                var dateNow = DateTime.Now.ToString("yyyy-MM-dd");
-                label2.Text = " " + dateNow;
-                DateTime fecha = Convert.ToDateTime(label2.Text);
-                // DateTime nuevaFecha = Convert.ToDateTime(dateNow);
-                fecha = fecha.AddDays(3);
-                string resultado = fecha.ToString("yyyy-MM-dd");
-                MessageBox.Show("Fecha nueva:" + resultado + " "+ idPlace);
-                
-            
+
+            var db = new ProyectoContext();
+            // Agregando segunda cita :)
+
+            Random rnd = new Random();
+            int idPlace = rnd.Next(1, 3);
+            var dateNow = DateTime.Now.ToString("yyyy-MM-dd");
+            label2.Text = " " + dateNow;
+            DateTime fecha = Convert.ToDateTime(label2.Text);
+            // DateTime nuevaFecha = Convert.ToDateTime(dateNow);
+            fecha = fecha.AddDays(3);
+            string resultado = fecha.ToString("yyyy-MM-dd");
+            Random aleatorio = new Random();
+
+            Horario = aleatorio.Next(13, 14);
+            hora13 = aleatorio.Next(10, 59);
+            hora14 = aleatorio.Next(00, 50);
+
+
+            if (Horario == 13)
+            {
+                Horariofinal = Horario + ":" + hora13;
+            }
+
+            if (Horario == 14)
+            {
+                Horariofinal = Horario + ":" + hora14;
+            }
+            MessageBox.Show("Fecha nueva:" + resultado + " " + idPlace + " " + Horariofinal);
+
+                label4.Text = "" + IdManager.IdManager;
+                int manager = Convert.ToInt32(label4.Text);
+                label3.Text = "" + Horariofinal;
+                string hour = label3.Text;               
+                Appointment a = new();
+                a.AppointmentDate = fecha;
+                a.AppointmentHour = TimeSpan.Parse(hour);
+                a.IdDose = 2;
+                a.IdPlatform = 1;
+                a.IdPlace = idPlace;
+                a.IdManager = manager;
+
+                db.Add(a);
+                db.SaveChanges();
+                MessageBox.Show("Guardado en base");
+
         }
 
         private void frmSideEffects_Load(object sender, EventArgs e)
