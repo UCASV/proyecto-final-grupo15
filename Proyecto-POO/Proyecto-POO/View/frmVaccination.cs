@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Proyecto_POO.ViewModels;
+using Proyecto_POO.MySQLContext;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -12,9 +14,11 @@ namespace Proyecto_POO
 {
     public partial class frmVaccination : Form
     {
-        public frmVaccination()
+        int conteo = 0;
+        public frmVaccination(Queue<CitizenVm1> models)
         {
             InitializeComponent();
+            dgvQueue.DataSource = models.ToList();
         }
 
         private void frmVaccination_FormClosing(object sender, FormClosingEventArgs e)
@@ -24,10 +28,38 @@ namespace Proyecto_POO
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("El paciente ya ha sido vacunado, pasará al módulo de Observación.", "Vacunación realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            frmSideEffects frm = new frmSideEffects();
+            //MessageBox.Show("El paciente ya ha sido vacunado, pasará al módulo de Observación.", "Vacunación realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //DateTime nuevaDate = Convert.ToDateTime("yyyy-MM-dd");
+            //nuevaDate = nuevaDate.AddDays(42);
+
+            //Creo un timer con un intervalo de 2000 milisegundos.
+            try
+            {
+                conteo++;
+                timer1.Enabled = true;
+                if (conteo == 10)
+                {
+                    timer1.Enabled = false;
+                    MessageBox.Show("El tiempo de observacion ha terminado");
+                    frmSideEffects frm = new frmSideEffects();
+                    frm.Show();
+                    this.Hide();
+                }
+
+                if (prbProgress.Minimum < prbProgress.Maximum)
+                {
+                    prbProgress.Value++;
+                }
+            }
+            catch(Exception)
+            {
+                
+            }
+
+
+          /*  frmSideEffects frm = new frmSideEffects();
             frm.Show();
-            this.Hide();
+            this.Hide();*/
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -38,6 +70,11 @@ namespace Proyecto_POO
         }
 
         private void frmVaccination_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void prbProgress_Click(object sender, EventArgs e)
         {
 
         }

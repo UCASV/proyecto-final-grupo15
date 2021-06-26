@@ -31,7 +31,6 @@ namespace Proyecto_POO
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnBookSecondAppointment = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbxOthers = new System.Windows.Forms.CheckBox();
             this.cbxAnaphylaxis = new System.Windows.Forms.CheckBox();
@@ -46,6 +45,12 @@ namespace Proyecto_POO
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnBack = new System.Windows.Forms.Button();
             this.lblCitizen = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -69,17 +74,6 @@ namespace Proyecto_POO
             this.label1.Size = new System.Drawing.Size(258, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "OBSERVACIÓN";
-            // 
-            // btnBookSecondAppointment
-            // 
-            this.btnBookSecondAppointment.BackColor = System.Drawing.Color.LightBlue;
-            this.btnBookSecondAppointment.Location = new System.Drawing.Point(452, 540);
-            this.btnBookSecondAppointment.Name = "btnBookSecondAppointment";
-            this.btnBookSecondAppointment.Size = new System.Drawing.Size(225, 42);
-            this.btnBookSecondAppointment.TabIndex = 8;
-            this.btnBookSecondAppointment.Text = "AGENDAR SEGUNDA CITA";
-            this.btnBookSecondAppointment.UseVisualStyleBackColor = false;
-            this.btnBookSecondAppointment.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox1
             // 
@@ -193,7 +187,7 @@ namespace Proyecto_POO
             // btnAddEffects
             // 
             this.btnAddEffects.BackColor = System.Drawing.Color.LightBlue;
-            this.btnAddEffects.Location = new System.Drawing.Point(167, 540);
+            this.btnAddEffects.Location = new System.Drawing.Point(334, 541);
             this.btnAddEffects.Name = "btnAddEffects";
             this.btnAddEffects.Size = new System.Drawing.Size(190, 42);
             this.btnAddEffects.TabIndex = 6;
@@ -231,16 +225,75 @@ namespace Proyecto_POO
             this.lblCitizen.TabIndex = 55;
             this.lblCitizen.Text = "idCitizen";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 516);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 17);
+            this.label2.TabIndex = 56;
+            this.label2.Text = "label2";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(97, 516);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 17);
+            this.label3.TabIndex = 57;
+            this.label3.Text = "label3";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 554);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 17);
+            this.label4.TabIndex = 58;
+            this.label4.Text = "label4";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(97, 554);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 17);
+            this.label5.TabIndex = 59;
+            this.label5.Text = "label5";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 592);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 17);
+            this.label6.TabIndex = 60;
+            this.label6.Text = "label6";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(97, 592);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 17);
+            this.label7.TabIndex = 61;
+            this.label7.Text = "label7";
+            // 
             // frmSideEffects
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(838, 658);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.lblCitizen);
             this.Controls.Add(this.btnAddEffects);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnBookSecondAppointment);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -265,7 +318,6 @@ namespace Proyecto_POO
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnBookSecondAppointment;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnAddEffects;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -281,5 +333,11 @@ namespace Proyecto_POO
         private System.Windows.Forms.CheckBox cbxReddering;
         private System.Windows.Forms.CheckBox cbxSensibility;
         private System.Windows.Forms.Label lblCitizen;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }

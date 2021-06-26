@@ -38,7 +38,7 @@ namespace Proyecto_POO
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            frmVaccination frm = new frmVaccination();
+            frmVaccination frm = new frmVaccination(null);
             frm.Show();
             this.Hide();
         }

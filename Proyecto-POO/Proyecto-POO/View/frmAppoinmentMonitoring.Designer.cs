@@ -79,6 +79,7 @@ namespace Proyecto_POO
             this.btnSearch.TabIndex = 4;
             this.btnSearch.Text = "BUSCAR";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // panel1
             // 

@@ -29,13 +29,16 @@ namespace Proyecto_POO
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvQueue = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.prbProgress = new System.Windows.Forms.ProgressBar();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvQueue)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +53,7 @@ namespace Proyecto_POO
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.LightBlue;
-            this.button1.Location = new System.Drawing.Point(424, 453);
+            this.button1.Location = new System.Drawing.Point(423, 334);
             this.button1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(207, 56);
@@ -59,14 +62,14 @@ namespace Proyecto_POO
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // dataGridView1
+            // dgvQueue
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(54, 203);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(914, 211);
-            this.dataGridView1.TabIndex = 3;
+            this.dgvQueue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvQueue.Location = new System.Drawing.Point(54, 203);
+            this.dgvQueue.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.dgvQueue.Name = "dgvQueue";
+            this.dgvQueue.Size = new System.Drawing.Size(914, 105);
+            this.dgvQueue.TabIndex = 3;
             // 
             // panel1
             // 
@@ -99,16 +102,31 @@ namespace Proyecto_POO
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.button1_Click);
+            // 
+            // prbProgress
+            // 
+            this.prbProgress.Location = new System.Drawing.Point(423, 445);
+            this.prbProgress.Maximum = 9;
+            this.prbProgress.Name = "prbProgress";
+            this.prbProgress.Size = new System.Drawing.Size(207, 23);
+            this.prbProgress.TabIndex = 8;
+            this.prbProgress.Click += new System.EventHandler(this.prbProgress_Click);
+            // 
             // frmVaccination
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1029, 530);
+            this.Controls.Add(this.prbProgress);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvQueue);
             this.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -118,7 +136,7 @@ namespace Proyecto_POO
             this.Text = "frmVaccination";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmVaccination_FormClosing);
             this.Load += new System.EventHandler(this.frmVaccination_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvQueue)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -129,9 +147,11 @@ namespace Proyecto_POO
 
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvQueue;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ProgressBar prbProgress;
     }
 }
