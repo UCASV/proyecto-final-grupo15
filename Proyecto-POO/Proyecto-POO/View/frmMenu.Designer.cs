@@ -42,6 +42,7 @@ namespace Proyecto_POO
             this.label5 = new System.Windows.Forms.Label();
             this.label_id = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -171,12 +172,24 @@ namespace Proyecto_POO
             this.label6.Size = new System.Drawing.Size(0, 32);
             this.label6.TabIndex = 17;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Lucida Sans", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(723, 448);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(183, 32);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "MONITOREO";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(929, 527);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label_id);
             this.Controls.Add(this.pictureBox7);
@@ -224,5 +237,6 @@ namespace Proyecto_POO
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label_id;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label4;
     }
 }

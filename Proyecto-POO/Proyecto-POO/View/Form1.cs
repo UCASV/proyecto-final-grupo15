@@ -59,7 +59,7 @@ namespace Proyecto_POO
                 r.RecordHour = TimeSpan.Parse(hourNow);
                 db.Add(r);
                 db.SaveChanges();
-                frmMenu frm = new frmMenu(result[0]);
+                frmMenu frm = new frmMenu(null, result[0]);
                 frm.Show();
                 this.Hide();
             }

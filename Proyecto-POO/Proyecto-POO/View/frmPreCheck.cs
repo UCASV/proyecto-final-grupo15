@@ -8,12 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Proyecto_POO.MySQLContext;
+using Proyecto_POO.ViewModels;
 using MySql.EntityFrameworkCore;
 
 namespace Proyecto_POO
 {
     public partial class frmPreCheck : Form
     {
+        Queue<CitizenVm1> addAppointmentMonitoring = new Queue<CitizenVm1>()
+        {
+
+        };
+        private void showWaitingList()
+        {
+            using (var context = new ProyectoContext())
+            {
+                var showCitizens = context.Citizens
+                    .ToList();
+                var mappedDs = new List<CitizenVm>();
+
+                showCitizens.ForEach(e => mappedDs.Add(CitizenMapper.MapCitizenToCitizenVm(e)));
+            }
+        }
         private Manager IdManager { get; set; }
 
         public frmPreCheck(Manager? IdManager)
@@ -114,9 +130,20 @@ namespace Proyecto_POO
                                     db.Update(c);
                                     db.SaveChanges();
                                     MessageBox.Show("Se han verificado los datos del/la ciudadano/a. Procediendo a monitoreo de citas.", "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    frmAppoinmentMonitoring frm = new frmAppoinmentMonitoring(IdManager);
-                                    frm.Show();
-                                    this.Hide();
+                                    var hourNow = DateTime.Now.ToString("HH:mm:ss");
+                                    var dateNow = DateTime.Now.ToString("dd-MM-yyyy");
+                                    CitizenVm1 model = new();
+                                    model.Dui = Convert.ToInt32(txtDui.Text);
+                                    model.CitizenName = txtName.Text;
+                                    model.Address = txtAddress.Text;
+                                    model.Birthdate = dtpBirthdate.Value;
+                                    model.Email = txtEmail.Text;
+                                    model.Phone = Convert.ToInt32(txtPhone.Text);
+                                    model.IdInstitution = cmbInstitution.SelectedIndex;
+                                    model.dateNow = dateNow;
+                                    model.hourNow = hourNow;
+                                    addAppointmentMonitoring.Enqueue(model);
+                                    clearFields();
                                 }
                                 else
                                     MessageBox.Show("El valor para fecha de nacimiento no es válido.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);   
@@ -141,7 +168,7 @@ namespace Proyecto_POO
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            frmMenu frm = new frmMenu(IdManager);
+            frmMenu frm = new frmMenu(addAppointmentMonitoring, IdManager);
             frm.Show();
             this.Hide();
         }
@@ -149,6 +176,7 @@ namespace Proyecto_POO
         private void frmPreCheck_Load(object sender, EventArgs e)
         {
             validateDate();
+            showWaitingList();
             label10.Text = "" + IdManager.IdManager;
             var db = new ProyectoContext();
             List<Disease> diseases = db.Diseases.ToList();

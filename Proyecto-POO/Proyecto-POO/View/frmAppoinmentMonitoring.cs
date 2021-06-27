@@ -14,11 +14,11 @@ namespace Proyecto_POO
 {
     public partial class frmAppoinmentMonitoring : Form
     {
-        Queue<CitizenVm1> addWaitingList = new Queue<CitizenVm1>()
+        Queue<CitizenVm1> addWaiting = new Queue<CitizenVm1>()
         {
 
         };
-        private void showWaitingList()
+        private void showWaiting()
         {
             using (var context = new ProyectoContext())
             {
@@ -31,10 +31,11 @@ namespace Proyecto_POO
             }
         }
         private Manager IdManager { get; set; }
-        public frmAppoinmentMonitoring(Manager IdManager)
+        public frmAppoinmentMonitoring(Queue<CitizenVm1>? models, Manager IdManager)
         {
             InitializeComponent();
             this.IdManager = IdManager;
+            dgvMonitoring.DataSource = models.ToList();
         }
 
         private void btnAddToList_Click(object sender, EventArgs e)
@@ -53,9 +54,9 @@ namespace Proyecto_POO
                 model.IdInstitution = Convert.ToInt32(dgvMonitoring.CurrentRow.Cells[6].Value);
                 model.dateNow = dateNow;
                 model.hourNow = hourNow;
-                addWaitingList.Enqueue(model);
+                addWaiting.Enqueue(model);
                 MessageBox.Show("Se agrego en la fecha " + dateNow + " a hora " + hourNow);
-                frmVaccination frm = new frmVaccination(addWaitingList, IdManager);
+                frmVaccination frm = new frmVaccination(addWaiting, IdManager);
                 frm.Show();
                 this.Hide();
             }
@@ -79,7 +80,7 @@ namespace Proyecto_POO
 
         private void frmAppoinmentMonitoring_Load(object sender, EventArgs e)
         {
-            showWaitingList();
+            showWaiting();
             label2.Text = "" + IdManager.IdManager;
         }
 

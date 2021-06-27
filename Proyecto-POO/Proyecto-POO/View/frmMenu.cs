@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Proyecto_POO.ViewModels;
 using Proyecto_POO.MySQLContext;
 
 namespace Proyecto_POO
@@ -15,10 +16,13 @@ namespace Proyecto_POO
     {
         
         private Manager IdManager { get; set; }
+        Queue<CitizenVm1> menu;
 
-        public frmMenu(Manager? IdManager)
+        public frmMenu(Queue<CitizenVm1>? model, Manager? IdManager)
         {
             InitializeComponent();
+            menu = model;
+            model.ToList();
             this.IdManager = IdManager;
         }
 
@@ -38,9 +42,7 @@ namespace Proyecto_POO
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            frmVaccination frm = new frmVaccination(null, IdManager);
-            frm.Show();
-            this.Hide();
+
         }
 
         private void pictureBox8_Click(object sender, EventArgs e)
@@ -75,6 +77,13 @@ namespace Proyecto_POO
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            frmAppoinmentMonitoring frm = new frmAppoinmentMonitoring(menu, IdManager);
+            frm.Show();
+            this.Hide();
         }
     }
 }

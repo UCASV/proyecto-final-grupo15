@@ -252,7 +252,7 @@ namespace Proyecto_POO
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            frmMenu frm = new frmMenu(IdManager);
+            frmMenu frm = new frmMenu(null, IdManager);
             frm.Show();
             this.Hide();
         }

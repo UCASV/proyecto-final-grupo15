@@ -145,7 +145,7 @@ namespace Proyecto_POO
             a.IdManager = manager;
             db.Add(a);
             db.SaveChanges();
-            frmMenu frm = new frmMenu(IdManager);
+            frmMenu frm = new frmMenu(null, IdManager);
             frm.Show();
             this.Hide();
         }
