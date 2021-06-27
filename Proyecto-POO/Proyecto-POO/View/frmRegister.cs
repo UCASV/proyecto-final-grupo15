@@ -4,11 +4,16 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 using Proyecto_POO.MySQLContext;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace Proyecto_POO
 {
@@ -31,8 +36,12 @@ namespace Proyecto_POO
 
             try
             {
-                bool verify = (textBox1.Text.Length == 9 && txtPhoneNumber.Text.Length == 8
-                                    && txtIdentifier.Text.Length != 0 && cmbInstitution.SelectedIndex > 0);
+
+                bool verifyincoherence = txtIdentifier.Text.Length > 0 && cmbInstitution.SelectedIndex >= 0;
+                bool allowemptyness = txtIdentifier.Text.Length == 0 && cmbInstitution.SelectedIndex == -1;
+                bool test = verifyincoherence || allowemptyness;
+
+                bool verify = (textBox1.Text.Length == 9 && txtPhoneNumber.Text.Length == 8 && test);
                 if (verify)
                 {
                     bool a = cbxDiabetes.Checked;
@@ -83,13 +92,14 @@ namespace Proyecto_POO
                     int place = placevacunation(textBox1.Text);
 
                     Institution iref = (Institution)cmbInstitution.SelectedItem;
+
+                    var AppointmentDate = DateTime.Now.ToString("yyyy-mm-dd");
+                    var AppointmentHour = DateTime.Now.ToString("HH:mm:ss");
+
                     using (var db = new ProyectoContext())
                     {
 
-                        var AppointmentDate = DateTime.Now.ToString("yyyy-mm-dd");
-                        var AppointmentHour = DateTime.Now.ToString("HH:mm:ss");
-
-                    var NewAppointment = new List<Appointment>
+                        var NewAppointment = new List<Appointment>
                         {
                             new Appointment ()
                             {
@@ -109,11 +119,11 @@ namespace Proyecto_POO
                             .OrderBy(a => a.IdAppointment)
                             .ToList();
 
-                        int size = SavedAppointments.Count()-1;
+                        int size = SavedAppointments.Count() - 1;
                         int appointmentid = SavedAppointments[size].IdAppointment;
 
-                        Institution ibdd = db.Set<Institution>().SingleOrDefault(i => i.IdInstitution == iref.IdInstitution);
-                        if (cmbInstitution.SelectedIndex <= 0)
+
+                        if (cmbInstitution.SelectedIndex == -1)
                         {
                             var NewPacient = new List<Citizen>()
                             {
@@ -133,6 +143,7 @@ namespace Proyecto_POO
                         }
                         else
                         {
+                            Institution ibdd = db.Set<Institution>().SingleOrDefault(i => i.IdInstitution == iref.IdInstitution);
                             var NewPacient = new List<Citizen>()
                             {
                                 new Citizen()
@@ -182,9 +193,10 @@ namespace Proyecto_POO
                     }
 
                     MessageBox.Show("Ciudadano registrado con éxito, ahora debe continuar al módulo Prechequeo.", "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    frmMenu frm = new frmMenu(IdManager);
+
+                    /*frmMenu frm = new frmMenu(IdManager);
                     frm.Show();
-                    this.Hide();
+                    this.Hide();*/
                 }
                 else
                 {
@@ -196,6 +208,8 @@ namespace Proyecto_POO
                     cmbInstitution.DataSource = institution;
                     cmbInstitution.ValueMember = "IdInstitution";
                     cmbInstitution.DisplayMember = "InstitutionName";
+                    cmbInstitution.SelectedIndex = -1;
+                    cmbInstitution.SelectedText = "Escoja la institución";
                 }
 
             }
@@ -209,8 +223,11 @@ namespace Proyecto_POO
                 cmbInstitution.DataSource = institution;
                 cmbInstitution.ValueMember = "IdInstitution";
                 cmbInstitution.DisplayMember = "InstitutionName";
+                cmbInstitution.SelectedIndex = -1;
+                cmbInstitution.SelectedText = "Escoja la institución";
 
             }
+
         }
 
         private int placevacunation(string text)
@@ -248,6 +265,8 @@ namespace Proyecto_POO
             cmbInstitution.DataSource = institution;
             cmbInstitution.ValueMember = "IdInstitution";
             cmbInstitution.DisplayMember = "InstitutionName";
+            cmbInstitution.SelectedIndex = -1;
+            cmbInstitution.SelectedText = "Escoja la institución";
 
             dtpBirthdate.MaxDate = DateTime.Today;
 
@@ -255,6 +274,59 @@ namespace Proyecto_POO
         // Este es el boton de generar pdf
         private void button2_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var bd = new ProyectoContext();
+                var placeslist = bd.VaccinationPlaces
+                    .OrderBy(v => v.IdPlace)
+                    .ToList();
+
+                var filter = placeslist
+                    .Where(v => v.IdPlace.Equals(placevacunation(textBox1.Text)))
+                    .ToList();
+                List<VaccinationPlace> vaccplace = new List<VaccinationPlace>();
+                foreach (VaccinationPlace vacc in filter)
+                {
+                    vaccplace.Add(vacc);
+                }
+
+                var SavedAppointments = bd.Appointments
+                            .OrderBy(a => a.IdAppointment)
+                            .ToList();
+
+                int size = SavedAppointments.Count() - 1;
+                int appointmentid = SavedAppointments[size].IdAppointment;
+                string appointmentdate = SavedAppointments[size].AppointmentDate.ToString();
+                string appointmenthour = SavedAppointments[size].AppointmentHour.ToString();
+
+
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "PDF file|*.pdf", ValidateNames = true })
+                {
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        FileStream file = new FileStream(saveFileDialog.FileName, FileMode.Create);
+                        Document document = new Document(PageSize.A4);
+                        PdfWriter pdf = PdfWriter.GetInstance(document, file);
+                        document.Open();
+                        document.Add(new Paragraph("Detalles de cita"));
+                        document.Add(Chunk.NEWLINE);
+                        document.Add(new Paragraph("ID: " + textBox1.Text));
+                        document.Add(new Paragraph("Nombre: " + txtName.Text));
+                        document.Add(new Paragraph("Fecha: " + appointmentdate));
+                        document.Add(new Paragraph("Hora: " + appointmenthour));
+                        document.Add(new Paragraph("Lugar de vacunación: " + vaccplace[0].PlaceName));
+                        document.Close();
+                        pdf.Close();
+                    }
+                }
+
+            }
+
+            catch (Exception)
+            {
+                MessageBox.Show("Asegúrese de haber registrado al usuario", "Advertencia", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
 
         }
     }
