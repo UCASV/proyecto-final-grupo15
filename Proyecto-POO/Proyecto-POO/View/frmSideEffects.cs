@@ -107,7 +107,7 @@ namespace Proyecto_POO
             var dateNow = DateTime.Now.ToString("yyyy-MM-dd");
             label2.Text = " " + dateNow;
             DateTime fecha = Convert.ToDateTime(label2.Text);
-            fecha = fecha.AddDays(3);
+            fecha = fecha.AddDays(42);
             string resultado = fecha.ToString("yyyy-MM-dd");
             Random aleatorio = new Random();
 
@@ -151,6 +151,11 @@ namespace Proyecto_POO
         }
 
         private void frmSideEffects_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

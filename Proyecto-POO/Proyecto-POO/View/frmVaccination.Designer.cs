@@ -30,9 +30,11 @@ namespace Proyecto_POO
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVaccination));
             this.button1 = new System.Windows.Forms.Button();
             this.dgvQueue = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.prbProgress = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,12 +42,13 @@ namespace Proyecto_POO
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvQueue)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.LightBlue;
-            this.button1.Location = new System.Drawing.Point(409, 265);
+            this.button1.Location = new System.Drawing.Point(402, 302);
             this.button1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(207, 56);
@@ -57,7 +60,7 @@ namespace Proyecto_POO
             // dgvQueue
             // 
             this.dgvQueue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvQueue.Location = new System.Drawing.Point(40, 134);
+            this.dgvQueue.Location = new System.Drawing.Point(33, 171);
             this.dgvQueue.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.dgvQueue.Name = "dgvQueue";
             this.dgvQueue.Size = new System.Drawing.Size(914, 105);
@@ -66,17 +69,28 @@ namespace Proyecto_POO
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1027, 100);
+            this.panel1.Size = new System.Drawing.Size(1027, 141);
             this.panel1.TabIndex = 6;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Proyecto_POO.Properties.Resources.appointment;
+            this.pictureBox1.Location = new System.Drawing.Point(189, -12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(142, 164);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Lucida Sans", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(293, 31);
+            this.label1.Location = new System.Drawing.Point(321, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(478, 37);
             this.label1.TabIndex = 0;
@@ -84,7 +98,7 @@ namespace Proyecto_POO
             // 
             // prbProgress
             // 
-            this.prbProgress.Location = new System.Drawing.Point(409, 352);
+            this.prbProgress.Location = new System.Drawing.Point(402, 389);
             this.prbProgress.Maximum = 9;
             this.prbProgress.Name = "prbProgress";
             this.prbProgress.Size = new System.Drawing.Size(207, 23);
@@ -105,7 +119,7 @@ namespace Proyecto_POO
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(389, 389);
+            this.label3.Location = new System.Drawing.Point(382, 426);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(253, 17);
             this.label3.TabIndex = 10;
@@ -121,7 +135,7 @@ namespace Proyecto_POO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(995, 433);
+            this.ClientSize = new System.Drawing.Size(995, 459);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.prbProgress);
@@ -130,6 +144,7 @@ namespace Proyecto_POO
             this.Controls.Add(this.dgvQueue);
             this.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.Name = "frmVaccination";
@@ -140,6 +155,7 @@ namespace Proyecto_POO
             ((System.ComponentModel.ISupportInitialize)(this.dgvQueue)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,5 +170,6 @@ namespace Proyecto_POO
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

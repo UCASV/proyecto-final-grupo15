@@ -36,15 +36,17 @@ namespace Proyecto_POO
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(169, 167);
+            this.label1.Location = new System.Drawing.Point(186, 167);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 17);
@@ -56,7 +58,7 @@ namespace Proyecto_POO
             // txtUser
             // 
             this.txtUser.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser.Location = new System.Drawing.Point(313, 164);
+            this.txtUser.Location = new System.Drawing.Point(279, 167);
             this.txtUser.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(142, 25);
@@ -77,7 +79,7 @@ namespace Proyecto_POO
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPassword.Location = new System.Drawing.Point(313, 217);
+            this.txtPassword.Location = new System.Drawing.Point(279, 214);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
@@ -87,7 +89,7 @@ namespace Proyecto_POO
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.LightBlue;
-            this.btnLogin.Location = new System.Drawing.Point(229, 279);
+            this.btnLogin.Location = new System.Drawing.Point(279, 258);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(142, 37);
             this.btnLogin.TabIndex = 4;
@@ -98,11 +100,22 @@ namespace Proyecto_POO
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(-5, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(627, 125);
             this.panel1.TabIndex = 5;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Proyecto_POO.Properties.Resources.login;
+            this.pictureBox1.Location = new System.Drawing.Point(68, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(103, 144);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // label3
             // 
@@ -119,7 +132,7 @@ namespace Proyecto_POO
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(623, 411);
+            this.ClientSize = new System.Drawing.Size(623, 342);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
@@ -137,6 +150,7 @@ namespace Proyecto_POO
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,6 +165,7 @@ namespace Proyecto_POO
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

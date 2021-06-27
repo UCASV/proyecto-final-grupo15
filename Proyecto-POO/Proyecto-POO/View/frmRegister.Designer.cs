@@ -29,6 +29,7 @@ namespace Proyecto_POO
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegister));
             this.button2 = new System.Windows.Forms.Button();
             this.txtIdentifier = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -407,6 +408,7 @@ namespace Proyecto_POO
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

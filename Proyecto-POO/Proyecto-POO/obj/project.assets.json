@@ -1576,23 +1576,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Any\\.nuget\\packages\\": {},
+    "C:\\Users\\maria\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Any\\OneDrive\\Desktop\\Proyecto veremos\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj",
+      "projectUniqueName": "C:\\Users\\maria\\OneDrive\\Escritorio\\CICLO 012021 POO\\POO\\Proyecto\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj",
       "projectName": "Proyecto-POO",
-      "projectPath": "C:\\Users\\Any\\OneDrive\\Desktop\\Proyecto veremos\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj",
-      "packagesPath": "C:\\Users\\Any\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Any\\OneDrive\\Desktop\\Proyecto veremos\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\obj\\",
+      "projectPath": "C:\\Users\\maria\\OneDrive\\Escritorio\\CICLO 012021 POO\\POO\\Proyecto\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj",
+      "packagesPath": "C:\\Users\\maria\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\maria\\OneDrive\\Escritorio\\CICLO 012021 POO\\POO\\Proyecto\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Any\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\maria\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

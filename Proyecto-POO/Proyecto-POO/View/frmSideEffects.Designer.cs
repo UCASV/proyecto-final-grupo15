@@ -29,7 +29,9 @@ namespace Proyecto_POO
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSideEffects));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbxOthers = new System.Windows.Forms.CheckBox();
@@ -51,6 +53,7 @@ namespace Proyecto_POO
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvObservation)).BeginInit();
             this.SuspendLayout();
@@ -58,21 +61,33 @@ namespace Proyecto_POO
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(2, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(838, 96);
+            this.panel1.Size = new System.Drawing.Size(838, 134);
             this.panel1.TabIndex = 9;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Proyecto_POO.Properties.Resources.sideeffects;
+            this.pictureBox1.Location = new System.Drawing.Point(533, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(118, 149);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Lucida Sans", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(281, 29);
+            this.label1.Location = new System.Drawing.Point(288, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(258, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "OBSERVACIÓN";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // groupBox1
             // 
@@ -186,7 +201,7 @@ namespace Proyecto_POO
             // btnAddEffects
             // 
             this.btnAddEffects.BackColor = System.Drawing.Color.LightBlue;
-            this.btnAddEffects.Location = new System.Drawing.Point(334, 541);
+            this.btnAddEffects.Location = new System.Drawing.Point(302, 541);
             this.btnAddEffects.Name = "btnAddEffects";
             this.btnAddEffects.Size = new System.Drawing.Size(190, 42);
             this.btnAddEffects.TabIndex = 6;
@@ -197,16 +212,16 @@ namespace Proyecto_POO
             // dgvObservation
             // 
             this.dgvObservation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvObservation.Location = new System.Drawing.Point(73, 139);
+            this.dgvObservation.Location = new System.Drawing.Point(73, 191);
             this.dgvObservation.Name = "dgvObservation";
             this.dgvObservation.RowTemplate.Height = 25;
-            this.dgvObservation.Size = new System.Drawing.Size(684, 189);
+            this.dgvObservation.Size = new System.Drawing.Size(684, 91);
             this.dgvObservation.TabIndex = 5;
             // 
             // lblCitizen
             // 
             this.lblCitizen.AutoSize = true;
-            this.lblCitizen.Location = new System.Drawing.Point(13, 103);
+            this.lblCitizen.Location = new System.Drawing.Point(2, 147);
             this.lblCitizen.Name = "lblCitizen";
             this.lblCitizen.Size = new System.Drawing.Size(74, 17);
             this.lblCitizen.TabIndex = 55;
@@ -270,7 +285,7 @@ namespace Proyecto_POO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(838, 658);
+            this.ClientSize = new System.Drawing.Size(838, 629);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -284,6 +299,7 @@ namespace Proyecto_POO
             this.Controls.Add(this.dgvObservation);
             this.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.Name = "frmSideEffects";
@@ -293,6 +309,7 @@ namespace Proyecto_POO
             this.Load += new System.EventHandler(this.frmSideEffects_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvObservation)).EndInit();
@@ -324,5 +341,6 @@ namespace Proyecto_POO
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
