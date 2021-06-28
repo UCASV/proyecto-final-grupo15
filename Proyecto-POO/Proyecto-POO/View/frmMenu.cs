@@ -102,5 +102,12 @@ namespace Proyecto_POO
             frm.Show();
             this.Hide();
         }
+
+        private void pictureBox8_Click_1(object sender, EventArgs e)
+        {
+            frmShowEmployee frm = new frmShowEmployee(menu, IdManager);
+            frm.Show();
+            this.Hide();
+        }
     }
 }

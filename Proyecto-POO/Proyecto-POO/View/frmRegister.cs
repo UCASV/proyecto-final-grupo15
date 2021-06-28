@@ -36,8 +36,8 @@ namespace Proyecto_POO
         private void button1_Click(object sender, EventArgs e)
         {
 
-            try
-            {
+           // try
+            //{
 
                 bool verifyincoherence = txtIdentifier.Text.Length > 0 && cmbInstitution.SelectedIndex >= 0;
                 bool allowemptyness = txtIdentifier.Text.Length == 0 && cmbInstitution.SelectedIndex == -1;
@@ -101,30 +101,11 @@ namespace Proyecto_POO
                     using (var db = new ProyectoContext())
                     {
 
-                        var NewAppointment = new List<Appointment>
-                        {
-                            new Appointment ()
-                            {
-
-                                AppointmentDate = DateTime.Now,
-                                AppointmentHour = TimeSpan.Parse(AppointmentHour),
-                                IdDose = 1,
-                                IdPlatform = 1,
-                                IdPlace = place,
-                                IdManager = this.IdManager.IdManager,
-                                IdCitizen = Convert.ToInt32(textBox1.Text)
-                            }
-                        };
-                        NewAppointment.ForEach(a => db.Add(a));
-                        db.SaveChanges();
+                        
 
                         var SavedAppointments = db.Appointments
                             .OrderBy(a => a.IdAppointment)
                             .ToList();
-
-                        int size = SavedAppointments.Count() - 1;
-                        int appointmentid = SavedAppointments[size].IdAppointment;
-
 
                         if (cmbInstitution.SelectedIndex == -1)
                         {
@@ -170,7 +151,25 @@ namespace Proyecto_POO
                              .OrderBy(c => c.Dui)
                              .ToList();
 
-                        if (arrayid.Length != null)
+                    var NewAppointment = new List<Appointment>
+                        {
+                            new Appointment ()
+                            {
+
+                                AppointmentDate = DateTime.Now,
+                                AppointmentHour = TimeSpan.Parse(AppointmentHour),
+                                IdDose = 1,
+                                IdPlatform = 1,
+                                IdPlace = place,
+                                IdManager = this.IdManager.IdManager,
+                                IdCitizen = Convert.ToInt32(textBox1.Text)
+                            }
+                        };
+                    NewAppointment.ForEach(a => db.Add(a));
+                    db.SaveChanges();
+
+
+                    if (arrayid.Length != null)
                         {
                             int cnt = 0;
 
@@ -212,10 +211,10 @@ namespace Proyecto_POO
                     cmbInstitution.SelectedText = "Escoja la institución";
                 }
 
-            }
+            //}
 
-            catch (Exception)
-            {
+            /*catch (Exception)
+           // {
                 MessageBox.Show("Datos no válidos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 var db = new ProyectoContext();
                 var institution = db.Institutions
@@ -226,7 +225,7 @@ namespace Proyecto_POO
                 cmbInstitution.SelectedIndex = -1;
                 cmbInstitution.SelectedText = "Escoja la institución";
 
-            }
+            //}*/
 
         }
 

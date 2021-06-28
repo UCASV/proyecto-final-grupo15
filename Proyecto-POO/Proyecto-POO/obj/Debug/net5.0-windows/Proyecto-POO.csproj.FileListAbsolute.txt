@@ -544,3 +544,18 @@ C:\Users\feder\OneDrive\Documentos\UCA\Ciclo I - 2021\Programación Orientada a 
 C:\Users\feder\OneDrive\Documentos\UCA\Ciclo I - 2021\Programación Orientada a Objetos\varios\proyecto-1\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\ref\Proyecto-POO.dll
 C:\Users\feder\OneDrive\Documentos\UCA\Ciclo I - 2021\Programación Orientada a Objetos\varios\proyecto-1\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto-POO.pdb
 C:\Users\feder\OneDrive\Documentos\UCA\Ciclo I - 2021\Programación Orientada a Objetos\varios\proyecto-1\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto-POO.genruntimeconfig.cache
+C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\bin\Debug\net5.0-windows\Common.Logging.dll
+C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\bin\Debug\net5.0-windows\Common.Logging.Core.dll
+C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\bin\Debug\net5.0-windows\itext.barcodes.dll
+C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\bin\Debug\net5.0-windows\itext.forms.dll
+C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\bin\Debug\net5.0-windows\itext.io.dll
+C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\bin\Debug\net5.0-windows\itext.kernel.dll
+C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\bin\Debug\net5.0-windows\itext.layout.dll
+C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\bin\Debug\net5.0-windows\itext.pdfa.dll
+C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\bin\Debug\net5.0-windows\itext.sign.dll
+C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\bin\Debug\net5.0-windows\itext.styledxmlparser.dll
+C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\bin\Debug\net5.0-windows\itext.svg.dll
+C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\bin\Debug\net5.0-windows\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\bin\Debug\net5.0-windows\Microsoft.Extensions.DependencyModel.dll
+C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
+C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto_POO.frmShowEmployee.resources

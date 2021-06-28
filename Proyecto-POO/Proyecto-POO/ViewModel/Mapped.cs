@@ -1,4 +1,5 @@
 ﻿using Proyecto_POO.MySqlContext;
+using Proyecto_POO.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,18 +25,15 @@ namespace Proyecto_POO.ViewModels
             };
         }
 
-        public static CitizenVm1 MapCitizenToCitizenVm1(Citizen c)
+        public static EmployeeVm MapEmployeeToEmployeeVm(Employee em)
         {
-            return new CitizenVm1
+            return new EmployeeVm
             {
-                Dui = c.Dui,
-                CitizenName = c.CitizenName,
-                Address = c.Address,
-                Birthdate = c.Birthdate,
-                Email = c.Email,
-                Phone = c.Phone,
-                IdInstitution = c.IdInstitution
-                
+                IdEmployee = em.IdEmployee,
+                EmployeeName = em.EmployeeName,
+                InstitutionalEmail = em.InstitutionalEmail,
+                Address = em.Address,
+                IdType = em.IdType                   
             };
         }
     }

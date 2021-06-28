@@ -45,6 +45,9 @@ namespace Proyecto_POO
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -53,6 +56,8 @@ namespace Proyecto_POO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -62,7 +67,7 @@ namespace Proyecto_POO
             this.panel1.Location = new System.Drawing.Point(1, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(927, 113);
+            this.panel1.Size = new System.Drawing.Size(1230, 113);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -78,7 +83,7 @@ namespace Proyecto_POO
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Proyecto_POO.Properties.Resources._1;
-            this.pictureBox1.Location = new System.Drawing.Point(22, 159);
+            this.pictureBox1.Location = new System.Drawing.Point(321, 160);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(50, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -88,7 +93,7 @@ namespace Proyecto_POO
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Proyecto_POO.Properties.Resources.editar;
-            this.pictureBox2.Location = new System.Drawing.Point(78, 208);
+            this.pictureBox2.Location = new System.Drawing.Point(377, 209);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(200, 200);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -99,7 +104,7 @@ namespace Proyecto_POO
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Proyecto_POO.Properties.Resources._2;
-            this.pictureBox3.Location = new System.Drawing.Point(306, 159);
+            this.pictureBox3.Location = new System.Drawing.Point(605, 160);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(50, 50);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -109,7 +114,7 @@ namespace Proyecto_POO
             // pictureBox4
             // 
             this.pictureBox4.Image = global::Proyecto_POO.Properties.Resources.verificar;
-            this.pictureBox4.Location = new System.Drawing.Point(362, 208);
+            this.pictureBox4.Location = new System.Drawing.Point(661, 209);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(200, 200);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -121,7 +126,7 @@ namespace Proyecto_POO
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Lucida Sans", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(100, 441);
+            this.label2.Location = new System.Drawing.Point(399, 442);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(147, 32);
             this.label2.TabIndex = 9;
@@ -132,7 +137,7 @@ namespace Proyecto_POO
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Lucida Sans", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(364, 441);
+            this.label3.Location = new System.Drawing.Point(663, 442);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(194, 32);
             this.label3.TabIndex = 10;
@@ -142,7 +147,7 @@ namespace Proyecto_POO
             // pictureBox7
             // 
             this.pictureBox7.Image = global::Proyecto_POO.Properties.Resources.cerrar_sesion;
-            this.pictureBox7.Location = new System.Drawing.Point(751, 119);
+            this.pictureBox7.Location = new System.Drawing.Point(1045, 121);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(30, 30);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -153,7 +158,7 @@ namespace Proyecto_POO
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(787, 126);
+            this.label5.Location = new System.Drawing.Point(1081, 128);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(130, 17);
             this.label5.TabIndex = 14;
@@ -173,7 +178,7 @@ namespace Proyecto_POO
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Lucida Sans", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(443, 234);
+            this.label6.Location = new System.Drawing.Point(742, 235);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(0, 32);
             this.label6.TabIndex = 17;
@@ -182,7 +187,7 @@ namespace Proyecto_POO
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Lucida Sans", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(650, 441);
+            this.label4.Location = new System.Drawing.Point(949, 442);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(183, 32);
             this.label4.TabIndex = 18;
@@ -192,7 +197,7 @@ namespace Proyecto_POO
             // pictureBox5
             // 
             this.pictureBox5.Image = global::Proyecto_POO.Properties.Resources.calendario;
-            this.pictureBox5.Location = new System.Drawing.Point(641, 208);
+            this.pictureBox5.Location = new System.Drawing.Point(932, 209);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(200, 200);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -203,19 +208,53 @@ namespace Proyecto_POO
             // pictureBox6
             // 
             this.pictureBox6.Image = global::Proyecto_POO.Properties.Resources._3;
-            this.pictureBox6.Location = new System.Drawing.Point(585, 159);
+            this.pictureBox6.Location = new System.Drawing.Point(884, 160);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(50, 50);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 20;
             this.pictureBox6.TabStop = false;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Lucida Sans", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(111, 442);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(173, 32);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "EMPLEADOS";
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::Proyecto_POO.Properties.Resources.Empleados_buscar;
+            this.pictureBox8.Location = new System.Drawing.Point(97, 209);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(200, 200);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 22;
+            this.pictureBox8.TabStop = false;
+            this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click_1);
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = global::Proyecto_POO.Properties.Resources.lupa;
+            this.pictureBox9.Location = new System.Drawing.Point(41, 160);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 23;
+            this.pictureBox9.TabStop = false;
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(929, 527);
+            this.ClientSize = new System.Drawing.Size(1223, 527);
+            this.Controls.Add(this.pictureBox9);
+            this.Controls.Add(this.pictureBox8);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.label4);
@@ -249,6 +288,8 @@ namespace Proyecto_POO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,5 +312,8 @@ namespace Proyecto_POO
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox pictureBox9;
     }
 }
