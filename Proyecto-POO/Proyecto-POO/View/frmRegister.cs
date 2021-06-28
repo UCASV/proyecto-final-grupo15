@@ -13,17 +13,19 @@ using Proyecto_POO.MySQLContext;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Microsoft.EntityFrameworkCore;
-
+using Proyecto_POO.ViewModels;
 
 namespace Proyecto_POO
 {
     public partial class frmRegister : Form
     {
+        Queue<CitizenVm> menu;
         private Manager IdManager { get; set; }
-        public frmRegister(Manager? manager)
+        public frmRegister(Queue<CitizenVm> model, Manager? manager)
         {
             InitializeComponent();
             this.IdManager = manager;
+            menu = model;
         }
 
         private void frmMainMenu_FormClosing(object sender, FormClosingEventArgs e)
@@ -193,11 +195,8 @@ namespace Proyecto_POO
                     }
 
                     MessageBox.Show("Ciudadano registrado con éxito, ahora debe continuar al módulo Prechequeo.", "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    /*frmMenu frm = new frmMenu(IdManager);
-                    frm.Show();
-                    this.Hide();*/
                 }
+
                 else
                 {
                     MessageBox.Show("Asegúrese de haber ingresado la información correctamente", "Advertencia",
@@ -252,7 +251,7 @@ namespace Proyecto_POO
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            frmMenu frm = new frmMenu(null, IdManager);
+            frmMenu frm = new frmMenu(menu, IdManager);
             frm.Show();
             this.Hide();
         }

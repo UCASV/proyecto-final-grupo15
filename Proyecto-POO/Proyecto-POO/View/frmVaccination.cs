@@ -17,12 +17,15 @@ namespace Proyecto_POO
         int conteo = 0;
         private Manager IdManager { get; set; }
 
-        Queue<CitizenVm1> vaccination;
-        public frmVaccination(Queue<CitizenVm1> models, Manager IdManager)
+        Queue<CitizenVm> vaccination;
+
+        Queue<CitizenVm1> monitoreo;
+        public frmVaccination(Queue<CitizenVm> models, Queue<CitizenVm1> vacqueue, Manager IdManager)
         {
             InitializeComponent();
             vaccination = models;
-            dgvQueue.DataSource = models.ToList();
+            monitoreo = vacqueue;          
+            dgvQueue.DataSource = vacqueue.ToList();
             this.IdManager = IdManager;
         }
 
@@ -43,7 +46,7 @@ namespace Proyecto_POO
                 {
                     timer1.Enabled = false;
                     MessageBox.Show("El tiempo de observacion ha terminado");
-                    frmSideEffects frm = new frmSideEffects(vaccination, IdManager);
+                    frmSideEffects frm = new frmSideEffects(vaccination, monitoreo, IdManager);
                     frm.Show();
                     this.Hide();
                 }
@@ -61,7 +64,7 @@ namespace Proyecto_POO
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            frmMenu frm = new frmMenu(null, IdManager);
+            frmMenu frm = new frmMenu(vaccination, IdManager);
             frm.Show();
             this.Hide();
         }

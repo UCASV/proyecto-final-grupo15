@@ -58,13 +58,13 @@ namespace Proyecto_POO
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
-            this.cmbInstitution = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.dtpBirthdate = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.lblInstitution = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.cmbInstitution = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -361,16 +361,6 @@ namespace Proyecto_POO
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // cmbInstitution
-            // 
-            this.cmbInstitution.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cmbInstitution.FormattingEnabled = true;
-            this.cmbInstitution.Location = new System.Drawing.Point(274, 401);
-            this.cmbInstitution.Name = "cmbInstitution";
-            this.cmbInstitution.Size = new System.Drawing.Size(364, 25);
-            this.cmbInstitution.TabIndex = 53;
-            this.cmbInstitution.Visible = false;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -427,6 +417,16 @@ namespace Proyecto_POO
             this.label10.TabIndex = 57;
             this.label10.Text = "label10";
             this.label10.Visible = false;
+            // 
+            // cmbInstitution
+            // 
+            this.cmbInstitution.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbInstitution.FormattingEnabled = true;
+            this.cmbInstitution.Location = new System.Drawing.Point(274, 401);
+            this.cmbInstitution.Name = "cmbInstitution";
+            this.cmbInstitution.Size = new System.Drawing.Size(364, 25);
+            this.cmbInstitution.TabIndex = 53;
+            this.cmbInstitution.Visible = false;
             // 
             // frmPreCheck
             // 
@@ -507,12 +507,12 @@ namespace Proyecto_POO
         private System.Windows.Forms.CheckBox cbxSeropositivas;
         private System.Windows.Forms.CheckBox cbxOrganReceptor;
         private System.Windows.Forms.CheckBox cbxCancer;
-        private System.Windows.Forms.ComboBox cmbInstitution;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker dtpBirthdate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblInstitution;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cmbInstitution;
     }
 }

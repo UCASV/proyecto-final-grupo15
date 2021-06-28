@@ -32,8 +32,6 @@ namespace Proyecto_POO
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAppoinmentMonitoring));
             this.btnDownloadPDF = new System.Windows.Forms.Button();
             this.dgvMonitoring = new System.Windows.Forms.DataGridView();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,7 +46,7 @@ namespace Proyecto_POO
             // btnDownloadPDF
             // 
             this.btnDownloadPDF.BackColor = System.Drawing.Color.LightBlue;
-            this.btnDownloadPDF.Location = new System.Drawing.Point(187, 405);
+            this.btnDownloadPDF.Location = new System.Drawing.Point(185, 341);
             this.btnDownloadPDF.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnDownloadPDF.Name = "btnDownloadPDF";
             this.btnDownloadPDF.Size = new System.Drawing.Size(195, 41);
@@ -59,31 +57,12 @@ namespace Proyecto_POO
             // dgvMonitoring
             // 
             this.dgvMonitoring.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMonitoring.Location = new System.Drawing.Point(58, 240);
+            this.dgvMonitoring.Location = new System.Drawing.Point(56, 176);
             this.dgvMonitoring.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dgvMonitoring.Name = "dgvMonitoring";
+            this.dgvMonitoring.ReadOnly = true;
             this.dgvMonitoring.Size = new System.Drawing.Size(705, 137);
             this.dgvMonitoring.TabIndex = 6;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(96, 159);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(427, 25);
-            this.txtSearch.TabIndex = 5;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.LightBlue;
-            this.btnSearch.Location = new System.Drawing.Point(573, 151);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(148, 41);
-            this.btnSearch.TabIndex = 4;
-            this.btnSearch.Text = "BUSCAR";
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // panel1
             // 
@@ -120,7 +99,7 @@ namespace Proyecto_POO
             // btnAddToList
             // 
             this.btnAddToList.BackColor = System.Drawing.Color.LightBlue;
-            this.btnAddToList.Location = new System.Drawing.Point(459, 405);
+            this.btnAddToList.Location = new System.Drawing.Point(457, 341);
             this.btnAddToList.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAddToList.Name = "btnAddToList";
             this.btnAddToList.Size = new System.Drawing.Size(195, 41);
@@ -133,7 +112,7 @@ namespace Proyecto_POO
             // 
             this.btnBack.BackColor = System.Drawing.Color.LightBlue;
             this.btnBack.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(12, 459);
+            this.btnBack.Location = new System.Drawing.Point(10, 395);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(80, 34);
             this.btnBack.TabIndex = 53;
@@ -144,7 +123,7 @@ namespace Proyecto_POO
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 414);
+            this.label2.Location = new System.Drawing.Point(15, 350);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 17);
             this.label2.TabIndex = 54;
@@ -155,15 +134,13 @@ namespace Proyecto_POO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(828, 505);
+            this.ClientSize = new System.Drawing.Size(828, 452);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAddToList);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnDownloadPDF);
             this.Controls.Add(this.dgvMonitoring);
-            this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.btnSearch);
             this.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -187,8 +164,6 @@ namespace Proyecto_POO
 
         private System.Windows.Forms.Button btnDownloadPDF;
         private System.Windows.Forms.DataGridView dgvMonitoring;
-        private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddToList;

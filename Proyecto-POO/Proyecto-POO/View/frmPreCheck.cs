@@ -15,27 +15,30 @@ namespace Proyecto_POO
 {
     public partial class frmPreCheck : Form
     {
-        Queue<CitizenVm1> addAppointmentMonitoring = new Queue<CitizenVm1>()
+        List<Institution> institutions;
+
+        Queue<CitizenVm> addAppointmentMonitoring = new Queue<CitizenVm>()
         {
 
         };
+        //Queue<CitizenVm> menu;
         private void showWaitingList()
         {
             using (var context = new ProyectoContext())
             {
                 var showCitizens = context.Citizens
                     .ToList();
-                var mappedDs = new List<CitizenVm>();
+                var citizenVm = new List<CitizenVm>();
 
-                showCitizens.ForEach(e => mappedDs.Add(CitizenMapper.MapCitizenToCitizenVm(e)));
+                showCitizens.ForEach(e => citizenVm.Add(CitizenMapper.MapCitizenToCitizenVm(e)));
             }
         }
         private Manager IdManager { get; set; }
 
-        public frmPreCheck(Manager? IdManager)
+        public frmPreCheck(Queue<CitizenVm> model, Manager? IdManager)
         {
             InitializeComponent();
-            this.IdManager = IdManager;
+            this.IdManager = IdManager;         
         }
 
         private void frmPreCheck_FormClosing(object sender, FormClosingEventArgs e)
@@ -132,16 +135,14 @@ namespace Proyecto_POO
                                     MessageBox.Show("Se han verificado los datos del/la ciudadano/a. Procediendo a monitoreo de citas.", "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     var hourNow = DateTime.Now.ToString("HH:mm:ss");
                                     var dateNow = DateTime.Now.ToString("dd-MM-yyyy");
-                                    CitizenVm1 model = new();
+                                    CitizenVm model = new();
                                     model.Dui = Convert.ToInt32(txtDui.Text);
                                     model.CitizenName = txtName.Text;
                                     model.Address = txtAddress.Text;
                                     model.Birthdate = dtpBirthdate.Value;
                                     model.Email = txtEmail.Text;
                                     model.Phone = Convert.ToInt32(txtPhone.Text);
-                                    model.IdInstitution = cmbInstitution.SelectedIndex;
-                                    model.dateNow = dateNow;
-                                    model.hourNow = hourNow;
+                                    model.IdInstitution = Convert.ToInt32(lblId.Text);                                    
                                     addAppointmentMonitoring.Enqueue(model);
                                     clearFields();
                                 }
@@ -175,10 +176,11 @@ namespace Proyecto_POO
 
         private void frmPreCheck_Load(object sender, EventArgs e)
         {
+
             validateDate();
             showWaitingList();
             label10.Text = "" + IdManager.IdManager;
-            var db = new ProyectoContext();
+            var db = new ProyectoContext();                    
             List<Disease> diseases = db.Diseases.ToList();
             // Fijamos el texto de cada checkbox acorde a las enfermedades crónicas que complican o impiden el
             // proceso de vacunación
@@ -261,8 +263,8 @@ namespace Proyecto_POO
         {
             clearFields();
             var db = new ProyectoContext();
-            List<Citizen> citizens = db.Citizens.ToList();
-            List<Institution> institutions = db.Institutions.ToList();
+            institutions = db.Institutions.ToList();
+            List<Citizen> citizens = db.Citizens.ToList();            
             List<Diseasexcitizen> diseasexcitizens = db.Diseasexcitizens.ToList();
 
             // Obtenemos el valor ingresado por el gestor y lo utilizamos para buscar al ciudadano por medio del DUI

@@ -63,6 +63,7 @@ namespace Proyecto_POO
             this.dgvQueue.Location = new System.Drawing.Point(33, 171);
             this.dgvQueue.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.dgvQueue.Name = "dgvQueue";
+            this.dgvQueue.ReadOnly = true;
             this.dgvQueue.Size = new System.Drawing.Size(914, 105);
             this.dgvQueue.TabIndex = 3;
             // 

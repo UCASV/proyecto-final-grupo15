@@ -214,6 +214,7 @@ namespace Proyecto_POO
             this.dgvObservation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvObservation.Location = new System.Drawing.Point(73, 191);
             this.dgvObservation.Name = "dgvObservation";
+            this.dgvObservation.ReadOnly = true;
             this.dgvObservation.RowTemplate.Height = 25;
             this.dgvObservation.Size = new System.Drawing.Size(684, 91);
             this.dgvObservation.TabIndex = 5;

@@ -15,16 +15,18 @@ namespace Proyecto_POO
 {
     public partial class frmSideEffects : Form
     {
+        Queue<CitizenVm> addWaiting;
         int Horario;
         int hora13;
         int hora14;
         string Horariofinal;
         private Manager IdManager { get; set; }
-        public frmSideEffects(Queue<CitizenVm1> models, Manager IdManager)
+        public frmSideEffects(Queue<CitizenVm> models, Queue<CitizenVm1> vacqueue, Manager IdManager)
         {
             InitializeComponent();
             this.IdManager = IdManager;
-            dgvObservation.DataSource = models.ToList();
+            addWaiting = models;
+            dgvObservation.DataSource = vacqueue.ToList();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -129,13 +131,13 @@ namespace Proyecto_POO
             {
                 Horariofinal = Horario + ":" + hora14;
             }
-            MessageBox.Show("La fecha de su nueva cita es: " + 
+            MessageBox.Show("La fecha de su nueva cita es: " +
                 resultado + ", en el lugar: " + place + " en la hora: " + Horariofinal);
 
             label4.Text = "" + IdManager.IdManager;
             int manager = Convert.ToInt32(label4.Text);
             label3.Text = "" + Horariofinal;
-            string hour = label3.Text;               
+            string hour = label3.Text;
             Appointment a = new();
             a.AppointmentDate = fecha;
             a.AppointmentHour = TimeSpan.Parse(hour);
@@ -145,7 +147,19 @@ namespace Proyecto_POO
             a.IdManager = manager;
             db.Add(a);
             db.SaveChanges();
-            frmMenu frm = new frmMenu(null, IdManager);
+            CitizenVm models = new();
+            models.Dui = Convert.ToInt32(dgvObservation.CurrentRow.Cells[0].Value);
+            models.CitizenName = dgvObservation.CurrentRow.Cells[1].Value.ToString();
+            models.Address = dgvObservation.CurrentRow.Cells[2].Value.ToString();
+            models.Birthdate = Convert.ToDateTime(dgvObservation.CurrentRow.Cells[3].Value);
+            models.Email = dgvObservation.CurrentRow.Cells[4].Value.ToString();
+            models.Phone = Convert.ToInt32(dgvObservation.CurrentRow.Cells[5].Value);
+            models.IdInstitution = Convert.ToInt32(dgvObservation.CurrentRow.Cells[6].Value);
+            //model.dateNow = dateNow;
+            //model.hourNow = hourNow;
+            var posicion = addWaiting.Peek();
+            addWaiting.Dequeue();            
+            frmMenu frm = new frmMenu(addWaiting, IdManager);
             frm.Show();
             this.Hide();
         }

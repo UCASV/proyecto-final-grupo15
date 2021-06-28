@@ -125,7 +125,6 @@ C:\Users\danie\OneDrive\Escritorio\New folder\pruedaxd\Proyecto-POO\Proyecto-POO
 C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto-POO.csproj.AssemblyReference.cache
 C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto_POO.Form1.resources
 C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto_POO.frmAppoinmentMonitoring.resources
-C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto_POO.frmChangePassword.resources
 C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto_POO.frmMenu.resources
 C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto_POO.frmPreCheck.resources
 C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto_POO.frmRegister.resources
@@ -479,3 +478,4 @@ C:\Users\maria\OneDrive\Imágenes\RECOMPILARPROYECTO\proyecto-final-grupo15\Proy
 C:\Users\maria\OneDrive\Imágenes\RECOMPILARPROYECTO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\ref\Proyecto-POO.dll
 C:\Users\maria\OneDrive\Imágenes\RECOMPILARPROYECTO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto-POO.pdb
 C:\Users\maria\OneDrive\Imágenes\RECOMPILARPROYECTO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\obj\Debug\net5.0-windows\Proyecto-POO.genruntimeconfig.cache
+C:\Users\danie\OneDrive\Documents\Proyecto POO\proyecto-final-grupo15\Proyecto-POO\Proyecto-POO\bin\Debug\net5.0-windows\itextsharp.dll

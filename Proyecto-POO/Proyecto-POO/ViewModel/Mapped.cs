@@ -20,6 +20,22 @@ namespace Proyecto_POO.ViewModels
                 Email = c.Email,
                 Phone = c.Phone,
                 IdInstitution = c.IdInstitution
+
+            };
+        }
+
+        public static CitizenVm1 MapCitizenToCitizenVm1(Citizen c)
+        {
+            return new CitizenVm1
+            {
+                Dui = c.Dui,
+                CitizenName = c.CitizenName,
+                Address = c.Address,
+                Birthdate = c.Birthdate,
+                Email = c.Email,
+                Phone = c.Phone,
+                IdInstitution = c.IdInstitution
+                
             };
         }
     }

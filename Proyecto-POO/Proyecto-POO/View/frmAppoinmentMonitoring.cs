@@ -15,27 +15,26 @@ namespace Proyecto_POO
     public partial class frmAppoinmentMonitoring : Form
     {
         Queue<CitizenVm1> addWaiting = new Queue<CitizenVm1>()
-        {
+         {
 
-        };
-        private void showWaiting()
-        {
-            using (var context = new ProyectoContext())
-            {
-                var showCitizens = context.Citizens
-                    .ToList();
-                var mappedDs = new List<CitizenVm>();
-
-                showCitizens.ForEach(e => mappedDs.Add(CitizenMapper.MapCitizenToCitizenVm(e)));
-                dgvMonitoring.DataSource = mappedDs;
-            }
-        }
+         };
+         
+        Queue<CitizenVm> appointment;        
         private Manager IdManager { get; set; }
-        public frmAppoinmentMonitoring(Queue<CitizenVm1>? models, Manager IdManager)
+        public frmAppoinmentMonitoring(Queue<CitizenVm>? models, Manager IdManager)
         {
-            InitializeComponent();
+            InitializeComponent(); 
             this.IdManager = IdManager;
-            dgvMonitoring.DataSource = models.ToList();
+            try
+            {
+                
+                appointment = models;
+                dgvMonitoring.DataSource = models.ToList();
+            }
+            catch(Exception)
+            {
+
+            }
         }
 
         private void btnAddToList_Click(object sender, EventArgs e)
@@ -54,11 +53,20 @@ namespace Proyecto_POO
                 model.IdInstitution = Convert.ToInt32(dgvMonitoring.CurrentRow.Cells[6].Value);
                 model.dateNow = dateNow;
                 model.hourNow = hourNow;
-                addWaiting.Enqueue(model);
-                MessageBox.Show("Se agrego en la fecha " + dateNow + " a hora " + hourNow);
-                frmVaccination frm = new frmVaccination(addWaiting, IdManager);
-                frm.Show();
-                this.Hide();
+
+                if (dgvMonitoring.Rows[0].Selected == true )
+                {                   
+                    addWaiting.Enqueue(model);
+                    MessageBox.Show("Se agrego en la fecha " + dateNow + " a hora " + hourNow);
+                    frmVaccination frm = new frmVaccination(appointment, addWaiting, IdManager);
+                    frm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Se encuentra un paciente en cola");
+                }
+                
             }
             catch (Exception)
             {
@@ -73,59 +81,16 @@ namespace Proyecto_POO
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            frmPreCheck frm = new frmPreCheck(IdManager);
+            frmMenu frm = new frmMenu(appointment, IdManager);
             frm.Show();
             this.Hide();
         }
 
         private void frmAppoinmentMonitoring_Load(object sender, EventArgs e)
         {
-            showWaiting();
+            
             label2.Text = "" + IdManager.IdManager;
         }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (var context = new ProyectoContext())
-                {
-                    var showCitizens = context.Citizens
-                    .ToList();
-                    var institutions = context.Institutions
-                        .ToList();
-
-                    var innerjoin =
-                        from institution in institutions
-                        join citizen in showCitizens on institution.IdInstitution equals citizen.Dui
-                        select new { IdI = institution.IdInstitution };
-
-                    var filter = showCitizens
-                        .Where(c => c.Dui == (Convert.ToInt32(txtSearch.Text)));
-                    var mappedDs = new List<CitizenVm>();
-
-                    if (filter.Count() > 0)
-                    {
-                        var citizenss = filter.SingleOrDefault();
-                        List<CitizenVm> citizenSearch = new List<CitizenVm>();
-                        citizenSearch.Add(CitizenMapper.MapCitizenToCitizenVm(citizenss));
-                        showCitizens.ForEach(e => mappedDs.Add(CitizenMapper.MapCitizenToCitizenVm(e)));
-                        dgvMonitoring.DataSource = null;
-                        dgvMonitoring.DataSource = citizenSearch;
-                        MessageBox.Show("Ciudadano encontrado");
-
-                    }
-                    else
-                    {
-                        dgvMonitoring.DataSource = null;
-                        MessageBox.Show("El ciudadano no se encuentra en la lista de espera", "Peligro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ingrese los numeros de su DUI", " ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+      
     }
 }

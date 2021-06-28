@@ -16,26 +16,26 @@ namespace Proyecto_POO
     {
         
         private Manager IdManager { get; set; }
-        Queue<CitizenVm1> menu;
+        Queue<CitizenVm> menu;
 
-        public frmMenu(Queue<CitizenVm1>? model, Manager? IdManager)
+        public frmMenu(Queue<CitizenVm>? model, Manager? IdManager)
         {
             InitializeComponent();
             menu = model;
-            model.ToList();
+            //model.ToList();
             this.IdManager = IdManager;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            frmRegister frm = new frmRegister(IdManager);
+            frmRegister frm = new frmRegister(menu, IdManager);
             frm.Show();
             this.Hide();
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            frmPreCheck frm = new frmPreCheck(IdManager);
+            frmPreCheck frm = new frmPreCheck(menu,IdManager);
             frm.Show();
             this.Hide();
         }
@@ -80,6 +80,23 @@ namespace Proyecto_POO
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+            frmAppoinmentMonitoring frm = new frmAppoinmentMonitoring(menu, IdManager);
+            frm.Show();
+            this.Hide();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
         {
             frmAppoinmentMonitoring frm = new frmAppoinmentMonitoring(menu, IdManager);
             frm.Show();
