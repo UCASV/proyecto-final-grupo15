@@ -111,7 +111,8 @@ namespace Proyecto_POO
                                 IdDose = 1,
                                 IdPlatform = 1,
                                 IdPlace = place,
-                                IdManager = this.IdManager.IdManager
+                                IdManager = this.IdManager.IdManager,
+                                IdCitizen = Convert.ToInt32(textBox1.Text)
                             }
                         };
                         NewAppointment.ForEach(a => db.Add(a));

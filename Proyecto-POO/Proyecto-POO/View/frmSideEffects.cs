@@ -7,6 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iText.Kernel.Colors;
+using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Canvas.Draw;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
 using MySql.EntityFrameworkCore;
 using Proyecto_POO.MySqlContext;
 using Proyecto_POO.ViewModels;
@@ -49,9 +55,20 @@ namespace Proyecto_POO
 
         }
 
+        private int verifyAppointment()
+        {
+            var db = new ProyectoContext();
+            List<Appointment> appointments = db.Appointments.ToList();
+            List<Citizen> citizens = db.Citizens.ToList();
+            List<Appointment> idDose = appointments.Where(a => a.IdDose == 2 && a.IdCitizen == Convert.ToInt32(lblCitizen.Text)).ToList();
+            var result = idDose.Count();
+            return result;
+        }
+
         private void btnAddEffects_Click(object sender, EventArgs e)
         {
-            /*var db = new ProyectoContext();
+            lblCitizen.Text = dgvObservation.CurrentRow.Cells[0].Value.ToString();
+            var db = new ProyectoContext();
             List<Effectsxcitizen> effectsxcitizens = db.Effectsxcitizens.ToList();
             bool cbx1 = cbxSensibility.Checked;
             bool cbx2 = cbxReddering.Checked;
@@ -100,65 +117,166 @@ namespace Proyecto_POO
                 Effects.ForEach(exc => db.Add(exc));
                 db.SaveChanges();
                 var savedEffects = db.Effectsxcitizens.OrderBy(dxc => dxc.IdCitizen).ToList();
-            }*/
-
-            var db = new ProyectoContext();
-            // Agregando segunda cita :)
-            Random rnd = new Random();
-            int idPlace = rnd.Next(1, 3);
-            var dateNow = DateTime.Now.ToString("yyyy-MM-dd");
-            label2.Text = " " + dateNow;
-            DateTime fecha = Convert.ToDateTime(label2.Text);
-            fecha = fecha.AddDays(42);
-            string resultado = fecha.ToString("yyyy-MM-dd");
-            Random aleatorio = new Random();
-
-            Horario = aleatorio.Next(13, 14);
-            hora13 = aleatorio.Next(10, 59);
-            hora14 = aleatorio.Next(00, 50);
-
-            var place = db.VaccinationPlaces
-                .ToList()
-                .Find(model => model.IdPlace == idPlace)
-                .PlaceName;
-
-            if (Horario == 13)
-            {
-                Horariofinal = Horario + ":" + hora13;
             }
 
-            if (Horario == 14)
+            if (verifyAppointment() == 0)
             {
-                Horariofinal = Horario + ":" + hora14;
-            }
-            MessageBox.Show("La fecha de su nueva cita es: " +
-                resultado + ", en el lugar: " + place + " en la hora: " + Horariofinal);
+                // Agregando segunda cita :)
+                Random rnd = new Random();
+                int idPlace = rnd.Next(1, 3);
+                var dateNow = DateTime.Now.ToString("yyyy-MM-dd");
+                label2.Text = " " + dateNow;
+                DateTime fecha = Convert.ToDateTime(label2.Text);
+                fecha = fecha.AddDays(42);
+                string resultado = fecha.ToString("yyyy-MM-dd");
+                Random aleatorio = new Random();
 
-            label4.Text = "" + IdManager.IdManager;
-            int manager = Convert.ToInt32(label4.Text);
-            label3.Text = "" + Horariofinal;
-            string hour = label3.Text;
-            Appointment a = new();
-            a.AppointmentDate = fecha;
-            a.AppointmentHour = TimeSpan.Parse(hour);
-            a.IdDose = 2;
-            a.IdPlatform = 1;
-            a.IdPlace = idPlace;
-            a.IdManager = manager;
-            db.Add(a);
-            db.SaveChanges();
-            CitizenVm models = new();
-            models.Dui = Convert.ToInt32(dgvObservation.CurrentRow.Cells[0].Value);
-            models.CitizenName = dgvObservation.CurrentRow.Cells[1].Value.ToString();
-            models.Address = dgvObservation.CurrentRow.Cells[2].Value.ToString();
-            models.Birthdate = Convert.ToDateTime(dgvObservation.CurrentRow.Cells[3].Value);
-            models.Email = dgvObservation.CurrentRow.Cells[4].Value.ToString();
-            models.Phone = Convert.ToInt32(dgvObservation.CurrentRow.Cells[5].Value);
-            models.IdInstitution = Convert.ToInt32(dgvObservation.CurrentRow.Cells[6].Value);
-            //model.dateNow = dateNow;
-            //model.hourNow = hourNow;
-            var posicion = addWaiting.Peek();
-            addWaiting.Dequeue();            
+                Horario = aleatorio.Next(13, 14);
+                hora13 = aleatorio.Next(10, 59);
+                hora14 = aleatorio.Next(00, 50);
+
+                var place = db.VaccinationPlaces
+                    .ToList()
+                    .Find(model => model.IdPlace == idPlace)
+                    .PlaceName;
+
+                if (Horario == 13)
+                {
+                    Horariofinal = Horario + ":" + hora13;
+                }
+
+                if (Horario == 14)
+                {
+                    Horariofinal = Horario + ":" + hora14;
+                }
+
+
+                label4.Text = "" + IdManager.IdManager;
+                int manager = Convert.ToInt32(label4.Text);
+                label3.Text = "" + Horariofinal;
+                string hour = label3.Text;
+                Appointment a = new();
+                a.AppointmentDate = fecha;
+                a.AppointmentHour = TimeSpan.Parse(hour);
+                a.IdDose = 2;
+                a.IdPlatform = 1;
+                a.IdPlace = idPlace;
+                a.IdManager = manager;
+                a.IdCitizen = Convert.ToInt32(lblCitizen.Text);
+                db.Add(a);
+                db.SaveChanges();
+                CitizenVm models = new();
+                models.Dui = Convert.ToInt32(dgvObservation.CurrentRow.Cells[0].Value);
+                models.CitizenName = dgvObservation.CurrentRow.Cells[1].Value.ToString();
+                models.Address = dgvObservation.CurrentRow.Cells[2].Value.ToString();
+                models.Birthdate = Convert.ToDateTime(dgvObservation.CurrentRow.Cells[3].Value);
+                models.Email = dgvObservation.CurrentRow.Cells[4].Value.ToString();
+                models.Phone = Convert.ToInt32(dgvObservation.CurrentRow.Cells[5].Value);
+                models.IdInstitution = Convert.ToInt32(dgvObservation.CurrentRow.Cells[6].Value);
+                var posicion = addWaiting.Peek();
+                addWaiting.Dequeue();
+
+                // Must have write permissions to the path folder
+                PdfWriter writer = new PdfWriter("C:\\Users\\feder\\OneDrive\\Documentos\\demo.pdf");
+                PdfDocument pdf = new PdfDocument(writer);
+                Document document = new Document(pdf);
+                // Encabezado
+                Paragraph header = new Paragraph("Vacunación COVID-19")
+                   .SetTextAlignment(TextAlignment.CENTER)
+                   .SetFontSize(20).SetFontColor(WebColors.GetRGBColor("#4D5053"));
+                float[] width = { 50, 50 };
+                document.Add(header);
+                // Línea
+                LineSeparator ls = new LineSeparator(new SolidLine())
+                    .SetStrokeColor(WebColors.GetRGBColor("#639ED5"));
+                document.Add(ls);
+                // Salto de línea
+                Paragraph blank = new Paragraph(" ");
+                document.Add(blank);
+                // Texto inicial
+                Paragraph patientName = new Paragraph("Nombre del/la paciente: " + dgvObservation.CurrentRow.Cells[1].Value.ToString());
+                Paragraph patientDUI = new Paragraph("DUI: " + dgvObservation.CurrentRow.Cells[0].Value.ToString());
+                Paragraph patientDate = new Paragraph("Fecha y hora de vacunación: " + dgvObservation.CurrentRow.Cells[7].Value.ToString() + " " + dgvObservation.CurrentRow.Cells[8].Value.ToString());
+                Paragraph titleEffects = new Paragraph("Efectos secundarios presentados: ");
+                // Agregando al pdf
+                document.Add(patientName);
+                document.Add(patientDUI);
+                document.Add(patientDate);
+                document.Add(titleEffects);
+
+                // Carga de valores de los nombres de los efectos secundarios
+                List<SideEffect> sideEffects = db.SideEffects.ToList();
+                List<Effectsxcitizen> savedSideEffects = db.Effectsxcitizens.Where(exc => exc.IdCitizen == Convert.ToInt32(dgvObservation.CurrentRow.Cells[0].Value.ToString())).ToList();
+                foreach (var Effects in savedSideEffects)
+                {
+                    if (savedSideEffects.Count() > 0)
+                    {
+                        List<SideEffect> showSideEffects = db.SideEffects.Where(sd => sd.IdEffect == Convert.ToInt32(Effects.IdEffect)).ToList();
+                        foreach (var EffectName in showSideEffects)
+                        {
+                            Paragraph citizenEffects = new Paragraph("- " + EffectName.SideEffect1.ToString());
+                            document.Add(citizenEffects);
+                        }
+                    }
+                    else
+                    {
+                        Paragraph citizenEffects = new Paragraph("No presentó efectos secundarios.");
+                        document.Add(citizenEffects);
+                    }
+                }
+
+                document.Add(blank);
+                float[] ancho = { 3, 2 };
+                // Creación de tabla
+                Table table = new Table(width);
+                table.SetWidth(UnitValue.CreatePercentValue(100));
+                Cell cell11 = new Cell(1, 1)
+                    .SetBackgroundColor(WebColors.GetRGBColor("#639ED5"))
+                    .SetTextAlignment(TextAlignment.CENTER)
+                    .Add(new Paragraph("Fecha de segunda cita"));
+                Cell cell12 = new Cell(1, 2)
+                    .SetTextAlignment(TextAlignment.CENTER)
+                    .Add(new Paragraph(resultado.ToString()));
+                Cell cell21 = new Cell(2, 1)
+                    .SetBackgroundColor(WebColors.GetRGBColor("#639ED5"))
+                    .SetTextAlignment(TextAlignment.CENTER)
+                    .Add(new Paragraph("Hora de segunda cita"));
+                Cell cell22 = new Cell(2, 2)
+                    .SetTextAlignment(TextAlignment.CENTER)
+                    .Add(new Paragraph(a.AppointmentHour.ToString()));
+                Cell cell31 = new Cell(1, 3)
+                    .SetBackgroundColor(WebColors.GetRGBColor("#639ED5"))
+                    .SetTextAlignment(TextAlignment.CENTER)
+                    .Add(new Paragraph("Lugar de vacunación"));
+                Cell cell32 = new Cell(3, 2)
+                    .SetBackgroundColor(ColorConstants.WHITE)
+                    .SetTextAlignment(TextAlignment.CENTER)
+                    .Add(new Paragraph(place.ToString()));
+
+                // Agregando la tabla al pdf
+                table.AddCell(cell11);
+                table.AddCell(cell12);
+                table.AddCell(cell21);
+                table.AddCell(cell22);
+                table.AddCell(cell31);
+                table.AddCell(cell32);
+                document.Add(table);
+                document.Add(blank);
+                document.Add(ls);
+                // Footer
+                Paragraph footer = new Paragraph("Reporte generado el " + DateTime.Now.ToString())
+                   .SetTextAlignment(TextAlignment.RIGHT)
+                   .SetFontSize(10);
+                document.Add(footer);
+                // Se finaliza la generación del documento
+                document.Close();
+
+                MessageBox.Show("La fecha de su nueva cita es: " +
+                    resultado + ", en el lugar: " + place + " en la hora: " + Horariofinal, "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("Ha recibido las dos dosis de la vacuna, finalizando así su proceso de vacunación.", "Proceso finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
             frmMenu frm = new frmMenu(addWaiting, IdManager);
             frm.Show();
             this.Hide();

@@ -86,12 +86,12 @@ namespace Proyecto_POO
             // cbxAccept
             // 
             this.cbxAccept.AutoSize = true;
-            this.cbxAccept.Location = new System.Drawing.Point(179, 577);
+            this.cbxAccept.Location = new System.Drawing.Point(153, 577);
             this.cbxAccept.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cbxAccept.Name = "cbxAccept";
-            this.cbxAccept.Size = new System.Drawing.Size(313, 21);
+            this.cbxAccept.Size = new System.Drawing.Size(358, 21);
             this.cbxAccept.TabIndex = 48;
-            this.cbxAccept.Text = "¿ACEPTA RECIBIR SU PRIMERA DOSIS?";
+            this.cbxAccept.Text = "¿ACEPTA RECIBIR LA DOSIS DE LA VACUNA?";
             this.cbxAccept.UseVisualStyleBackColor = true;
             // 
             // txtIdentifierNumber

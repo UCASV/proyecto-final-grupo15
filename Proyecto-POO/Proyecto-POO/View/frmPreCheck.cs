@@ -128,7 +128,10 @@ namespace Proyecto_POO
                                         c.IdentifierNumber = Convert.ToInt32(txtIdentifierNumber.Text);
                                     else
                                         c.IdentifierNumber = null;
-                                    c.IdInstitution = Convert.ToInt32(lblId.Text);
+                                    if (lblInstitution.Text != "" || lblInstitution.Text != string.Empty || lblInstitution.Text != null)
+                                        c.IdInstitution = Convert.ToInt32(lblId.Text);
+                                    else
+                                        c.IdInstitution = null;
                                     //updateCheckBoxes();
                                     db.Update(c);
                                     db.SaveChanges();
@@ -226,6 +229,7 @@ namespace Proyecto_POO
             });
         }
 
+        // Función para validar las fechas a ingresar al sistema, que la edad mínima sea menor a 18 años y menor o igual a 100 año
         private void validateDate()
         {
             DateTime date = DateTime.Today;
@@ -257,6 +261,7 @@ namespace Proyecto_POO
             cbxOrganReceptor.Checked = false;
             cbxSeropositivas.Checked = false;
             cbxCardio.Checked = false;
+            cbxAccept.Checked = false;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -264,7 +269,8 @@ namespace Proyecto_POO
             clearFields();
             var db = new ProyectoContext();
             institutions = db.Institutions.ToList();
-            List<Citizen> citizens = db.Citizens.ToList();            
+            List<Citizen> citizens = db.Citizens.ToList();
+            List<Appointment> appointments = db.Appointments.ToList();
             List<Diseasexcitizen> diseasexcitizens = db.Diseasexcitizens.ToList();
 
             // Obtenemos el valor ingresado por el gestor y lo utilizamos para buscar al ciudadano por medio del DUI
@@ -272,8 +278,8 @@ namespace Proyecto_POO
             {
                 int dui = Convert.ToInt32(txtSearch.Text);
                 List<Citizen> result = citizens.Where(c => c.Dui == dui).ToList();
-
-                if (result.Count() > 0)
+                List<Appointment> appointmentDate = appointments.Where(a => a.AppointmentDate == DateTime.Today && a.IdCitizen == dui).OrderBy(a => a.AppointmentDate).ToList();
+                if (result.Count() > 0 && appointmentDate.Count() > 0)
                 {
                     txtSearch.Clear();
                     result.ForEach(r =>
@@ -335,8 +341,10 @@ namespace Proyecto_POO
                     });
                     MessageBox.Show("Ciudadano encontrado.", "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                else if (result.Count() > 0 && appointmentDate.Count() == 0)
+                    MessageBox.Show("El/la ciudadano/a no posee registro de cita para el día de hoy. Por favor vuelva el día que indicó realizar su vacunación.", "Operación fallida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else
-                    MessageBox.Show("El ciudadano no posee registro de cita. ¿Desea realizar un registro de cita para este ciudadano?", "Operación fallida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("El/la ciudadano/a no posee registro de cita. ¿Desea realizar un registro de cita para este ciudadano?", "Operación fallida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception)
             {

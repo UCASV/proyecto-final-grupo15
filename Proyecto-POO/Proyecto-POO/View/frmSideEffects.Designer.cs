@@ -227,6 +227,7 @@ namespace Proyecto_POO
             this.lblCitizen.Size = new System.Drawing.Size(74, 17);
             this.lblCitizen.TabIndex = 55;
             this.lblCitizen.Text = "idCitizen";
+            this.lblCitizen.Visible = false;
             // 
             // label2
             // 
