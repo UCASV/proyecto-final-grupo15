@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.EntityFrameworkCore;
-using Proyecto_POO.MySQLContext;
+using Proyecto_POO.MySqlContext;
 using Proyecto_POO.ViewModels;
 
 namespace Proyecto_POO

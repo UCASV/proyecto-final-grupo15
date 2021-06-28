@@ -3,14 +3,13 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Proyecto_POO.MySQLContext
+namespace Proyecto_POO.MySqlContext
 {
     public partial class Appointment
     {
         public Appointment()
         {
             Appointmentxemployees = new HashSet<Appointmentxemployee>();
-            Citizens = new HashSet<Citizen>();
             Statisticsxappointments = new HashSet<Statisticsxappointment>();
         }
 
@@ -21,13 +20,14 @@ namespace Proyecto_POO.MySQLContext
         public int? IdPlatform { get; set; }
         public int? IdPlace { get; set; }
         public int? IdManager { get; set; }
+        public int? IdCitizen { get; set; }
 
+        public virtual Citizen IdCitizenNavigation { get; set; }
         public virtual Dose IdDoseNavigation { get; set; }
         public virtual Manager IdManagerNavigation { get; set; }
         public virtual VaccinationPlace IdPlaceNavigation { get; set; }
         public virtual ReservationPlatform IdPlatformNavigation { get; set; }
         public virtual ICollection<Appointmentxemployee> Appointmentxemployees { get; set; }
-        public virtual ICollection<Citizen> Citizens { get; set; }
         public virtual ICollection<Statisticsxappointment> Statisticsxappointments { get; set; }
     }
 }

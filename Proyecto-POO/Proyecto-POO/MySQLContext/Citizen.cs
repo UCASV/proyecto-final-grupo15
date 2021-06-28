@@ -3,12 +3,13 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Proyecto_POO.MySQLContext
+namespace Proyecto_POO.MySqlContext
 {
     public partial class Citizen
     {
         public Citizen()
         {
+            Appointments = new HashSet<Appointment>();
             Diseasexcitizens = new HashSet<Diseasexcitizen>();
             Effectsxcitizens = new HashSet<Effectsxcitizen>();
         }
@@ -21,10 +22,9 @@ namespace Proyecto_POO.MySQLContext
         public int? Phone { get; set; }
         public int? IdentifierNumber { get; set; }
         public int? IdInstitution { get; set; }
-        public int? IdAppointment { get; set; }
 
-        public virtual Appointment IdAppointmentNavigation { get; set; }
         public virtual Institution IdInstitutionNavigation { get; set; }
+        public virtual ICollection<Appointment> Appointments { get; set; }
         public virtual ICollection<Diseasexcitizen> Diseasexcitizens { get; set; }
         public virtual ICollection<Effectsxcitizen> Effectsxcitizens { get; set; }
     }

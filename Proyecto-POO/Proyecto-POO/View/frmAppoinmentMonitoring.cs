@@ -1,5 +1,5 @@
 ﻿using System;
-using Proyecto_POO.MySQLContext;
+using Proyecto_POO.MySqlContext;
 using Proyecto_POO.ViewModels;
 using System.Collections.Generic;
 using System.ComponentModel;

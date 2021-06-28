@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Proyecto_POO.MySQLContext
+namespace Proyecto_POO.MySqlContext
 {
     public partial class Employee
     {

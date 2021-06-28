@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Proyecto_POO.ViewModels;
-using Proyecto_POO.MySQLContext;
+using Proyecto_POO.MySqlContext;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;

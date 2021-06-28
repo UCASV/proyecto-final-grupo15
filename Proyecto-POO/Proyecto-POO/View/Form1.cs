@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Proyecto_POO.MySQLContext;
+using Proyecto_POO.MySqlContext;
 
 namespace Proyecto_POO
 {

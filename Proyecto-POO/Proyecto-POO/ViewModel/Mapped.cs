@@ -1,4 +1,4 @@
-﻿using Proyecto_POO.MySQLContext;
+﻿using Proyecto_POO.MySqlContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;

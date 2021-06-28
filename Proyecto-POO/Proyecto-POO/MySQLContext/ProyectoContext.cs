@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace Proyecto_POO.MySQLContext
+namespace Proyecto_POO.MySqlContext
 {
     public partial class ProyectoContext : DbContext
     {
@@ -41,7 +41,7 @@ namespace Proyecto_POO.MySQLContext
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseMySQL("Server=localhost;Port=3306;Database=Proyecto;Username=root;Password=messid10s");
+                optionsBuilder.UseMySQL("Server=localhost;Port=3306;Database=Proyecto;Username=root;Password=admin123");
             }
         }
 
@@ -53,6 +53,8 @@ namespace Proyecto_POO.MySQLContext
                     .HasName("PRIMARY");
 
                 entity.ToTable("appointment");
+
+                entity.HasIndex(e => e.IdCitizen, "id_citizen");
 
                 entity.HasIndex(e => e.IdDose, "id_dose");
 
@@ -70,6 +72,8 @@ namespace Proyecto_POO.MySQLContext
 
                 entity.Property(e => e.AppointmentHour).HasColumnName("appointment_hour");
 
+                entity.Property(e => e.IdCitizen).HasColumnName("id_citizen");
+
                 entity.Property(e => e.IdDose).HasColumnName("id_dose");
 
                 entity.Property(e => e.IdManager).HasColumnName("id_manager");
@@ -77,6 +81,11 @@ namespace Proyecto_POO.MySQLContext
                 entity.Property(e => e.IdPlace).HasColumnName("id_place");
 
                 entity.Property(e => e.IdPlatform).HasColumnName("id_platform");
+
+                entity.HasOne(d => d.IdCitizenNavigation)
+                    .WithMany(p => p.Appointments)
+                    .HasForeignKey(d => d.IdCitizen)
+                    .HasConstraintName("appointment_ibfk_5");
 
                 entity.HasOne(d => d.IdDoseNavigation)
                     .WithMany(p => p.Appointments)
@@ -161,8 +170,6 @@ namespace Proyecto_POO.MySQLContext
 
                 entity.ToTable("citizen");
 
-                entity.HasIndex(e => e.IdAppointment, "id_appointment");
-
                 entity.HasIndex(e => e.IdInstitution, "id_institution");
 
                 entity.Property(e => e.Dui).HasColumnName("DUI");
@@ -183,23 +190,16 @@ namespace Proyecto_POO.MySQLContext
                     .HasMaxLength(200)
                     .HasColumnName("email");
 
-                entity.Property(e => e.IdAppointment).HasColumnName("id_appointment");
-
                 entity.Property(e => e.IdInstitution).HasColumnName("id_institution");
 
                 entity.Property(e => e.IdentifierNumber).HasColumnName("identifier_number");
 
                 entity.Property(e => e.Phone).HasColumnName("phone");
 
-                entity.HasOne(d => d.IdAppointmentNavigation)
-                    .WithMany(p => p.Citizens)
-                    .HasForeignKey(d => d.IdAppointment)
-                    .HasConstraintName("citizen_ibfk_1");
-
                 entity.HasOne(d => d.IdInstitutionNavigation)
                     .WithMany(p => p.Citizens)
                     .HasForeignKey(d => d.IdInstitution)
-                    .HasConstraintName("citizen_ibfk_2");
+                    .HasConstraintName("citizen_ibfk_1");
             });
 
             modelBuilder.Entity<Disease>(entity =>

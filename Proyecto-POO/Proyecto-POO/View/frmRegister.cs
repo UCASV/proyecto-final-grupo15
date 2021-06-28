@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
-using Proyecto_POO.MySQLContext;
+using Proyecto_POO.MySqlContext;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Microsoft.EntityFrameworkCore;
@@ -137,7 +137,7 @@ namespace Proyecto_POO
                                     Email = citizenemail,
                                     Phone = Convert.ToInt32(txtPhoneNumber.Text),
                                     Birthdate = dtpBirthdate.Value,
-                                    IdAppointment = appointmentid
+                                    //IdAppointment = appointmentid
                                 }
                             };
                             NewPacient.ForEach(c => db.Add(c));
@@ -158,7 +158,7 @@ namespace Proyecto_POO
                                     Birthdate = dtpBirthdate.Value,
                                     IdentifierNumber = Convert.ToInt32(txtIdentifier.Text),
                                     IdInstitution = ibdd.IdInstitution,
-                                    IdAppointment = appointmentid
+                                    //IdAppointment = appointmentid
                                 }
                             };
                             NewPacient.ForEach(c => db.Add(c));

@@ -30,7 +30,6 @@ namespace Proyecto_POO
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAppoinmentMonitoring));
-            this.btnDownloadPDF = new System.Windows.Forms.Button();
             this.dgvMonitoring = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -42,17 +41,6 @@ namespace Proyecto_POO
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnDownloadPDF
-            // 
-            this.btnDownloadPDF.BackColor = System.Drawing.Color.LightBlue;
-            this.btnDownloadPDF.Location = new System.Drawing.Point(185, 341);
-            this.btnDownloadPDF.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnDownloadPDF.Name = "btnDownloadPDF";
-            this.btnDownloadPDF.Size = new System.Drawing.Size(195, 41);
-            this.btnDownloadPDF.TabIndex = 7;
-            this.btnDownloadPDF.Text = "DESCARGAR PDF";
-            this.btnDownloadPDF.UseVisualStyleBackColor = false;
             // 
             // dgvMonitoring
             // 
@@ -99,7 +87,7 @@ namespace Proyecto_POO
             // btnAddToList
             // 
             this.btnAddToList.BackColor = System.Drawing.Color.LightBlue;
-            this.btnAddToList.Location = new System.Drawing.Point(457, 341);
+            this.btnAddToList.Location = new System.Drawing.Point(320, 338);
             this.btnAddToList.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAddToList.Name = "btnAddToList";
             this.btnAddToList.Size = new System.Drawing.Size(195, 41);
@@ -139,7 +127,6 @@ namespace Proyecto_POO
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAddToList);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnDownloadPDF);
             this.Controls.Add(this.dgvMonitoring);
             this.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -161,8 +148,6 @@ namespace Proyecto_POO
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnDownloadPDF;
         private System.Windows.Forms.DataGridView dgvMonitoring;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
