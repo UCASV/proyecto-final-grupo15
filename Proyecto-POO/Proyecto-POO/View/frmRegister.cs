@@ -21,6 +21,8 @@ namespace Proyecto_POO
     {
         Queue<CitizenVm> menu;
         private Manager IdManager { get; set; }
+        public string AppointmentDate = DateTime.Now.ToShortDateString();
+        public string AppointmentHour = DateTime.Now.ToString("HH:mm:ss");
         public frmRegister(Queue<CitizenVm> model, Manager? manager)
         {
             InitializeComponent();
@@ -36,8 +38,8 @@ namespace Proyecto_POO
         private void button1_Click(object sender, EventArgs e)
         {
 
-           // try
-            //{
+           try
+           {
 
                 bool verifyincoherence = txtIdentifier.Text.Length > 0 && cmbInstitution.SelectedIndex >= 0;
                 bool allowemptyness = txtIdentifier.Text.Length == 0 && cmbInstitution.SelectedIndex == -1;
@@ -94,9 +96,6 @@ namespace Proyecto_POO
                     int place = placevacunation(textBox1.Text);
 
                     Institution iref = (Institution)cmbInstitution.SelectedItem;
-
-                    var AppointmentDate = DateTime.Now.ToString("yyyy-mm-dd");
-                    var AppointmentHour = DateTime.Now.ToString("HH:mm:ss");
 
                     using (var db = new ProyectoContext())
                     {
@@ -211,10 +210,10 @@ namespace Proyecto_POO
                     cmbInstitution.SelectedText = "Escoja la institución";
                 }
 
-            //}
+            }
 
-            /*catch (Exception)
-           // {
+            catch (Exception)
+            {
                 MessageBox.Show("Datos no válidos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 var db = new ProyectoContext();
                 var institution = db.Institutions
@@ -225,7 +224,7 @@ namespace Proyecto_POO
                 cmbInstitution.SelectedIndex = -1;
                 cmbInstitution.SelectedText = "Escoja la institución";
 
-            //}*/
+            }
 
         }
 
@@ -295,9 +294,6 @@ namespace Proyecto_POO
 
                 int size = SavedAppointments.Count() - 1;
                 int appointmentid = SavedAppointments[size].IdAppointment;
-                string appointmentdate = SavedAppointments[size].AppointmentDate.ToString();
-                string appointmenthour = SavedAppointments[size].AppointmentHour.ToString();
-
 
                 using (SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "PDF file|*.pdf", ValidateNames = true })
                 {
@@ -307,13 +303,59 @@ namespace Proyecto_POO
                         Document document = new Document(PageSize.A4);
                         PdfWriter pdf = PdfWriter.GetInstance(document, file);
                         document.Open();
-                        document.Add(new Paragraph("Detalles de cita"));
+                        iTextSharp.text.Font font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.COURIER, 20);
+                        Paragraph info = new Paragraph("INFORMACIÓN DEL USUARIO");
+                        info.Alignment = 1;
+                        Paragraph lineSeparator = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.BLACK, 1, 5)));
+                        document.Add(info);
+                        document.Add(lineSeparator);
                         document.Add(Chunk.NEWLINE);
-                        document.Add(new Paragraph("ID: " + textBox1.Text));
-                        document.Add(new Paragraph("Nombre: " + txtName.Text));
-                        document.Add(new Paragraph("Fecha: " + appointmentdate));
-                        document.Add(new Paragraph("Hora: " + appointmenthour));
-                        document.Add(new Paragraph("Lugar de vacunación: " + vaccplace[0].PlaceName));
+                        iTextSharp.text.Font font1 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 15);
+                        Paragraph idpar = new Paragraph("ID: " + textBox1.Text);
+                        idpar.Alignment = 1;
+                        Paragraph namepar = new Paragraph("Nombre: " + txtName.Text);
+                        namepar.Alignment = 1;
+                        document.Add(idpar);
+                        document.Add(namepar);
+                        document.Add(Chunk.NEWLINE);
+                        PdfPTable table = new PdfPTable(3);
+                        PdfPCell header = new PdfPCell(new Phrase("Detalles de cita"));
+                        header.Colspan = 3;
+                        header.HorizontalAlignment = 1;
+                        PdfPCell camp1 = new PdfPCell(new Phrase("Fecha"));
+                        camp1.VerticalAlignment = 1;
+                        camp1.HorizontalAlignment = 1;
+                        camp1.BackgroundColor = new iTextSharp.text.BaseColor(176, 196, 222);
+                        PdfPCell info1 = new PdfPCell(new Phrase(AppointmentDate));
+                        info1.VerticalAlignment = 1;
+                        info1.HorizontalAlignment = 1;
+                        info1.Colspan = 2;
+                        PdfPCell camp2 = new PdfPCell(new Phrase("Hora"));
+                        camp2.VerticalAlignment = 1;
+                        camp2.HorizontalAlignment = 1;
+                        camp2.BackgroundColor = new iTextSharp.text.BaseColor(176, 196, 222);
+                        PdfPCell info2 = new PdfPCell(new Phrase(AppointmentHour));
+                        info2.VerticalAlignment = 1;
+                        info2.HorizontalAlignment = 1;
+                        info2.Colspan = 2;
+                        PdfPCell camp3 = new PdfPCell(new Phrase("Lugar de vacunación"));
+                        camp3.VerticalAlignment = 1;
+                        camp3.HorizontalAlignment = 1;
+                        camp3.BackgroundColor = new iTextSharp.text.BaseColor(176, 196, 222);
+                        camp3.Colspan = 3;
+                        PdfPCell info3 = new PdfPCell(new Phrase(vaccplace[0].PlaceName));
+                        info3.VerticalAlignment = 0;
+                        info3.HorizontalAlignment = 1;
+                        info3.Colspan = 3;
+                        table.AddCell(header);
+                        table.AddCell(camp1);
+                        table.AddCell(info1);
+                        table.AddCell(camp2);
+                        table.AddCell(info2);
+                        table.AddCell(camp3);
+                        table.AddCell(info3);
+                        document.Add(table);
+
                         document.Close();
                         pdf.Close();
                     }
@@ -326,6 +368,7 @@ namespace Proyecto_POO
                 MessageBox.Show("Asegúrese de haber registrado al usuario", "Advertencia", MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
             }
+
 
         }
     }

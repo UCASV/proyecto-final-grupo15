@@ -183,7 +183,7 @@ namespace Proyecto_POO
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(252, 21);
             this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "Enfermedades cardiobasculares";
+            this.checkBox1.Text = "Enfermedades cardiovasculares";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // cbxDiabetes
