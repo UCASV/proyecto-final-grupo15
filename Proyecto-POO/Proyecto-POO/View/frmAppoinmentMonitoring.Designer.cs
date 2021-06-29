@@ -37,6 +37,7 @@ namespace Proyecto_POO
             this.btnAddToList = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMonitoring)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -118,11 +119,21 @@ namespace Proyecto_POO
             this.label2.Text = "label2";
             this.label2.Visible = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(56, 145);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(500, 17);
+            this.label3.TabIndex = 55;
+            this.label3.Text = "Seleccione al/la ciudadano/a dando click en la celda con la flecha.";
+            // 
             // frmAppoinmentMonitoring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 452);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAddToList);
@@ -155,5 +166,6 @@ namespace Proyecto_POO
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label3;
     }
 }

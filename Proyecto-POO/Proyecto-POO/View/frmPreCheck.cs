@@ -124,14 +124,14 @@ namespace Proyecto_POO
                                     else
                                         c.Email = null;
                                     c.Birthdate = dtpBirthdate.Value;
-                                    if (txtIdentifierNumber.Text != "" || txtIdentifierNumber.Text != string.Empty || txtIdentifierNumber.Text != null)
+                                    if (txtIdentifierNumber.Text != "" || txtIdentifierNumber.Text != string.Empty)
                                         c.IdentifierNumber = Convert.ToInt32(txtIdentifierNumber.Text);
                                     else
-                                        c.IdentifierNumber = null;
-                                    if (lblInstitution.Text != "" || lblInstitution.Text != string.Empty || lblInstitution.Text != null)
+                                        c.IdentifierNumber = 0;
+                                    if (lblInstitution.Text != "" || lblInstitution.Text != string.Empty)
                                         c.IdInstitution = Convert.ToInt32(lblId.Text);
                                     else
-                                        c.IdInstitution = null;
+                                        c.IdInstitution = 7;
                                     //updateCheckBoxes();
                                     db.Update(c);
                                     db.SaveChanges();

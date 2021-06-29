@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -176,100 +177,120 @@ namespace Proyecto_POO
                 var posicion = addWaiting.Peek();
                 addWaiting.Dequeue();
 
-                // Must have write permissions to the path folder
-                PdfWriter writer = new PdfWriter("C:\\Users\\feder\\OneDrive\\Documentos\\demo.pdf");
-                PdfDocument pdf = new PdfDocument(writer);
-                Document document = new Document(pdf);
-                // Encabezado
-                Paragraph header = new Paragraph("Vacunación COVID-19")
-                   .SetTextAlignment(TextAlignment.CENTER)
-                   .SetFontSize(20).SetFontColor(WebColors.GetRGBColor("#4D5053"));
-                float[] width = { 50, 50 };
-                document.Add(header);
-                // Línea
-                LineSeparator ls = new LineSeparator(new SolidLine())
-                    .SetStrokeColor(WebColors.GetRGBColor("#639ED5"));
-                document.Add(ls);
-                // Salto de línea
-                Paragraph blank = new Paragraph(" ");
-                document.Add(blank);
-                // Texto inicial
-                Paragraph patientName = new Paragraph("Nombre del/la paciente: " + dgvObservation.CurrentRow.Cells[1].Value.ToString());
-                Paragraph patientDUI = new Paragraph("DUI: " + dgvObservation.CurrentRow.Cells[0].Value.ToString());
-                Paragraph patientDate = new Paragraph("Fecha y hora de vacunación: " + dgvObservation.CurrentRow.Cells[7].Value.ToString() + " " + dgvObservation.CurrentRow.Cells[8].Value.ToString());
-                Paragraph titleEffects = new Paragraph("Efectos secundarios presentados: ");
-                // Agregando al pdf
-                document.Add(patientName);
-                document.Add(patientDUI);
-                document.Add(patientDate);
-                document.Add(titleEffects);
+                var SavedAppointments = db.Appointments
+                            .OrderBy(a => a.IdAppointment)
+                            .ToList();
+                int size = SavedAppointments.Count() - 1;
+                int appointmentId = SavedAppointments[size].IdAppointment;
+                Random random = new Random();
+                Appointmentxemployee axe = new();
+                axe.IdAppointment = appointmentId;
+                axe.IdEmployee = random.Next(1, 15);
+                db.Add(axe);
+                db.SaveChanges();
+                var savedAxE = db.Appointmentxemployees.OrderBy(axe => axe.IdAppointment).ToList();
 
-                // Carga de valores de los nombres de los efectos secundarios
-                List<SideEffect> sideEffects = db.SideEffects.ToList();
-                List<Effectsxcitizen> savedSideEffects = db.Effectsxcitizens.Where(exc => exc.IdCitizen == Convert.ToInt32(dgvObservation.CurrentRow.Cells[0].Value.ToString())).ToList();
-                foreach (var Effects in savedSideEffects)
+                using(SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "PDF file|*.pdf", ValidateNames = true })
                 {
-                    if (savedSideEffects.Count() > 0)
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        List<SideEffect> showSideEffects = db.SideEffects.Where(sd => sd.IdEffect == Convert.ToInt32(Effects.IdEffect)).ToList();
-                        foreach (var EffectName in showSideEffects)
+                        // Must have write permissions to the path folder
+                        FileStream file = new FileStream(saveFileDialog.FileName, FileMode.Create);
+                        PdfWriter writer = new PdfWriter(file);
+                        PdfDocument pdf = new PdfDocument(writer);
+                        Document document = new Document(pdf);
+                        // Encabezado
+                        Paragraph header = new Paragraph("Vacunación COVID-19")
+                           .SetTextAlignment(TextAlignment.CENTER)
+                           .SetFontSize(20).SetFontColor(WebColors.GetRGBColor("#4D5053"));
+                        float[] width = { 50, 50 };
+                        document.Add(header);
+                        // Línea
+                        LineSeparator ls = new LineSeparator(new SolidLine())
+                            .SetStrokeColor(WebColors.GetRGBColor("#639ED5"));
+                        document.Add(ls);
+                        // Salto de línea
+                        Paragraph blank = new Paragraph(" ");
+                        document.Add(blank);
+                        // Texto inicial
+                        Paragraph patientName = new Paragraph("Nombre del/la paciente: " + dgvObservation.CurrentRow.Cells[1].Value.ToString());
+                        Paragraph patientDUI = new Paragraph("DUI: " + dgvObservation.CurrentRow.Cells[0].Value.ToString());
+                        Paragraph patientDate = new Paragraph("Fecha y hora de vacunación: " + dgvObservation.CurrentRow.Cells[7].Value.ToString() + " " + dgvObservation.CurrentRow.Cells[8].Value.ToString());
+                        Paragraph titleEffects = new Paragraph("Efectos secundarios presentados: ");
+                        // Agregando al pdf
+                        document.Add(patientName);
+                        document.Add(patientDUI);
+                        document.Add(patientDate);
+                        document.Add(titleEffects);
+
+                        // Carga de valores de los nombres de los efectos secundarios
+                        List<SideEffect> sideEffects = db.SideEffects.ToList();
+                        List<Effectsxcitizen> savedSideEffects = db.Effectsxcitizens.Where(exc => exc.IdCitizen == Convert.ToInt32(dgvObservation.CurrentRow.Cells[0].Value.ToString())).ToList();
+                        foreach (var Effects in savedSideEffects)
                         {
-                            Paragraph citizenEffects = new Paragraph("- " + EffectName.SideEffect1.ToString());
-                            document.Add(citizenEffects);
+                            if (savedSideEffects.Count() > 0)
+                            {
+                                List<SideEffect> showSideEffects = db.SideEffects.Where(sd => sd.IdEffect == Convert.ToInt32(Effects.IdEffect)).ToList();
+                                foreach (var EffectName in showSideEffects)
+                                {
+                                    Paragraph citizenEffects = new Paragraph("- " + EffectName.SideEffect1.ToString());
+                                    document.Add(citizenEffects);
+                                }
+                            }
+                            else
+                            {
+                                Paragraph citizenEffects = new Paragraph("No presentó efectos secundarios.");
+                                document.Add(citizenEffects);
+                            }
                         }
-                    }
-                    else
-                    {
-                        Paragraph citizenEffects = new Paragraph("No presentó efectos secundarios.");
-                        document.Add(citizenEffects);
+
+                        document.Add(blank);
+                        float[] ancho = { 3, 2 };
+                        // Creación de tabla
+                        Table table = new Table(width);
+                        table.SetWidth(UnitValue.CreatePercentValue(100));
+                        Cell cell11 = new Cell(1, 1)
+                            .SetBackgroundColor(WebColors.GetRGBColor("#639ED5"))
+                            .SetTextAlignment(TextAlignment.CENTER)
+                            .Add(new Paragraph("Fecha de segunda cita"));
+                        Cell cell12 = new Cell(1, 2)
+                            .SetTextAlignment(TextAlignment.CENTER)
+                            .Add(new Paragraph(resultado.ToString()));
+                        Cell cell21 = new Cell(2, 1)
+                            .SetBackgroundColor(WebColors.GetRGBColor("#639ED5"))
+                            .SetTextAlignment(TextAlignment.CENTER)
+                            .Add(new Paragraph("Hora de segunda cita"));
+                        Cell cell22 = new Cell(2, 2)
+                            .SetTextAlignment(TextAlignment.CENTER)
+                            .Add(new Paragraph(a.AppointmentHour.ToString()));
+                        Cell cell31 = new Cell(1, 3)
+                            .SetBackgroundColor(WebColors.GetRGBColor("#639ED5"))
+                            .SetTextAlignment(TextAlignment.CENTER)
+                            .Add(new Paragraph("Lugar de vacunación"));
+                        Cell cell32 = new Cell(3, 2)
+                            .SetBackgroundColor(ColorConstants.WHITE)
+                            .SetTextAlignment(TextAlignment.CENTER)
+                            .Add(new Paragraph(place.ToString()));
+
+                        // Agregando la tabla al pdf
+                        table.AddCell(cell11);
+                        table.AddCell(cell12);
+                        table.AddCell(cell21);
+                        table.AddCell(cell22);
+                        table.AddCell(cell31);
+                        table.AddCell(cell32);
+                        document.Add(table);
+                        document.Add(blank);
+                        document.Add(ls);
+                        // Footer
+                        Paragraph footer = new Paragraph("Reporte generado el " + DateTime.Now.ToString())
+                           .SetTextAlignment(TextAlignment.RIGHT)
+                           .SetFontSize(10);
+                        document.Add(footer);
+                        // Se finaliza la generación del documento
+                        document.Close();
                     }
                 }
-
-                document.Add(blank);
-                float[] ancho = { 3, 2 };
-                // Creación de tabla
-                Table table = new Table(width);
-                table.SetWidth(UnitValue.CreatePercentValue(100));
-                Cell cell11 = new Cell(1, 1)
-                    .SetBackgroundColor(WebColors.GetRGBColor("#639ED5"))
-                    .SetTextAlignment(TextAlignment.CENTER)
-                    .Add(new Paragraph("Fecha de segunda cita"));
-                Cell cell12 = new Cell(1, 2)
-                    .SetTextAlignment(TextAlignment.CENTER)
-                    .Add(new Paragraph(resultado.ToString()));
-                Cell cell21 = new Cell(2, 1)
-                    .SetBackgroundColor(WebColors.GetRGBColor("#639ED5"))
-                    .SetTextAlignment(TextAlignment.CENTER)
-                    .Add(new Paragraph("Hora de segunda cita"));
-                Cell cell22 = new Cell(2, 2)
-                    .SetTextAlignment(TextAlignment.CENTER)
-                    .Add(new Paragraph(a.AppointmentHour.ToString()));
-                Cell cell31 = new Cell(1, 3)
-                    .SetBackgroundColor(WebColors.GetRGBColor("#639ED5"))
-                    .SetTextAlignment(TextAlignment.CENTER)
-                    .Add(new Paragraph("Lugar de vacunación"));
-                Cell cell32 = new Cell(3, 2)
-                    .SetBackgroundColor(ColorConstants.WHITE)
-                    .SetTextAlignment(TextAlignment.CENTER)
-                    .Add(new Paragraph(place.ToString()));
-
-                // Agregando la tabla al pdf
-                table.AddCell(cell11);
-                table.AddCell(cell12);
-                table.AddCell(cell21);
-                table.AddCell(cell22);
-                table.AddCell(cell31);
-                table.AddCell(cell32);
-                document.Add(table);
-                document.Add(blank);
-                document.Add(ls);
-                // Footer
-                Paragraph footer = new Paragraph("Reporte generado el " + DateTime.Now.ToString())
-                   .SetTextAlignment(TextAlignment.RIGHT)
-                   .SetFontSize(10);
-                document.Add(footer);
-                // Se finaliza la generación del documento
-                document.Close();
 
                 MessageBox.Show("La fecha de su nueva cita es: " +
                     resultado + ", en el lugar: " + place + " en la hora: " + Horariofinal, "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);

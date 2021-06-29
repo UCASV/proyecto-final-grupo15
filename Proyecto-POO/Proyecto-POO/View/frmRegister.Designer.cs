@@ -60,6 +60,7 @@ namespace Proyecto_POO
             this.dtpBirthdate = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.cmbInstitution = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +69,7 @@ namespace Proyecto_POO
             // 
             this.button2.BackColor = System.Drawing.Color.LightBlue;
             this.button2.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(189, 547);
+            this.button2.Location = new System.Drawing.Point(187, 567);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(145, 35);
@@ -79,17 +80,19 @@ namespace Proyecto_POO
             // 
             // txtIdentifier
             // 
-            this.txtIdentifier.Location = new System.Drawing.Point(316, 299);
+            this.txtIdentifier.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtIdentifier.Location = new System.Drawing.Point(317, 322);
             this.txtIdentifier.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtIdentifier.MaxLength = 15;
             this.txtIdentifier.Name = "txtIdentifier";
-            this.txtIdentifier.Size = new System.Drawing.Size(352, 23);
+            this.txtIdentifier.Size = new System.Drawing.Size(352, 25);
             this.txtIdentifier.TabIndex = 32;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(39, 299);
+            this.label7.Location = new System.Drawing.Point(40, 325);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(224, 17);
@@ -108,7 +111,7 @@ namespace Proyecto_POO
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.cbxDiabetes);
             this.groupBox1.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(39, 378);
+            this.groupBox1.Location = new System.Drawing.Point(39, 399);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(629, 147);
             this.groupBox1.TabIndex = 30;
@@ -198,35 +201,42 @@ namespace Proyecto_POO
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(317, 231);
+            this.txtEmail.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtEmail.Location = new System.Drawing.Point(317, 228);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtEmail.MaxLength = 200;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(351, 23);
+            this.txtEmail.Size = new System.Drawing.Size(351, 25);
             this.txtEmail.TabIndex = 28;
             // 
             // txtPhoneNumber
             // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(317, 200);
+            this.txtPhoneNumber.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(317, 197);
             this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtPhoneNumber.MaxLength = 8;
             this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(351, 23);
+            this.txtPhoneNumber.Size = new System.Drawing.Size(351, 25);
             this.txtPhoneNumber.TabIndex = 27;
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(317, 167);
+            this.txtAddress.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAddress.Location = new System.Drawing.Point(317, 164);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtAddress.MaxLength = 200;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(351, 23);
+            this.txtAddress.Size = new System.Drawing.Size(351, 25);
             this.txtAddress.TabIndex = 26;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(317, 136);
+            this.txtName.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtName.Location = new System.Drawing.Point(317, 133);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtName.MaxLength = 50;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(351, 23);
+            this.txtName.Size = new System.Drawing.Size(351, 25);
             this.txtName.TabIndex = 25;
             // 
             // label5
@@ -281,7 +291,7 @@ namespace Proyecto_POO
             // 
             this.button1.BackColor = System.Drawing.Color.LightBlue;
             this.button1.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(388, 547);
+            this.button1.Location = new System.Drawing.Point(386, 567);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(127, 35);
@@ -292,11 +302,12 @@ namespace Proyecto_POO
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(317, 101);
+            this.textBox1.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Location = new System.Drawing.Point(317, 98);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox1.MaxLength = 9;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(351, 23);
+            this.textBox1.Size = new System.Drawing.Size(351, 25);
             this.textBox1.TabIndex = 19;
             // 
             // label1
@@ -335,7 +346,7 @@ namespace Proyecto_POO
             // 
             this.btnBack.BackColor = System.Drawing.Color.LightBlue;
             this.btnBack.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(12, 580);
+            this.btnBack.Location = new System.Drawing.Point(12, 600);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(86, 27);
             this.btnBack.TabIndex = 0;
@@ -356,17 +367,18 @@ namespace Proyecto_POO
             // dtpBirthdate
             // 
             this.dtpBirthdate.CalendarFont = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dtpBirthdate.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dtpBirthdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpBirthdate.Location = new System.Drawing.Point(316, 260);
             this.dtpBirthdate.Name = "dtpBirthdate";
-            this.dtpBirthdate.Size = new System.Drawing.Size(352, 23);
+            this.dtpBirthdate.Size = new System.Drawing.Size(352, 25);
             this.dtpBirthdate.TabIndex = 35;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(39, 342);
+            this.label9.Location = new System.Drawing.Point(40, 368);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(108, 17);
             this.label9.TabIndex = 36;
@@ -376,16 +388,28 @@ namespace Proyecto_POO
             // 
             this.cmbInstitution.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbInstitution.FormattingEnabled = true;
-            this.cmbInstitution.Location = new System.Drawing.Point(316, 334);
+            this.cmbInstitution.Location = new System.Drawing.Point(317, 360);
             this.cmbInstitution.Name = "cmbInstitution";
             this.cmbInstitution.Size = new System.Drawing.Size(352, 25);
             this.cmbInstitution.TabIndex = 37;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Lucida Sans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(39, 298);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(638, 15);
+            this.label10.TabIndex = 38;
+            this.label10.Text = "Si no pertenece a ninguna institución, ingresar 0 en \"Número de indentificador\" y" +
+    " seleccionar \"ciudadano/a\"";
             // 
             // frmRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 619);
+            this.ClientSize = new System.Drawing.Size(707, 639);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.cmbInstitution);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.dtpBirthdate);
@@ -456,5 +480,6 @@ namespace Proyecto_POO
         private System.Windows.Forms.DateTimePicker dtpBirthdate;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbInstitution;
+        private System.Windows.Forms.Label label10;
     }
 }

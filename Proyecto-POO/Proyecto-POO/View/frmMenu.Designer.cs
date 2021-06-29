@@ -74,7 +74,7 @@ namespace Proyecto_POO
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Lucida Sans", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(316, 35);
+            this.label1.Location = new System.Drawing.Point(444, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(334, 42);
             this.label1.TabIndex = 0;
@@ -83,7 +83,7 @@ namespace Proyecto_POO
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Proyecto_POO.Properties.Resources._1;
-            this.pictureBox1.Location = new System.Drawing.Point(321, 160);
+            this.pictureBox1.Location = new System.Drawing.Point(328, 160);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(50, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -104,7 +104,7 @@ namespace Proyecto_POO
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Proyecto_POO.Properties.Resources._2;
-            this.pictureBox3.Location = new System.Drawing.Point(605, 160);
+            this.pictureBox3.Location = new System.Drawing.Point(612, 160);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(50, 50);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -208,7 +208,7 @@ namespace Proyecto_POO
             // pictureBox6
             // 
             this.pictureBox6.Image = global::Proyecto_POO.Properties.Resources._3;
-            this.pictureBox6.Location = new System.Drawing.Point(884, 160);
+            this.pictureBox6.Location = new System.Drawing.Point(883, 160);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(50, 50);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -239,7 +239,7 @@ namespace Proyecto_POO
             // pictureBox9
             // 
             this.pictureBox9.Image = global::Proyecto_POO.Properties.Resources.lupa;
-            this.pictureBox9.Location = new System.Drawing.Point(41, 160);
+            this.pictureBox9.Location = new System.Drawing.Point(47, 160);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(50, 50);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

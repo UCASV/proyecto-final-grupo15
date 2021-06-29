@@ -98,6 +98,7 @@ namespace Proyecto_POO
             // 
             this.txtIdentifierNumber.Location = new System.Drawing.Point(274, 370);
             this.txtIdentifierNumber.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.txtIdentifierNumber.MaxLength = 20;
             this.txtIdentifierNumber.Name = "txtIdentifierNumber";
             this.txtIdentifierNumber.Size = new System.Drawing.Size(364, 25);
             this.txtIdentifierNumber.TabIndex = 47;
@@ -210,6 +211,7 @@ namespace Proyecto_POO
             // 
             this.txtEmail.Location = new System.Drawing.Point(274, 308);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.txtEmail.MaxLength = 200;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(364, 25);
             this.txtEmail.TabIndex = 43;
@@ -227,6 +229,7 @@ namespace Proyecto_POO
             // 
             this.txtAddress.Location = new System.Drawing.Point(274, 236);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.txtAddress.MaxLength = 200;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(364, 25);
             this.txtAddress.TabIndex = 41;
@@ -235,6 +238,7 @@ namespace Proyecto_POO
             // 
             this.txtName.Location = new System.Drawing.Point(274, 196);
             this.txtName.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.txtName.MaxLength = 50;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(364, 25);
             this.txtName.TabIndex = 40;
@@ -312,7 +316,7 @@ namespace Proyecto_POO
             // 
             this.txtSearch.Location = new System.Drawing.Point(28, 114);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.txtSearch.MaxLength = 14;
+            this.txtSearch.MaxLength = 9;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PlaceholderText = "Ingrese el número de DUI del ciudadano";
             this.txtSearch.Size = new System.Drawing.Size(436, 25);

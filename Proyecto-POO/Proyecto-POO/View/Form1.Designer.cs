@@ -60,6 +60,7 @@ namespace Proyecto_POO
             this.txtUser.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtUser.Location = new System.Drawing.Point(279, 167);
             this.txtUser.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtUser.MaxLength = 50;
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(142, 25);
             this.txtUser.TabIndex = 1;
@@ -81,6 +82,7 @@ namespace Proyecto_POO
             this.txtPassword.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPassword.Location = new System.Drawing.Point(279, 214);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtPassword.MaxLength = 100;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(142, 25);

@@ -40,6 +40,7 @@ namespace Proyecto_POO
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQueue)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -48,7 +49,7 @@ namespace Proyecto_POO
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.LightBlue;
-            this.button1.Location = new System.Drawing.Point(402, 302);
+            this.button1.Location = new System.Drawing.Point(402, 312);
             this.button1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(207, 56);
@@ -60,7 +61,7 @@ namespace Proyecto_POO
             // dgvQueue
             // 
             this.dgvQueue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvQueue.Location = new System.Drawing.Point(33, 171);
+            this.dgvQueue.Location = new System.Drawing.Point(34, 189);
             this.dgvQueue.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.dgvQueue.Name = "dgvQueue";
             this.dgvQueue.ReadOnly = true;
@@ -110,7 +111,7 @@ namespace Proyecto_POO
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 289);
+            this.label2.Location = new System.Drawing.Point(12, 312);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 17);
             this.label2.TabIndex = 9;
@@ -132,11 +133,22 @@ namespace Proyecto_POO
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.button1_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(34, 159);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(687, 17);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Seleccione al/la ciudadano/a dando click en la celda correspondiente a alguno de " +
+    "sus datos.";
+            // 
             // frmVaccination
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 459);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.prbProgress);
@@ -172,5 +184,6 @@ namespace Proyecto_POO
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label4;
     }
 }
