@@ -41,7 +41,7 @@ namespace Proyecto_POO.MySqlContext
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseMySQL("Server=localhost;Port=3306;Database=Proyecto;Username=root;Password=messid10s");
+                optionsBuilder.UseMySQL("Server=localhost;Port=3306;Database=Proyecto;Username=root;Password=admin123");
             }
         }
 
@@ -175,7 +175,7 @@ namespace Proyecto_POO.MySqlContext
                 entity.Property(e => e.Dui).HasColumnName("DUI");
 
                 entity.Property(e => e.Address)
-                    .HasMaxLength(50)
+                    .HasMaxLength(200)
                     .HasColumnName("address");
 
                 entity.Property(e => e.Birthdate)
@@ -438,7 +438,7 @@ namespace Proyecto_POO.MySqlContext
 
                 entity.Property(e => e.IdStatistic).HasColumnName("id_statistic");
 
-                entity.Property(e => e.IdCita).HasColumnName("id_cita");
+                entity.Property(e => e.IdAppointment).HasColumnName("id_appointment");
 
                 entity.Property(e => e.StatisticDate)
                     .HasColumnType("date")

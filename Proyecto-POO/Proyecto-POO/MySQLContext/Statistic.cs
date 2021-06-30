@@ -15,7 +15,7 @@ namespace Proyecto_POO.MySqlContext
         public int IdStatistic { get; set; }
         public DateTime? StatisticDate { get; set; }
         public TimeSpan? StatisticHour { get; set; }
-        public int? IdCita { get; set; }
+        public int? IdAppointment { get; set; }
 
         public virtual ICollection<Statisticsxappointment> Statisticsxappointments { get; set; }
     }

@@ -52,6 +52,8 @@ namespace Proyecto_POO
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnPDF = new System.Windows.Forms.Button();
+            this.btnFinal = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -201,7 +203,7 @@ namespace Proyecto_POO
             // btnAddEffects
             // 
             this.btnAddEffects.BackColor = System.Drawing.Color.LightBlue;
-            this.btnAddEffects.Location = new System.Drawing.Point(302, 541);
+            this.btnAddEffects.Location = new System.Drawing.Point(79, 541);
             this.btnAddEffects.Name = "btnAddEffects";
             this.btnAddEffects.Size = new System.Drawing.Size(190, 42);
             this.btnAddEffects.TabIndex = 6;
@@ -283,11 +285,36 @@ namespace Proyecto_POO
             this.label7.Size = new System.Drawing.Size(0, 17);
             this.label7.TabIndex = 61;
             // 
+            // btnPDF
+            // 
+            this.btnPDF.BackColor = System.Drawing.Color.LightBlue;
+            this.btnPDF.Enabled = false;
+            this.btnPDF.Location = new System.Drawing.Point(316, 541);
+            this.btnPDF.Name = "btnPDF";
+            this.btnPDF.Size = new System.Drawing.Size(188, 42);
+            this.btnPDF.TabIndex = 62;
+            this.btnPDF.Text = "GENERAR PDF";
+            this.btnPDF.UseVisualStyleBackColor = false;
+            this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
+            // 
+            // btnFinal
+            // 
+            this.btnFinal.BackColor = System.Drawing.Color.LightBlue;
+            this.btnFinal.Location = new System.Drawing.Point(554, 541);
+            this.btnFinal.Name = "btnFinal";
+            this.btnFinal.Size = new System.Drawing.Size(185, 42);
+            this.btnFinal.TabIndex = 63;
+            this.btnFinal.Text = "FINALIZAR VACUNACIÓN";
+            this.btnFinal.UseVisualStyleBackColor = false;
+            this.btnFinal.Click += new System.EventHandler(this.btnFinal_Click);
+            // 
             // frmSideEffects
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(838, 629);
+            this.Controls.Add(this.btnFinal);
+            this.Controls.Add(this.btnPDF);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -344,5 +371,7 @@ namespace Proyecto_POO
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnPDF;
+        private System.Windows.Forms.Button btnFinal;
     }
 }

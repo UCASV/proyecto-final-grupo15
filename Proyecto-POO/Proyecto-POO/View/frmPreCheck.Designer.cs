@@ -174,6 +174,7 @@ namespace Proyecto_POO
             // cbxRenal
             // 
             this.cbxRenal.AutoSize = true;
+            this.cbxRenal.Enabled = false;
             this.cbxRenal.Location = new System.Drawing.Point(7, 105);
             this.cbxRenal.Name = "cbxRenal";
             this.cbxRenal.Size = new System.Drawing.Size(15, 14);
@@ -183,6 +184,7 @@ namespace Proyecto_POO
             // cbxPulmonar
             // 
             this.cbxPulmonar.AutoSize = true;
+            this.cbxPulmonar.Enabled = false;
             this.cbxPulmonar.Location = new System.Drawing.Point(7, 78);
             this.cbxPulmonar.Name = "cbxPulmonar";
             this.cbxPulmonar.Size = new System.Drawing.Size(15, 14);
@@ -192,6 +194,7 @@ namespace Proyecto_POO
             // cbxCardio
             // 
             this.cbxCardio.AutoSize = true;
+            this.cbxCardio.Enabled = false;
             this.cbxCardio.Location = new System.Drawing.Point(7, 54);
             this.cbxCardio.Name = "cbxCardio";
             this.cbxCardio.Size = new System.Drawing.Size(15, 14);
@@ -201,6 +204,7 @@ namespace Proyecto_POO
             // cbxDiabetes
             // 
             this.cbxDiabetes.AutoSize = true;
+            this.cbxDiabetes.Enabled = false;
             this.cbxDiabetes.Location = new System.Drawing.Point(7, 24);
             this.cbxDiabetes.Name = "cbxDiabetes";
             this.cbxDiabetes.Size = new System.Drawing.Size(15, 14);

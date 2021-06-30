@@ -69,6 +69,7 @@ namespace Proyecto_POO
         private void btnAddEffects_Click(object sender, EventArgs e)
         {
             lblCitizen.Text = dgvObservation.CurrentRow.Cells[0].Value.ToString();
+            btnPDF.Enabled = true;
             var db = new ProyectoContext();
             List<Effectsxcitizen> effectsxcitizens = db.Effectsxcitizens.ToList();
             bool cbx1 = cbxSensibility.Checked;
@@ -190,7 +191,51 @@ namespace Proyecto_POO
                 db.SaveChanges();
                 var savedAxE = db.Appointmentxemployees.OrderBy(axe => axe.IdAppointment).ToList();
 
-                using(SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "PDF file|*.pdf", ValidateNames = true })
+                MessageBox.Show("La fecha de su nueva cita es: " +
+                    resultado + ", en el lugar: " + place + " en la hora: " + Horariofinal, "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("Ha recibido las dos dosis de la vacuna, finalizando así su proceso de vacunación.", "Proceso finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            
+        }
+
+        private void frmSideEffects_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPDF_Click(object sender, EventArgs e)
+        {
+            var db = new ProyectoContext();
+            var C = db.Citizens.ToList();
+            var A = db.Appointments.ToList();
+            var VP = db.VaccinationPlaces.ToList();
+
+            var appointment =
+                from appointments in A
+                join citizensA in C on appointments.IdCitizen equals citizensA.Dui
+                where appointments.IdDose == 2
+                where citizensA.Dui == Convert.ToInt32(dgvObservation.CurrentRow.Cells[0].Value)
+                select new { aDate = appointments.AppointmentDate, aHour = appointments.AppointmentHour };
+
+            var place =
+                from vaccinationplaces in VP
+                join appointments in A on vaccinationplaces.IdPlace equals appointments.IdPlace
+                join citizens in C on appointments.IdCitizen equals citizens.Dui
+                where appointments.IdDose == 2
+                where citizens.Dui == Convert.ToInt32(dgvObservation.CurrentRow.Cells[0].Value)
+                select new { vpName = vaccinationplaces.PlaceName };
+
+            DateTime date = Convert.ToDateTime(appointment.FirstOrDefault().aDate);
+            var appointmentDate = date.ToString("dd-MM-yyyy");
+
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "PDF file|*.pdf", ValidateNames = true })
                 {
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
@@ -255,14 +300,14 @@ namespace Proyecto_POO
                             .Add(new Paragraph("Fecha de segunda cita"));
                         Cell cell12 = new Cell(1, 2)
                             .SetTextAlignment(TextAlignment.CENTER)
-                            .Add(new Paragraph(resultado.ToString()));
+                            .Add(new Paragraph(appointmentDate));
                         Cell cell21 = new Cell(2, 1)
                             .SetBackgroundColor(WebColors.GetRGBColor("#639ED5"))
                             .SetTextAlignment(TextAlignment.CENTER)
                             .Add(new Paragraph("Hora de segunda cita"));
                         Cell cell22 = new Cell(2, 2)
                             .SetTextAlignment(TextAlignment.CENTER)
-                            .Add(new Paragraph(a.AppointmentHour.ToString()));
+                            .Add(new Paragraph(appointment.FirstOrDefault().aHour.ToString()));
                         Cell cell31 = new Cell(1, 3)
                             .SetBackgroundColor(WebColors.GetRGBColor("#639ED5"))
                             .SetTextAlignment(TextAlignment.CENTER)
@@ -270,7 +315,7 @@ namespace Proyecto_POO
                         Cell cell32 = new Cell(3, 2)
                             .SetBackgroundColor(ColorConstants.WHITE)
                             .SetTextAlignment(TextAlignment.CENTER)
-                            .Add(new Paragraph(place.ToString()));
+                            .Add(new Paragraph(place.FirstOrDefault().vpName.ToString()));
 
                         // Agregando la tabla al pdf
                         table.AddCell(cell11);
@@ -291,26 +336,13 @@ namespace Proyecto_POO
                         document.Close();
                     }
                 }
+        }
 
-                MessageBox.Show("La fecha de su nueva cita es: " +
-                    resultado + ", en el lugar: " + place + " en la hora: " + Horariofinal, "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-                MessageBox.Show("Ha recibido las dos dosis de la vacuna, finalizando así su proceso de vacunación.", "Proceso finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
+        private void btnFinal_Click(object sender, EventArgs e)
+        {
             frmMenu frm = new frmMenu(addWaiting, IdManager);
             frm.Show();
             this.Hide();
-        }
-
-        private void frmSideEffects_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

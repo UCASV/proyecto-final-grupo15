@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\danie\\OneDrive\\Documents\\Proyecto POO\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj": {}
+    "C:\\Users\\feder\\OneDrive\\Documentos\\a\\pr1\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj": {}
   },
   "projects": {
-    "C:\\Users\\danie\\OneDrive\\Documents\\Proyecto POO\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj": {
+    "C:\\Users\\feder\\OneDrive\\Documentos\\a\\pr1\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\danie\\OneDrive\\Documents\\Proyecto POO\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj",
+        "projectUniqueName": "C:\\Users\\feder\\OneDrive\\Documentos\\a\\pr1\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj",
         "projectName": "Proyecto-POO",
-        "projectPath": "C:\\Users\\danie\\OneDrive\\Documents\\Proyecto POO\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj",
-        "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\danie\\OneDrive\\Documents\\Proyecto POO\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\obj\\",
+        "projectPath": "C:\\Users\\feder\\OneDrive\\Documentos\\a\\pr1\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\Proyecto-POO.csproj",
+        "packagesPath": "C:\\Users\\feder\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\feder\\OneDrive\\Documentos\\a\\pr1\\proyecto-final-grupo15\\Proyecto-POO\\Proyecto-POO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\feder\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

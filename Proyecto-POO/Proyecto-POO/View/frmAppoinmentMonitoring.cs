@@ -71,7 +71,7 @@ namespace Proyecto_POO
                 Statistic s = new();
                 s.StatisticDate = DateTime.Parse(StatisticDate);
                 s.StatisticHour = TimeSpan.Parse(hourNow);
-                s.IdCita = innerjoin.FirstOrDefault().idA;
+                s.IdAppointment = innerjoin.FirstOrDefault().idA;
                 db.Add(s);
                 db.SaveChanges();
 
