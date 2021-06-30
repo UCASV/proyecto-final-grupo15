@@ -32,8 +32,6 @@ namespace Proyecto_POO.MySqlContext
         public virtual DbSet<Record> Records { get; set; }
         public virtual DbSet<ReservationPlatform> ReservationPlatforms { get; set; }
         public virtual DbSet<SideEffect> SideEffects { get; set; }
-        public virtual DbSet<Statistic> Statistics { get; set; }
-        public virtual DbSet<Statisticsxappointment> Statisticsxappointments { get; set; }
         public virtual DbSet<VaccinationPlace> VaccinationPlaces { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -427,50 +425,6 @@ namespace Proyecto_POO.MySqlContext
                 entity.Property(e => e.SideEffect1)
                     .HasMaxLength(60)
                     .HasColumnName("side_effect");
-            });
-
-            modelBuilder.Entity<Statistic>(entity =>
-            {
-                entity.HasKey(e => e.IdStatistic)
-                    .HasName("PRIMARY");
-
-                entity.ToTable("statistics");
-
-                entity.Property(e => e.IdStatistic).HasColumnName("id_statistic");
-
-                entity.Property(e => e.IdAppointment).HasColumnName("id_appointment");
-
-                entity.Property(e => e.StatisticDate)
-                    .HasColumnType("date")
-                    .HasColumnName("statistic_date");
-
-                entity.Property(e => e.StatisticHour).HasColumnName("statistic_hour");
-            });
-
-            modelBuilder.Entity<Statisticsxappointment>(entity =>
-            {
-                entity.HasKey(e => new { e.IdStatistics, e.IdAppointment })
-                    .HasName("PRIMARY");
-
-                entity.ToTable("statisticsxappointment");
-
-                entity.HasIndex(e => e.IdAppointment, "id_appointment");
-
-                entity.Property(e => e.IdStatistics).HasColumnName("id_statistics");
-
-                entity.Property(e => e.IdAppointment).HasColumnName("id_appointment");
-
-                entity.HasOne(d => d.IdAppointmentNavigation)
-                    .WithMany(p => p.Statisticsxappointments)
-                    .HasForeignKey(d => d.IdAppointment)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("statisticsxappointment_ibfk_2");
-
-                entity.HasOne(d => d.IdStatisticsNavigation)
-                    .WithMany(p => p.Statisticsxappointments)
-                    .HasForeignKey(d => d.IdStatistics)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("statisticsxappointment_ibfk_1");
             });
 
             modelBuilder.Entity<VaccinationPlace>(entity =>

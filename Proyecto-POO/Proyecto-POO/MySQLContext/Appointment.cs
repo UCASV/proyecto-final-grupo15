@@ -10,7 +10,6 @@ namespace Proyecto_POO.MySqlContext
         public Appointment()
         {
             Appointmentxemployees = new HashSet<Appointmentxemployee>();
-            Statisticsxappointments = new HashSet<Statisticsxappointment>();
         }
 
         public int IdAppointment { get; set; }
@@ -28,6 +27,5 @@ namespace Proyecto_POO.MySqlContext
         public virtual VaccinationPlace IdPlaceNavigation { get; set; }
         public virtual ReservationPlatform IdPlatformNavigation { get; set; }
         public virtual ICollection<Appointmentxemployee> Appointmentxemployees { get; set; }
-        public virtual ICollection<Statisticsxappointment> Statisticsxappointments { get; set; }
     }
 }

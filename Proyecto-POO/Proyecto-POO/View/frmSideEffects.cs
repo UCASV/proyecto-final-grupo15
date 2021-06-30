@@ -195,7 +195,12 @@ namespace Proyecto_POO
                     resultado + ", en el lugar: " + place + " en la hora: " + Horariofinal, "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
+            {
                 MessageBox.Show("Ha recibido las dos dosis de la vacuna, finalizando así su proceso de vacunación.", "Proceso finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                frmMenu frm = new frmMenu(addWaiting, IdManager);
+                frm.Show();
+                this.Hide();
+            }
             
             
         }
