@@ -29,18 +29,17 @@ namespace Proyecto_POO
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVaccination));
             this.button1 = new System.Windows.Forms.Button();
             this.dgvQueue = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.prbProgress = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label4 = new System.Windows.Forms.Label();
+            this.prbProgress = new System.Windows.Forms.ProgressBar();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQueue)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -98,16 +97,6 @@ namespace Proyecto_POO
             this.label1.TabIndex = 0;
             this.label1.Text = "REGISTRO DE VACUNACIÓN";
             // 
-            // prbProgress
-            // 
-            this.prbProgress.Location = new System.Drawing.Point(402, 389);
-            this.prbProgress.Maximum = 9;
-            this.prbProgress.Name = "prbProgress";
-            this.prbProgress.Size = new System.Drawing.Size(207, 23);
-            this.prbProgress.TabIndex = 8;
-            this.prbProgress.Visible = false;
-            this.prbProgress.Click += new System.EventHandler(this.prbProgress_Click);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -128,11 +117,6 @@ namespace Proyecto_POO
             this.label3.Text = "Completando tiempo de espera... ";
             this.label3.Visible = false;
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.button1_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -143,15 +127,34 @@ namespace Proyecto_POO
             this.label4.Text = "Seleccione al/la ciudadano/a dando click en la celda correspondiente a alguno de " +
     "sus datos.";
             // 
+            // prbProgress
+            // 
+            this.prbProgress.Location = new System.Drawing.Point(402, 383);
+            this.prbProgress.Maximum = 10;
+            this.prbProgress.Name = "prbProgress";
+            this.prbProgress.Size = new System.Drawing.Size(206, 28);
+            this.prbProgress.TabIndex = 12;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 351);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 17);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "label5";
+            this.label5.Visible = false;
+            // 
             // frmVaccination
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 459);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.prbProgress);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.prbProgress);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvQueue);
@@ -179,11 +182,11 @@ namespace Proyecto_POO
         private System.Windows.Forms.DataGridView dgvQueue;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ProgressBar prbProgress;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ProgressBar prbProgress;
+        private System.Windows.Forms.Label label5;
     }
 }

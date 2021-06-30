@@ -15,13 +15,14 @@ namespace Proyecto_POO
 {
     public partial class frmPreCheck : Form
     {
+        //Queue<CitizenVm> menu;
         List<Institution> institutions;
 
         Queue<CitizenVm> addAppointmentMonitoring = new Queue<CitizenVm>()
         {
-
+            
         };
-        //Queue<CitizenVm> menu;
+        
         private void showWaitingList()
         {
             using (var context = new ProyectoContext())
