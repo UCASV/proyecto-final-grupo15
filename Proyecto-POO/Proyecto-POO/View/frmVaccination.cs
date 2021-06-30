@@ -13,7 +13,8 @@ using System.Windows.Forms;
 namespace Proyecto_POO
 {
     public partial class frmVaccination : Form
-    {        
+    {
+        int conteo = 0;
         private Manager IdManager { get; set; }
 
         Queue<CitizenVm> vaccination;
@@ -34,51 +35,31 @@ namespace Proyecto_POO
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            var db = new ProyectoContext();
+        {           
             try
             {
-                             
-                var hourNow = DateTime.Now.ToString("HH:mm:ss");
-                var dateNow = DateTime.Now.ToString("dd-MM-yyyy");               
-                var A = db.Appointments
-                        .ToList();
-                var C = db.Citizens
-                        .ToList();
-                var innerjoin =
-                from citizens in C
-                join appointments in A on citizens.Dui equals appointments.IdCitizen
-                select new { idA = appointments.IdAppointment };
-                string StatisticDate = DateTime.Now.ToString("HH:mm:ss");
-                Statistic s = new();
-                s.StatisticDate = DateTime.Parse(StatisticDate);
-                s.StatisticHour = TimeSpan.Parse(hourNow);
-                s.IdAppointment = innerjoin.FirstOrDefault().idA;
-                db.Add(s);
-                db.SaveChanges();
-                countDown();
-            }
-
-            catch(Exception)
-            {
-                
-            }            
-        }
-        private void countDown()
-        {       prbProgress.Visible = true;
+                prbProgress.Visible = true;
                 label3.Visible = true;
-
-                for(int progreso = 1; progreso <= 10; progreso++)
-                {                    
-                    prbProgress.Value++;                   
-                    if (progreso == 10)
-                    {                    
-                        MessageBox.Show("El tiempo de observacion ha terminado");
-                        frmSideEffects frm = new frmSideEffects(vaccination, monitoreo, IdManager);
-                        frm.Show();
-                        this.Hide();
-                    }
+                timer1.Enabled = true;
+                conteo++;
+                if (conteo == 10)
+                {
+                    timer1.Enabled = false;
+                    MessageBox.Show("El tiempo de observacion ha terminado");
+                    frmSideEffects frm = new frmSideEffects(vaccination,monitoreo, IdManager);
+                    frm.Show();
+                    this.Hide();
                 }
+
+                if (prbProgress.Minimum < prbProgress.Maximum)
+                {
+                    prbProgress.Value++;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
         }
         private void btnBack_Click(object sender, EventArgs e)
         {

@@ -14,7 +14,7 @@ using MySql.EntityFrameworkCore;
 namespace Proyecto_POO
 {
     public partial class frmPreCheck : Form
-    {
+    {   
         //Queue<CitizenVm> menu;
         List<Institution> institutions;
 
@@ -39,7 +39,11 @@ namespace Proyecto_POO
         public frmPreCheck(Queue<CitizenVm> model, Manager? IdManager)
         {
             InitializeComponent();
-            this.IdManager = IdManager;         
+            this.IdManager = IdManager;            
+            if(model != null)
+            {
+                addAppointmentMonitoring = model;
+            }
         }
 
         private void frmPreCheck_FormClosing(object sender, FormClosingEventArgs e)
@@ -279,7 +283,9 @@ namespace Proyecto_POO
             {
                 int dui = Convert.ToInt32(txtSearch.Text);
                 List<Citizen> result = citizens.Where(c => c.Dui == dui).ToList();
-                List<Appointment> appointmentDate = appointments.Where(a => a.AppointmentDate == DateTime.Today && a.IdCitizen == dui).OrderBy(a => a.AppointmentDate).ToList();
+                List<Appointment> appointmentDate = appointments
+                    .Where(a => a.AppointmentDate == DateTime.Today && a.IdCitizen == dui && a.IdDose == 1 || a.AppointmentDate == DateTime.Today && a.IdDose == 3 )
+                    .OrderBy(a => a.AppointmentDate).ToList();
                 if (result.Count() > 0 && appointmentDate.Count() > 0)
                 {
                     txtSearch.Clear();
@@ -292,49 +298,58 @@ namespace Proyecto_POO
                         txtEmail.Text = r.Email;
                         dtpBirthdate.Value = Convert.ToDateTime(r.Birthdate);
                         txtIdentifierNumber.Text = r.IdentifierNumber.ToString();
-                        List<Institution> selectedInstituion = institutions.Where(i => i.IdInstitution == r.IdInstitution).ToList();
+                        List<Institution> selectedInstituion = institutions
+                            .Where(i => i.IdInstitution == r.IdInstitution).ToList();
                         selectedInstituion.ForEach(s =>
                         {
                             lblId.Text = s.IdInstitution.ToString();
                             lblInstitution.Text = s.InstitutionName;
                         });
                         // Realizamos la consulta para mostrar chequeadas las enfermedades crónicas que el ciudadano padece
-                        List<Diseasexcitizen> diabetes = diseasexcitizens.Where(dxc => dxc.IdDisease == 1 && dxc.IdCitizen == dui).ToList();
+                        List<Diseasexcitizen> diabetes = diseasexcitizens
+                            .Where(dxc => dxc.IdDisease == 1 && dxc.IdCitizen == dui).ToList();
                         diabetes.ForEach(d =>
                         {
                             cbxDiabetes.Checked = true;
                         });
-                        List<Diseasexcitizen> cardio = diseasexcitizens.Where(dxc => dxc.IdDisease == 2 && dxc.IdCitizen == dui).ToList();
+                        List<Diseasexcitizen> cardio = diseasexcitizens
+                            .Where(dxc => dxc.IdDisease == 2 && dxc.IdCitizen == dui).ToList();
                         cardio.ForEach(d =>
                         {
                             cbxCardio.Checked = true;
                         });
-                        List<Diseasexcitizen> pulmonar = diseasexcitizens.Where(dxc => dxc.IdDisease == 3 && dxc.IdCitizen == dui).ToList();
+                        List<Diseasexcitizen> pulmonar = diseasexcitizens
+                            .Where(dxc => dxc.IdDisease == 3 && dxc.IdCitizen == dui).ToList();
                         pulmonar.ForEach(d =>
                         {
                             cbxPulmonar.Checked = true;
                         });
-                        List<Diseasexcitizen> renal = diseasexcitizens.Where(dxc => dxc.IdDisease == 4 && dxc.IdCitizen == dui).ToList();
+                        List<Diseasexcitizen> renal = diseasexcitizens
+                            .Where(dxc => dxc.IdDisease == 4 && dxc.IdCitizen == dui).ToList();
                         renal.ForEach(d =>
                         {
                             cbxRenal.Checked = true;
                         });
-                        List<Diseasexcitizen> cancer = diseasexcitizens.Where(dxc => dxc.IdDisease == 5 && dxc.IdCitizen == dui).ToList();
+                        List<Diseasexcitizen> cancer = diseasexcitizens
+                            .Where(dxc => dxc.IdDisease == 5 && dxc.IdCitizen == dui).ToList();
                         cancer.ForEach(d =>
                         {
                             cbxCancer.Checked = true;
                         });
-                        List<Diseasexcitizen> organos = diseasexcitizens.Where(dxc => dxc.IdDisease == 6 && dxc.IdCitizen == dui).ToList();
+                        List<Diseasexcitizen> organos = diseasexcitizens
+                            .Where(dxc => dxc.IdDisease == 6 && dxc.IdCitizen == dui).ToList();
                         organos.ForEach(d =>
                         {
                             cbxOrganReceptor.Checked = true;
                         });
-                        List<Diseasexcitizen> seropositivas = diseasexcitizens.Where(dxc => dxc.IdDisease == 7 && dxc.IdCitizen == dui).ToList();
+                        List<Diseasexcitizen> seropositivas = diseasexcitizens
+                            .Where(dxc => dxc.IdDisease == 7 && dxc.IdCitizen == dui).ToList();
                         seropositivas.ForEach(d =>
                         {
                             cbxSeropositivas.Checked = true;
                         });
-                        List<Diseasexcitizen> tratamiento = diseasexcitizens.Where(dxc => dxc.IdDisease == 8 && dxc.IdCitizen == dui).ToList();
+                        List<Diseasexcitizen> tratamiento = diseasexcitizens
+                            .Where(dxc => dxc.IdDisease == 8 && dxc.IdCitizen == dui).ToList();
                         tratamiento.ForEach(d =>
                         {
                             cbxCardio.Checked = true;

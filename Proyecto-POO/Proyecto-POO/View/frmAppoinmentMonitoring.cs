@@ -21,7 +21,6 @@ namespace Proyecto_POO
          
         Queue<CitizenVm> appointment;        
         private Manager IdManager { get; set; }
-        private Appointment IdAppointment { get; set; }
 
         public frmAppoinmentMonitoring(Queue<CitizenVm>? models, Manager IdManager)
         {
@@ -40,8 +39,7 @@ namespace Proyecto_POO
         }
 
         private void btnAddToList_Click(object sender, EventArgs e)
-        {
-            var db = new ProyectoContext();
+        {           
             try
             {
                 var hourNow = DateTime.Now.ToString("HH:mm:ss");
@@ -56,24 +54,6 @@ namespace Proyecto_POO
                 model.IdInstitution = Convert.ToInt32(dgvMonitoring.CurrentRow.Cells[6].Value);
                 model.dateNow = dateNow;
                 model.hourNow = hourNow;
-
-                var A = db.Appointments
-                        .ToList();
-                var C = db.Citizens
-                        .ToList();
-                var innerjoin =
-                from citizens in C
-                join appointments in A on citizens.Dui equals appointments.IdCitizen 
-                    select new {idA = appointments.IdAppointment};
-                    
-                string StatisticDate = DateTime.Now.ToString("HH:mm:ss");
-                
-                Statistic s = new();
-                s.StatisticDate = DateTime.Parse(StatisticDate);
-                s.StatisticHour = TimeSpan.Parse(hourNow);
-                s.IdAppointment = innerjoin.FirstOrDefault().idA;
-                db.Add(s);
-                db.SaveChanges();
 
                 if (dgvMonitoring.Rows[0].Selected == true )
                 {                   

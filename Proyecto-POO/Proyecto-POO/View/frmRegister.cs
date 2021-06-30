@@ -149,7 +149,6 @@ namespace Proyecto_POO
                         {
                             new Appointment ()
                             {
-
                                 AppointmentDate = DateTime.Now,
                                 AppointmentHour = TimeSpan.Parse(AppointmentHour),
                                 IdDose = 1,

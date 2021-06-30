@@ -203,7 +203,7 @@ namespace Proyecto_POO
             // btnAddEffects
             // 
             this.btnAddEffects.BackColor = System.Drawing.Color.LightBlue;
-            this.btnAddEffects.Location = new System.Drawing.Point(79, 541);
+            this.btnAddEffects.Location = new System.Drawing.Point(316, 541);
             this.btnAddEffects.Name = "btnAddEffects";
             this.btnAddEffects.Size = new System.Drawing.Size(190, 42);
             this.btnAddEffects.TabIndex = 6;
@@ -289,7 +289,7 @@ namespace Proyecto_POO
             // 
             this.btnPDF.BackColor = System.Drawing.Color.LightBlue;
             this.btnPDF.Enabled = false;
-            this.btnPDF.Location = new System.Drawing.Point(316, 541);
+            this.btnPDF.Location = new System.Drawing.Point(79, 541);
             this.btnPDF.Name = "btnPDF";
             this.btnPDF.Size = new System.Drawing.Size(188, 42);
             this.btnPDF.TabIndex = 62;

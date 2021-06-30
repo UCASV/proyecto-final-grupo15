@@ -29,6 +29,7 @@ namespace Proyecto_POO
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVaccination));
             this.button1 = new System.Windows.Forms.Button();
             this.dgvQueue = new System.Windows.Forms.DataGridView();
@@ -40,6 +41,7 @@ namespace Proyecto_POO
             this.label4 = new System.Windows.Forms.Label();
             this.prbProgress = new System.Windows.Forms.ProgressBar();
             this.label5 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvQueue)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -130,10 +132,12 @@ namespace Proyecto_POO
             // prbProgress
             // 
             this.prbProgress.Location = new System.Drawing.Point(402, 383);
-            this.prbProgress.Maximum = 10;
+            this.prbProgress.Maximum = 9;
             this.prbProgress.Name = "prbProgress";
             this.prbProgress.Size = new System.Drawing.Size(206, 28);
             this.prbProgress.TabIndex = 12;
+            this.prbProgress.Visible = false;
+            this.prbProgress.Click += new System.EventHandler(this.button1_Click);
             // 
             // label5
             // 
@@ -144,6 +148,11 @@ namespace Proyecto_POO
             this.label5.TabIndex = 13;
             this.label5.Text = "label5";
             this.label5.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.button1_Click);
             // 
             // frmVaccination
             // 
@@ -188,5 +197,6 @@ namespace Proyecto_POO
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ProgressBar prbProgress;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Timer timer1;
     }
 }
