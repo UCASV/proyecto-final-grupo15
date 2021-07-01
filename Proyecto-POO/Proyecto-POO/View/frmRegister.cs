@@ -37,73 +37,82 @@ namespace Proyecto_POO
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
+            var dbc = new ProyectoContext();
+            //institutions = db.Institutions.ToList();
+            List<Appointment> appointments = dbc.Appointments.ToList();
+
+            int dui = Convert.ToInt32(textBox1.Text);
+            List<Appointment> reservedAppointment = appointments
+                .Where(a => a.IdPlatform == 2 && a.IdCitizen == dui)
+                .OrderBy(a => a.IdCitizen).ToList();
+            List<Appointment> existingAppointment = appointments
+                .Where(ap => ap.IdDose == 1 && ap.IdCitizen == dui || ap.IdDose == 3 && ap.IdCitizen == dui)
+                .OrderBy(ap => ap.IdCitizen).ToList();
+            if (reservedAppointment.Count() == 0 && existingAppointment.Count() == 0)
             {
-                bool verifyincoherence = txtIdentifier.Text.Length > 0 && cmbInstitution.SelectedIndex >= 0;
-                bool allowemptyness = txtIdentifier.Text.Length == 0 && cmbInstitution.SelectedIndex == -1;
-                bool test = verifyincoherence || allowemptyness;
-
-                bool verify = (textBox1.Text.Length == 9 && txtPhoneNumber.Text.Length == 8 && test);
-                if (verify)
+                try
                 {
-                    bool a = cbxDiabetes.Checked;
-                    bool b = checkBox1.Checked;
-                    bool c = cbxPulmonary.Checked;
-                    bool d = checkBox3.Checked;
-                    bool f = cbxCancer.Checked;
-                    bool g = cbxOrganReceiever.Checked;
-                    bool h = cbxSeropositivas.Checked;
-                    bool i = cbxInmunosupresor.Checked;
+                    bool verifyincoherence = txtIdentifier.Text.Length > 0 && cmbInstitution.SelectedIndex >= 0;
+                    bool allowemptyness = txtIdentifier.Text.Length == 0 && cmbInstitution.SelectedIndex == -1;
+                    bool test = verifyincoherence || allowemptyness;
 
-                    bool[] arrayresult = new bool[8] { a, b, c, d, f, g, h, i };
-
-                    int count = 0;
-
-                    for (int l = 0; l < 8; l++)
+                    bool verify = (textBox1.Text.Length == 9 && txtPhoneNumber.Text.Length == 8 && test);
+                    if (verify)
                     {
-                        if (arrayresult[l] == true)
+                        bool a = cbxDiabetes.Checked;
+                        bool b = checkBox1.Checked;
+                        bool c = cbxPulmonary.Checked;
+                        bool d = checkBox3.Checked;
+                        bool f = cbxCancer.Checked;
+                        bool g = cbxOrganReceiever.Checked;
+                        bool h = cbxSeropositivas.Checked;
+                        bool i = cbxInmunosupresor.Checked;
+
+                        bool[] arrayresult = new bool[8] { a, b, c, d, f, g, h, i };
+
+                        int count = 0;
+
+                        for (int l = 0; l < 8; l++)
                         {
-                            count++;
+                            if (arrayresult[l] == true)
+                            {
+                                count++;
+                            }
                         }
-                    }
 
-                    int[] arrayid = new int[count];
-                    int cont = 0;
+                        int[] arrayid = new int[count];
+                        int cont = 0;
 
-                    for (int m = 0; m < 8; m++)
-                    {
-                        if (arrayresult[m] == true)
+                        for (int m = 0; m < 8; m++)
                         {
-                            arrayid[cont] = m + 1;
-                            cont++;
+                            if (arrayresult[m] == true)
+                            {
+                                arrayid[cont] = m + 1;
+                                cont++;
+                            }
                         }
-                    }
 
-                    //Permitir dejar en blanco la dirección
-                    string citizenemail;
-                    if (txtAddress.Text != "")
-                    {
-                        citizenemail = txtEmail.Text;
-                    }
-                    else
-                    {
-                        citizenemail = null;
-                    }
+                        //Permitir dejar en blanco la dirección
+                        string citizenemail;
+                        if (txtAddress.Text != "")
+                            citizenemail = txtEmail.Text;
+                        else
+                            citizenemail = null;
 
 
-                    int place = placevacunation(textBox1.Text);
+                        int place = placevacunation(textBox1.Text);
 
-                    Institution iref = (Institution)cmbInstitution.SelectedItem;
+                        Institution iref = (Institution)cmbInstitution.SelectedItem;
 
-                    using (var db = new ProyectoContext())
-                    {
-                        var SavedAppointments = db.Appointments
-                            .OrderBy(a => a.IdAppointment)
-                            .ToList();
-
-                        if (cmbInstitution.SelectedIndex == -1)
+                        using (var db = new ProyectoContext())
                         {
-                            var NewPacient = new List<Citizen>()
+                            var SavedAppointments = db.Appointments
+                                .OrderBy(a => a.IdAppointment)
+                                .ToList();
+
+                            if (cmbInstitution.SelectedIndex == -1)
+                            {
+                                var NewPacient = new List<Citizen>()
                             {
                                 new Citizen()
                                 {
@@ -116,13 +125,13 @@ namespace Proyecto_POO
                                     //IdAppointment = appointmentid
                                 }
                             };
-                            NewPacient.ForEach(c => db.Add(c));
-                            db.SaveChanges();
-                        }
-                        else
-                        {
-                            Institution ibdd = db.Set<Institution>().SingleOrDefault(i => i.IdInstitution == iref.IdInstitution);
-                            var NewPacient = new List<Citizen>()
+                                NewPacient.ForEach(c => db.Add(c));
+                                db.SaveChanges();
+                            }
+                            else
+                            {
+                                Institution ibdd = db.Set<Institution>().SingleOrDefault(i => i.IdInstitution == iref.IdInstitution);
+                                var NewPacient = new List<Citizen>()
                             {
                                 new Citizen()
                                 {
@@ -137,15 +146,15 @@ namespace Proyecto_POO
                                     //IdAppointment = appointmentid
                                 }
                             };
-                            NewPacient.ForEach(c => db.Add(c));
-                            db.SaveChanges();
-                        }
+                                NewPacient.ForEach(c => db.Add(c));
+                                db.SaveChanges();
+                            }
 
-                        var savedCitizens = db.Citizens
-                             .OrderBy(c => c.Dui)
-                             .ToList();
+                            var savedCitizens = db.Citizens
+                                 .OrderBy(c => c.Dui)
+                                 .ToList();
 
-                    var NewAppointment = new List<Appointment>
+                            var NewAppointment = new List<Appointment>
                         {
                             new Appointment ()
                             {
@@ -158,42 +167,57 @@ namespace Proyecto_POO
                                 IdCitizen = Convert.ToInt32(textBox1.Text)
                             }
                         };
-                    NewAppointment.ForEach(a => db.Add(a));
-                    db.SaveChanges();
-
-
-                    if (arrayid.Length != null)
-                        {
-                            int cnt = 0;
-
-                            List<Diseasexcitizen> Diseases = new List<Diseasexcitizen>();
-
-                            for (int p = 0; p < arrayid.Length; p++)
-                            {
-                                Diseasexcitizen disease = new Diseasexcitizen()
-                                {
-                                    IdDisease = arrayid[cnt],
-                                    IdCitizen = Convert.ToInt32(textBox1.Text)
-                                };
-                                cnt++;
-                                Diseases.Add(disease);
-                            }
-                            Diseases.ForEach(dxc => db.Add(dxc));
+                            NewAppointment.ForEach(a => db.Add(a));
                             db.SaveChanges();
-                            var savedDiseases = db.Diseasexcitizens
-                            .OrderBy(dxc => dxc.IdCitizen)
-                            .ToList();
+
+
+                            if (arrayid.Length != null)
+                            {
+                                int cnt = 0;
+
+                                List<Diseasexcitizen> Diseases = new List<Diseasexcitizen>();
+
+                                for (int p = 0; p < arrayid.Length; p++)
+                                {
+                                    Diseasexcitizen disease = new Diseasexcitizen()
+                                    {
+                                        IdDisease = arrayid[cnt],
+                                        IdCitizen = Convert.ToInt32(textBox1.Text)
+                                    };
+                                    cnt++;
+                                    Diseases.Add(disease);
+                                }
+                                Diseases.ForEach(dxc => db.Add(dxc));
+                                db.SaveChanges();
+                                var savedDiseases = db.Diseasexcitizens
+                                .OrderBy(dxc => dxc.IdCitizen)
+                                .ToList();
+                            }
+
                         }
 
+                        MessageBox.Show("Ciudadano registrado con éxito, ahora debe continuar al módulo Prechequeo.", "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
-                    MessageBox.Show("Ciudadano registrado con éxito, ahora debe continuar al módulo Prechequeo.", "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                    {
+                        MessageBox.Show("Asegúrese de haber ingresado la información correctamente", "Advertencia",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        var db = new ProyectoContext();
+                        var institution = db.Institutions
+                            .ToList();
+                        cmbInstitution.DataSource = institution;
+                        cmbInstitution.ValueMember = "IdInstitution";
+                        cmbInstitution.DisplayMember = "InstitutionName";
+                        cmbInstitution.SelectedIndex = -1;
+                        cmbInstitution.SelectedText = "Escoja la institución";
+                    }
+
                 }
 
-                else
+                catch (Exception)
                 {
-                    MessageBox.Show("Asegúrese de haber ingresado la información correctamente", "Advertencia",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Datos no válidos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     var db = new ProyectoContext();
                     var institution = db.Institutions
                         .ToList();
@@ -202,24 +226,13 @@ namespace Proyecto_POO
                     cmbInstitution.DisplayMember = "InstitutionName";
                     cmbInstitution.SelectedIndex = -1;
                     cmbInstitution.SelectedText = "Escoja la institución";
+
                 }
-
             }
-
-            catch (Exception)
-            {
-                MessageBox.Show("Datos no válidos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                var db = new ProyectoContext();
-                var institution = db.Institutions
-                    .ToList();
-                cmbInstitution.DataSource = institution;
-                cmbInstitution.ValueMember = "IdInstitution";
-                cmbInstitution.DisplayMember = "InstitutionName";
-                cmbInstitution.SelectedIndex = -1;
-                cmbInstitution.SelectedText = "Escoja la institución";
-
-            }
-
+            else if (reservedAppointment.Count() > 0)
+                MessageBox.Show("No es posible registrar al/la ciudadano/la debido a que ya realizó un registro en el sitio web.", "Operación fallida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else if (existingAppointment.Count() > 0)
+                MessageBox.Show("El/la ciudadano/a ya posee una cita para una dosis de la vacuna.", "Operación fallida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private int placevacunation(string text)
