@@ -67,7 +67,7 @@ namespace Proyecto_POO
             var db = new ProyectoContext();
             var DXC = db.Diseasexcitizens.ToList();
 
-            int add = 0, delete = 0;
+            int add = 0;
 
             for (int i = 0; i < 7; i++)
             {
@@ -79,13 +79,10 @@ namespace Proyecto_POO
                 var queryResult = disease.Count();
                 if (arrayResult[i] == true && queryResult == 0)
                     add++;
-                else if (arrayResult[i] == false)
-                    delete++;
             }
 
             int[] addIds = new int[add];
-            int[] deleteIds = new int[delete];
-            int addPosition = 0, deletePosition = 0;
+            int addPosition = 0;
             for (int j = 0; j < 7; j++)
             {
                 var disease =
@@ -98,11 +95,6 @@ namespace Proyecto_POO
                 {
                     addIds[addPosition] = j + 1;
                     addPosition++;
-                }
-                else if (arrayResult[j] == false)
-                {
-                    deleteIds[deletePosition] = j + 1;
-                    deletePosition++;
                 }
             }
 
@@ -123,80 +115,6 @@ namespace Proyecto_POO
                 Diseases.ForEach(dxc => db.Add(dxc));
                 db.SaveChanges();
                 var savedDiseases = db.Diseasexcitizens.OrderBy(dxc => dxc.IdCitizen).ToList();
-            }
-
-            /*if (deleteIds.Length > 0)
-            {
-                int result = 0;
-                List<Diseasexcitizen> Diseases = new List<Diseasexcitizen>();
-                for (int k = 0; k < deleteIds.Length; k++)
-                {
-                    Diseasexcitizen diseasexcitizen = new Diseasexcitizen()
-                    {
-                        IdDisease = deleteIds[result],
-                        IdCitizen = Convert.ToInt32(txtDui.Text)
-                    };
-                    result++;
-                    Diseases.Add(diseasexcitizen);
-                }
-                Diseases.ForEach(dxc => db.Remove(dxc));
-                db.SaveChanges();
-                var deletedDiseases = db.Diseasexcitizens.OrderBy(dxc => dxc.IdCitizen).ToList();
-            }*/
-        }
-
-        private void removeCheckBoxes()
-        {
-            bool a = cbxDiabetes.Checked;
-            bool b = cbxCardio.Checked;
-            bool c = cbxPulmonar.Checked;
-            bool d = cbxRenal.Checked;
-            bool e = cbxCancer.Checked;
-            bool f = cbxOrganReceptor.Checked;
-            bool g = cbxSeropositivas.Checked;
-            bool h = cbxInmunosupresor.Checked;
-
-            bool[] arrayResult = new bool[8] { a, b, c, d, e, f, g, h };
-
-            var db = new ProyectoContext();
-
-            int remove = 0;
-
-            for (int i = 0; i < 7; i++)
-            {
-                if (arrayResult[i] == false)
-                    remove++;
-            }
-
-            int[] removeIds = new int[remove];
-            int removePosition = 0;
-
-            for (int j = 0; j < 7; j++)
-            {
-                if (arrayResult[j] == false)
-                {
-                    removeIds[removePosition] = j + 1;
-                    removePosition++;
-                }
-            }
-
-            if (removeIds.Length > 0)
-            {
-                int result = 0;
-                List<Diseasexcitizen> Diseases = new List<Diseasexcitizen>();
-                for (int k = 0; k < removeIds.Length; k++)
-                {
-                    Diseasexcitizen diseasexcitizen = new Diseasexcitizen()
-                    {
-                        IdDisease = removeIds[result],
-                        IdCitizen = Convert.ToInt32(txtDui.Text)
-                    };
-                    result++;
-                    Diseases.Add(diseasexcitizen);
-                }
-                Diseases.ForEach(dxc2 => db.Remove(dxc2));
-                db.SaveChanges();
-                var deletedDiseases = db.Diseasexcitizens.OrderBy(dxc2 => dxc2.IdCitizen).ToList();
             }
         }
 
@@ -236,7 +154,6 @@ namespace Proyecto_POO
                                     else
                                         c.IdInstitution = 7;
                                     updateCheckBoxes();
-                                    //removeCheckBoxes();
                                     db.Update(c);
                                     db.SaveChanges();
                                     MessageBox.Show("Se han verificado los datos del/la ciudadano/a. Dirijase a monitoreo de citas.", "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -450,7 +367,7 @@ namespace Proyecto_POO
                             .Where(dxc => dxc.IdDisease == 8 && dxc.IdCitizen == dui).ToList();
                         tratamiento.ForEach(d =>
                         {
-                            cbxCardio.Checked = true;
+                            cbxInmunosupresor.Checked = true;
                         });
                     });
                     MessageBox.Show("Ciudadano encontrado.", "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
