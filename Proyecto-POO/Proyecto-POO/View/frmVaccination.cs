@@ -45,7 +45,7 @@ namespace Proyecto_POO
                 if (conteo == 10)
                 {
                     timer1.Enabled = false;
-                    MessageBox.Show("El tiempo de observacion ha terminado");
+                    MessageBox.Show("El tiempo de observación ha terminado", "Operación finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     frmSideEffects frm = new frmSideEffects(vaccination,monitoreo, IdManager);
                     frm.Show();
                     this.Hide();

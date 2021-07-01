@@ -174,7 +174,7 @@ namespace Proyecto_POO
             this.MaximizeBox = false;
             this.Name = "frmVaccination";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmVaccination";
+            this.Text = "Vacunación";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmVaccination_FormClosing);
             this.Load += new System.EventHandler(this.frmVaccination_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvQueue)).EndInit();

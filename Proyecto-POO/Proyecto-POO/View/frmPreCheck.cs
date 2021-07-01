@@ -53,51 +53,151 @@ namespace Proyecto_POO
 
         private void updateCheckBoxes()
         {
+            bool a = cbxDiabetes.Checked;
+            bool b = cbxCardio.Checked;
+            bool c = cbxPulmonar.Checked;
+            bool d = cbxRenal.Checked;
+            bool e = cbxCancer.Checked;
+            bool f = cbxOrganReceptor.Checked;
+            bool g = cbxSeropositivas.Checked;
+            bool h = cbxInmunosupresor.Checked;
+
+            bool[] arrayResult = new bool[8] { a, b, c, d, e, f, g, h };
+
             var db = new ProyectoContext();
-            List<Diseasexcitizen> diseasexcitizens = db.Diseasexcitizens.ToList();
-            List<Diseasexcitizen> diseases = new List<Diseasexcitizen>();
-            List<Diseasexcitizen> diabetes = diseasexcitizens.Where(dxc => dxc.IdDisease == 1 && dxc.IdCitizen == Convert.ToInt32(txtDui.Text)).ToList();
-            diabetes.ForEach(d =>
+            var DXC = db.Diseasexcitizens.ToList();
+
+            int add = 0, delete = 0;
+
+            for (int i = 0; i < 7; i++)
             {
-                cbxDiabetes.Checked = true;
-                
-            });
-            db.SaveChanges();
-            List<Diseasexcitizen> cardio = diseasexcitizens.Where(dxc => dxc.IdDisease == 2 && dxc.IdCitizen == Convert.ToInt32(txtDui.Text)).ToList();
-            cardio.ForEach(c =>
+                var disease =
+                from diseasexcitizen in DXC
+                where diseasexcitizen.IdDisease == i + 1
+                where diseasexcitizen.IdCitizen == Convert.ToInt32(txtDui.Text)
+                select new { idDisease = diseasexcitizen.IdDisease, idCitizen = diseasexcitizen.IdCitizen };
+                var queryResult = disease.Count();
+                if (arrayResult[i] == true && queryResult == 0)
+                    add++;
+                else if (arrayResult[i] == false)
+                    delete++;
+            }
+
+            int[] addIds = new int[add];
+            int[] deleteIds = new int[delete];
+            int addPosition = 0, deletePosition = 0;
+            for (int j = 0; j < 7; j++)
             {
-                cbxCardio.Checked = true;
-            });
-            List<Diseasexcitizen> pulmonar = diseasexcitizens.Where(dxc => dxc.IdDisease == 3 && dxc.IdCitizen == Convert.ToInt32(txtDui.Text)).ToList();
-            pulmonar.ForEach(p =>
+                var disease =
+                from diseasexcitizen in DXC
+                where diseasexcitizen.IdDisease == j + 1
+                where diseasexcitizen.IdCitizen == Convert.ToInt32(txtDui.Text)
+                select new { idDisease = diseasexcitizen.IdDisease, idCitizen = diseasexcitizen.IdCitizen };
+                var queryResult = disease.Count();
+                if (arrayResult[j] == true && queryResult == 0)
+                {
+                    addIds[addPosition] = j + 1;
+                    addPosition++;
+                }
+                else if (arrayResult[j] == false)
+                {
+                    deleteIds[deletePosition] = j + 1;
+                    deletePosition++;
+                }
+            }
+
+            if (addIds.Length > 0)
             {
-                cbxPulmonar.Checked = true;
-            });
-            List<Diseasexcitizen> renal = diseasexcitizens.Where(dxc => dxc.IdDisease == 4 && dxc.IdCitizen == Convert.ToInt32(txtDui.Text)).ToList();
-            renal.ForEach(d =>
+                int result = 0;
+                List<Diseasexcitizen> Diseases = new List<Diseasexcitizen>();
+                for (int k = 0; k < addIds.Length; k++)
+                {
+                    Diseasexcitizen diseasexcitizen = new Diseasexcitizen()
+                    {
+                        IdDisease = addIds[result],
+                        IdCitizen = Convert.ToInt32(txtDui.Text)
+                    };
+                    result++;
+                    Diseases.Add(diseasexcitizen);
+                }
+                Diseases.ForEach(dxc => db.Add(dxc));
+                db.SaveChanges();
+                var savedDiseases = db.Diseasexcitizens.OrderBy(dxc => dxc.IdCitizen).ToList();
+            }
+
+            /*if (deleteIds.Length > 0)
             {
-                cbxRenal.Checked = true;
-            });
-            List<Diseasexcitizen> cancer = diseasexcitizens.Where(dxc => dxc.IdDisease == 5 && dxc.IdCitizen == Convert.ToInt32(txtDui.Text)).ToList();
-            cancer.ForEach(d =>
+                int result = 0;
+                List<Diseasexcitizen> Diseases = new List<Diseasexcitizen>();
+                for (int k = 0; k < deleteIds.Length; k++)
+                {
+                    Diseasexcitizen diseasexcitizen = new Diseasexcitizen()
+                    {
+                        IdDisease = deleteIds[result],
+                        IdCitizen = Convert.ToInt32(txtDui.Text)
+                    };
+                    result++;
+                    Diseases.Add(diseasexcitizen);
+                }
+                Diseases.ForEach(dxc => db.Remove(dxc));
+                db.SaveChanges();
+                var deletedDiseases = db.Diseasexcitizens.OrderBy(dxc => dxc.IdCitizen).ToList();
+            }*/
+        }
+
+        private void removeCheckBoxes()
+        {
+            bool a = cbxDiabetes.Checked;
+            bool b = cbxCardio.Checked;
+            bool c = cbxPulmonar.Checked;
+            bool d = cbxRenal.Checked;
+            bool e = cbxCancer.Checked;
+            bool f = cbxOrganReceptor.Checked;
+            bool g = cbxSeropositivas.Checked;
+            bool h = cbxInmunosupresor.Checked;
+
+            bool[] arrayResult = new bool[8] { a, b, c, d, e, f, g, h };
+
+            var db = new ProyectoContext();
+
+            int remove = 0;
+
+            for (int i = 0; i < 7; i++)
             {
-                cbxCancer.Checked = true;
-            });
-            List<Diseasexcitizen> organos = diseasexcitizens.Where(dxc => dxc.IdDisease == 6 && dxc.IdCitizen == Convert.ToInt32(txtDui.Text)).ToList();
-            organos.ForEach(d =>
+                if (arrayResult[i] == false)
+                    remove++;
+            }
+
+            int[] removeIds = new int[remove];
+            int removePosition = 0;
+
+            for (int j = 0; j < 7; j++)
             {
-                cbxOrganReceptor.Checked = true;
-            });
-            List<Diseasexcitizen> seropositivas = diseasexcitizens.Where(dxc => dxc.IdDisease == 7 && dxc.IdCitizen == Convert.ToInt32(txtDui.Text)).ToList();
-            seropositivas.ForEach(d =>
+                if (arrayResult[j] == false)
+                {
+                    removeIds[removePosition] = j + 1;
+                    removePosition++;
+                }
+            }
+
+            if (removeIds.Length > 0)
             {
-                cbxSeropositivas.Checked = true;
-            });
-            List<Diseasexcitizen> tratamiento = diseasexcitizens.Where(dxc => dxc.IdDisease == 8 && dxc.IdCitizen == Convert.ToInt32(txtDui.Text)).ToList();
-            tratamiento.ForEach(d =>
-            {
-                cbxCardio.Checked = true;
-            });
+                int result = 0;
+                List<Diseasexcitizen> Diseases = new List<Diseasexcitizen>();
+                for (int k = 0; k < removeIds.Length; k++)
+                {
+                    Diseasexcitizen diseasexcitizen = new Diseasexcitizen()
+                    {
+                        IdDisease = removeIds[result],
+                        IdCitizen = Convert.ToInt32(txtDui.Text)
+                    };
+                    result++;
+                    Diseases.Add(diseasexcitizen);
+                }
+                Diseases.ForEach(dxc2 => db.Remove(dxc2));
+                db.SaveChanges();
+                var deletedDiseases = db.Diseasexcitizens.OrderBy(dxc2 => dxc2.IdCitizen).ToList();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -107,10 +207,8 @@ namespace Proyecto_POO
                 validateDate();
                 var db = new ProyectoContext();
                 var result = db.Citizens.Where(c => (c.Dui.Equals(Convert.ToInt32(txtDui.Text)))).ToList();
-                try
+                //try
                 {
-                    //List<Institution> selectedInstituion = institutions.OrderByDescending(i => i.IdInstitution == r.IdInstitution).ToList();
-                    //var selectedInstituion = db.Institutions.OrderByDescending(i => i.IdInstitution == cmbInstitution.SelectedIndex).ToList();
                     Citizen c = result[0];
                     if (txtName.Text != "" && txtName.Text != string.Empty)
                     {
@@ -137,10 +235,11 @@ namespace Proyecto_POO
                                         c.IdInstitution = Convert.ToInt32(lblId.Text);
                                     else
                                         c.IdInstitution = 7;
-                                    //updateCheckBoxes();
+                                    updateCheckBoxes();
+                                    //removeCheckBoxes();
                                     db.Update(c);
                                     db.SaveChanges();
-                                    MessageBox.Show("Se han verificado los datos del/la ciudadano/a. Procediendo a monitoreo de citas.", "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show("Se han verificado los datos del/la ciudadano/a. Dirijase a monitoreo de citas.", "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     var hourNow = DateTime.Now.ToString("HH:mm:ss");
                                     var dateNow = DateTime.Now.ToString("dd-MM-yyyy");
                                     CitizenVm model = new();
@@ -166,10 +265,10 @@ namespace Proyecto_POO
                     else
                         MessageBox.Show("El campo nombre es un campo requerido, favor rellenarlo.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                catch (Exception)
+                /*catch (Exception)
                 {
-                    MessageBox.Show("Algo salio mal. Por favor ingrese solamente valores válidos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    MessageBox.Show("Algo salió mal. Por favor ingrese solamente valores válidos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }*/
             }
             else
                 MessageBox.Show("Debe aceptar que desea recibir la dosis de vacuna.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -184,7 +283,6 @@ namespace Proyecto_POO
 
         private void frmPreCheck_Load(object sender, EventArgs e)
         {
-
             validateDate();
             showWaitingList();
             label10.Text = "" + IdManager.IdManager;
@@ -360,7 +458,7 @@ namespace Proyecto_POO
                 else if (result.Count() > 0 && appointmentDate.Count() == 0)
                     MessageBox.Show("El/la ciudadano/a no posee registro de cita para el día de hoy. Por favor vuelva el día que indicó realizar su vacunación.", "Operación fallida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else
-                    MessageBox.Show("El/la ciudadano/a no posee registro de cita. ¿Desea realizar un registro de cita para este ciudadano?", "Operación fallida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("El/la ciudadano/a no posee registro de cita. Proceda a registrarlo en el módulo de 'Registro'.", "Operación fallida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception)
             {

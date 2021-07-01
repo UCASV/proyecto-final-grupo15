@@ -52,7 +52,7 @@ namespace Proyecto_POO
                     .ToList();
 
                     var filter = showEmployees
-                        .Where(c => c.IdEmployee == (Convert.ToInt32(txtSearch.Text)));
+                        .Where(c => c.EmployeeName == txtSearch.Text);
                     var mappedDs = new List<EmployeeVm>();
 
                     if (filter.Count() > 0)
@@ -63,13 +63,13 @@ namespace Proyecto_POO
                         showEmployees.ForEach(e => mappedDs.Add(CitizenMapper.MapEmployeeToEmployeeVm(e)));
                         dgvShowEmployees.DataSource = null;
                         dgvShowEmployees.DataSource = employeeSearch;
-                        MessageBox.Show("Empleado encontrado");
+                        MessageBox.Show("Empleado encontrado", "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
                     else
                     {
                         dgvShowEmployees.DataSource = null;
-                        MessageBox.Show("El Empleado no se encuentra", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("El Empleado no se encuentra", "Búsqueda sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
             }

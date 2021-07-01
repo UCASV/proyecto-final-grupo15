@@ -436,7 +436,7 @@ namespace Proyecto_POO
             this.MaximizeBox = false;
             this.Name = "frmRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmRegister";
+            this.Text = "Registro";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainMenu_FormClosing);
             this.Load += new System.EventHandler(this.frmRegister_Load);
             this.groupBox1.ResumeLayout(false);

@@ -333,7 +333,7 @@ namespace Proyecto_POO
             this.MaximizeBox = false;
             this.Name = "frmSideEffects";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmObservation";
+            this.Text = "Observación";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSideEffects_FormClosing);
             this.Load += new System.EventHandler(this.frmSideEffects_Load);
             this.panel1.ResumeLayout(false);

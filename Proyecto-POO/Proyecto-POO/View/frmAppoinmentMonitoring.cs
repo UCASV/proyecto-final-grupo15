@@ -58,20 +58,20 @@ namespace Proyecto_POO
                 if (dgvMonitoring.Rows[0].Selected == true )
                 {                   
                     addWaiting.Enqueue(model);
-                    MessageBox.Show("Se agrego en la fecha " + dateNow + " a hora " + hourNow);
+                    MessageBox.Show("Se agregó a la fila el " + dateNow + " a las " + hourNow);
                     frmVaccination frm = new frmVaccination(appointment, addWaiting, IdManager);
                     frm.Show();
                     this.Hide();
                 }
                 else
                 {
-                    MessageBox.Show("Se encuentra un paciente en cola");
+                    MessageBox.Show("Se encuentra un ciudadano en la fila de espera", "Ciudadano en espera", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 
             }
             catch (Exception)
             {
-                MessageBox.Show("No selecciono ningun Ciudadano");
+                MessageBox.Show("No seleccionó a ningún ciudadano", "No se selecionaron datos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 

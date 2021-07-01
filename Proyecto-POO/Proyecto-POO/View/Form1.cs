@@ -39,7 +39,7 @@ namespace Proyecto_POO
 
             if (result.Count() > 0)
             {
-                MessageBox.Show("Bienvenido!", "",
+                MessageBox.Show("Bienvenido!", "Inicio de sesión éxitoso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 var M = db.Managers.ToList();
@@ -65,7 +65,7 @@ namespace Proyecto_POO
                 this.Hide();
             }
             else
-                MessageBox.Show("ERROR!", "",
+                MessageBox.Show("ERROR!", "Operación fallida",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
