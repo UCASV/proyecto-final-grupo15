@@ -38,7 +38,7 @@ namespace Proyecto_POO
         private void button1_Click(object sender, EventArgs e)
         {
             try
-           {
+            {
                 bool verifyincoherence = txtIdentifier.Text.Length > 0 && cmbInstitution.SelectedIndex >= 0;
                 bool allowemptyness = txtIdentifier.Text.Length == 0 && cmbInstitution.SelectedIndex == -1;
                 bool test = verifyincoherence || allowemptyness;

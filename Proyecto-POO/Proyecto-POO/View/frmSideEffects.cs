@@ -200,7 +200,8 @@ namespace Proyecto_POO
                     btnPDF.Enabled = false;
                     var hourNow = DateTime.Now.ToString("HH:mm:ss");
                     Appointment a = appointmentsDose.FirstOrDefault();
-                    a.AppointmentHour = TimeSpan.Parse(hourNow);                                 
+                    a.AppointmentHour = TimeSpan.Parse(hourNow);
+                    a.IdDose = 4;
                     db.Update(a);
                     db.SaveChanges();
                     MessageBox.Show("Ha recibido las dos dosis de la vacuna, finalizando así su proceso de vacunación.", "Proceso finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
