@@ -70,7 +70,6 @@ namespace Proyecto_POO
         private void btnAddEffects_Click(object sender, EventArgs e)
         {
             lblCitizen.Text = dgvObservation.CurrentRow.Cells[0].Value.ToString();
-            btnPDF.Enabled = true;
             var db = new ProyectoContext();
             List<Effectsxcitizen> effectsxcitizens = db.Effectsxcitizens.ToList();
             bool cbx1 = cbxSensibility.Checked;
@@ -122,117 +121,107 @@ namespace Proyecto_POO
                 var savedEffects = db.Effectsxcitizens.OrderBy(dxc => dxc.IdCitizen).ToList();
             }
 
-            if (verifyAppointment() == 0)
+            // Agregando segunda cita :)
+
+            List<Appointment> appointments = db.Appointments.ToList();
+            /*List<Appointment> appointmentsDose = appointments
+                .Where(a => a.IdCitizen == Convert.ToInt32(dgvObservation.CurrentRow.Cells[0].Value))
+                .ToList();*/
+            List<Appointment> firstDose = appointments
+                .Where(a1 => a1.IdDose == 1 && a1.IdCitizen == Convert.ToInt32(dgvObservation.CurrentRow.Cells[0].Value))
+                .ToList();
+            List<Appointment> secondDose = appointments
+                .Where(a2 => a2.IdDose == 3 && a2.IdCitizen == Convert.ToInt32(dgvObservation.CurrentRow.Cells[0].Value))
+                .ToList();
+            // firstDose.FirstOrDefault().IdDose
+            if (firstDose.Count() > 0)
             {
-                // Agregando segunda cita :)
-               
-                List<Appointment> appointments = db.Appointments.ToList();
-                List<Appointment> appointmentsDose = appointments
-                    .Where(a => a.IdCitizen == Convert.ToInt32(dgvObservation.CurrentRow.Cells[0].Value))
-                    .ToList();
-                if(appointmentsDose.FirstOrDefault().IdDose == 1)
-                {
-                    var hourNow = DateTime.Now.ToString("HH:mm:ss");
-                    Appointment ap = appointmentsDose.FirstOrDefault();
-                    ap.AppointmentHour = TimeSpan.Parse(hourNow);
-                    ap.IdDose = 2;
-                    db.Update(ap);
-                    db.SaveChanges();
-                    //Aqui se agrega el registro para la segunda dosis
-                    Random rnd = new Random();
-                    int idPlace = rnd.Next(1, 3);
-                    var dateNow = DateTime.Now.ToString("yyyy-MM-dd");
-                    label2.Text = " " + dateNow;
-                    DateTime fecha = Convert.ToDateTime(label2.Text);
-                    fecha = fecha.AddDays(42);
-                    string resultado = fecha.ToString("yyyy-MM-dd");
-                    Random aleatorio = new Random();
-
-                    Horario = aleatorio.Next(13, 14);
-                    hora13 = aleatorio.Next(10, 59);
-                    hora14 = aleatorio.Next(00, 50);
-
-                    var place = db.VaccinationPlaces
-                        .ToList()
-                        .Find(model => model.IdPlace == idPlace)
-                        .PlaceName;
-
-                    if (Horario == 13)
-                    {
-                        Horariofinal = Horario + ":" + hora13;
-                    }
-
-                    if (Horario == 14)
-                    {
-                        Horariofinal = Horario + ":" + hora14;
-                    }
-
-
-                    label4.Text = "" + IdManager.IdManager;
-                    int manager = Convert.ToInt32(label4.Text);
-                    label3.Text = "" + Horariofinal;
-                    string hour = label3.Text;
-                    Appointment a = new();
-                    a.AppointmentDate = fecha;
-                    a.AppointmentHour = TimeSpan.Parse(hour);
-                    a.IdDose = 3;
-                    a.IdPlatform = 1;
-                    a.IdPlace = idPlace;
-                    a.IdManager = manager;
-                    a.IdCitizen = Convert.ToInt32(lblCitizen.Text);
-                    db.Add(a);
-                    db.SaveChanges();
-                    CitizenVm models = new();
-                    models.Dui = Convert.ToInt32(dgvObservation.CurrentRow.Cells[0].Value);
-                    models.CitizenName = dgvObservation.CurrentRow.Cells[1].Value.ToString();
-                    models.Address = dgvObservation.CurrentRow.Cells[2].Value.ToString();
-                    models.Birthdate = Convert.ToDateTime(dgvObservation.CurrentRow.Cells[3].Value);
-                    models.Email = dgvObservation.CurrentRow.Cells[4].Value.ToString();
-                    models.Phone = Convert.ToInt32(dgvObservation.CurrentRow.Cells[5].Value);
-                    models.IdInstitution = Convert.ToInt32(dgvObservation.CurrentRow.Cells[6].Value);
-                    var posicion = addWaiting.Peek();
-                    addWaiting.Dequeue();
-                    MessageBox.Show("La fecha de su nueva cita es: " +
-                    resultado + ", en el lugar: " + place + " en la hora: " + Horariofinal, "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                if(appointmentsDose.FirstOrDefault().IdDose == 3)
-                {
-                    btnPDF.Enabled = false;
-                    var hourNow = DateTime.Now.ToString("HH:mm:ss");
-                    Appointment a = appointmentsDose.FirstOrDefault();
-                    a.AppointmentHour = TimeSpan.Parse(hourNow);
-                    a.IdDose = 4;
-                    db.Update(a);
-                    db.SaveChanges();
-                    MessageBox.Show("Ha recibido las dos dosis de la vacuna, finalizando así su proceso de vacunación.", "Proceso finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    var posicion = addWaiting.Peek(); 
-                    addWaiting.Dequeue();
-                }
-                
-            
-                var SavedAppointments = db.Appointments
-                            .OrderBy(a => a.IdAppointment)
-                            .ToList();
-                int size = SavedAppointments.Count() - 1;
-                int appointmentId = SavedAppointments[size].IdAppointment;
-                Random random = new Random();
-                Appointmentxemployee axe = new();
-                axe.IdAppointment = appointmentId;
-                axe.IdEmployee = random.Next(1, 15);
-                db.Add(axe);
+                btnPDF.Enabled = true;
+                var hourNow = DateTime.Now.ToString("HH:mm:ss");
+                Appointment ap = firstDose.FirstOrDefault();
+                ap.AppointmentHour = TimeSpan.Parse(hourNow);
+                ap.IdDose = 2;
+                db.Update(ap);
                 db.SaveChanges();
-                var savedAxE = db.Appointmentxemployees.OrderBy(axe => axe.IdAppointment).ToList();                
-                
+                //Aqui se agrega el registro para la segunda dosis
+                Random rnd = new Random();
+                int idPlace = rnd.Next(1, 3);
+                var dateNow = DateTime.Now.ToString("yyyy-MM-dd");
+                label2.Text = " " + dateNow;
+                DateTime fecha = Convert.ToDateTime(label2.Text);
+                fecha = fecha.AddDays(42);
+                string resultado = fecha.ToString("yyyy-MM-dd");
+                Random aleatorio = new Random();
+
+                Horario = aleatorio.Next(13, 14);
+                hora13 = aleatorio.Next(10, 59);
+                hora14 = aleatorio.Next(00, 50);
+
+                var place = db.VaccinationPlaces
+                    .ToList()
+                    .Find(model => model.IdPlace == idPlace)
+                    .PlaceName;
+
+                if (Horario == 13)
+                    Horariofinal = Horario + ":" + hora13;
+
+                if (Horario == 14)
+                    Horariofinal = Horario + ":" + hora14;
+
+                label4.Text = "" + IdManager.IdManager;
+                int manager = Convert.ToInt32(label4.Text);
+                label3.Text = "" + Horariofinal;
+                string hour = label3.Text;
+                Appointment a = new();
+                a.AppointmentDate = fecha;
+                a.AppointmentHour = TimeSpan.Parse(hour);
+                a.IdDose = 3;
+                a.IdPlatform = 1;
+                a.IdPlace = idPlace;
+                a.IdManager = manager;
+                a.IdCitizen = Convert.ToInt32(lblCitizen.Text);
+                db.Add(a);
+                db.SaveChanges();
+                CitizenVm models = new();
+                models.Dui = Convert.ToInt32(dgvObservation.CurrentRow.Cells[0].Value);
+                models.CitizenName = dgvObservation.CurrentRow.Cells[1].Value.ToString();
+                models.Address = dgvObservation.CurrentRow.Cells[2].Value.ToString();
+                models.Birthdate = Convert.ToDateTime(dgvObservation.CurrentRow.Cells[3].Value);
+                models.Email = dgvObservation.CurrentRow.Cells[4].Value.ToString();
+                models.Phone = Convert.ToInt32(dgvObservation.CurrentRow.Cells[5].Value);
+                models.IdInstitution = Convert.ToInt32(dgvObservation.CurrentRow.Cells[6].Value);
+                var posicion = addWaiting.Peek();
+                addWaiting.Dequeue();
+                MessageBox.Show("La fecha de su nueva cita es: " +
+                resultado + ", en el lugar: " + place + " en la hora: " + Horariofinal, "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
+            else if (secondDose.Count() > 0)
             {
-                
-                frmMenu frm = new frmMenu(addWaiting, IdManager);
-                frm.Show();
-                this.Hide();
+                btnPDF.Enabled = false;
+                var hourNow = DateTime.Now.ToString("HH:mm:ss");
+                Appointment a = secondDose.FirstOrDefault();
+                a.AppointmentHour = TimeSpan.Parse(hourNow);
+                a.IdDose = 4;
+                db.Update(a);
+                db.SaveChanges();
+
+                MessageBox.Show("Ha recibido las dos dosis de la vacuna, finalizando así su proceso de vacunación.", "Proceso finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var posicion = addWaiting.Peek();
+                addWaiting.Dequeue();
             }
-            
-            
+
+            var SavedAppointments = db.Appointments
+                        .OrderBy(a => a.IdAppointment)
+                        .ToList();
+            int size = SavedAppointments.Count() - 1;
+            int appointmentId = SavedAppointments[size].IdAppointment;
+            Random random = new Random();
+            Appointmentxemployee axe = new();
+            axe.IdAppointment = appointmentId;
+            axe.IdEmployee = random.Next(1, 15);
+            db.Add(axe);
+            db.SaveChanges();
+            var savedAxE = db.Appointmentxemployees.OrderBy(axe => axe.IdAppointment).ToList();
         }
 
         private void frmSideEffects_Load(object sender, EventArgs e)

@@ -38,7 +38,6 @@ namespace Proyecto_POO
         private void button1_Click(object sender, EventArgs e)
         {
             var dbc = new ProyectoContext();
-            //institutions = db.Institutions.ToList();
             List<Appointment> appointments = dbc.Appointments.ToList();
 
             int dui = Convert.ToInt32(textBox1.Text);
@@ -121,8 +120,7 @@ namespace Proyecto_POO
                                     Address = txtAddress.Text,
                                     Email = citizenemail,
                                     Phone = Convert.ToInt32(txtPhoneNumber.Text),
-                                    Birthdate = dtpBirthdate.Value,
-                                    //IdAppointment = appointmentid
+                                    Birthdate = dtpBirthdate.Value
                                 }
                             };
                                 NewPacient.ForEach(c => db.Add(c));
@@ -230,9 +228,9 @@ namespace Proyecto_POO
                 }
             }
             else if (reservedAppointment.Count() > 0)
-                MessageBox.Show("No es posible registrar al/la ciudadano/la debido a que ya realizó un registro en el sitio web.", "Operación fallida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No es posible registrar al/la ciudadano/la debido a que ya realizó un registro en el sitio web. Diríjase a prechequeo.", "Operación fallida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else if (existingAppointment.Count() > 0)
-                MessageBox.Show("El/la ciudadano/a ya posee una cita para una dosis de la vacuna.", "Operación fallida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El/la ciudadano/a ya posee una cita para una dosis de la vacuna. Diríjase a prechequeo.", "Operación fallida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private int placevacunation(string text)
