@@ -29,6 +29,7 @@
 ## **Instalación**
 
 Recursos necesarios: MySQL Server (Versión: 8.0.19), MySQL Workbench (Versión: 8.0.19).
+
 También cabe indicar que al registrar la contraseña de su MySQL esta debe de ser "admin123", para que sea compatible con el instalador y debe tener la base de datos "Proyecto", cuyas instrucciones para crearse e insertar los datos correspondientes están en el script "Proyecto.sql"
 
 A continuación, se presentarán una serie de pasos a seguir que le permitirá al usuario descargar e instalar el software de manera correcta en su dispositivo.
