@@ -26,6 +26,66 @@
 
 **Microsoft.EntityFrameworkCore.Design.** Versión del paquete: 5.0.7.
 
+## **Instalación**
+
+Recursos necesarios: MySQL Server (Versión: 8.0.19), MySQL Workbench (Versión: 8.0.19).
+
+También cabe indicar que al registrar la contraseña de su MySQL esta debe de ser "admin123", para que sea compatible con el instalador y debe tener la base de datos "Proyecto", cuyas instrucciones para crearse e insertar los datos correspondientes están en el script "Proyecto.sql"
+
+A continuación, se presentarán una serie de pasos a seguir que le permitirá al usuario descargar e instalar el software de manera correcta en su dispositivo.
+
+1-Descargar la carpeta Vaccination-Booth
+
+![1](https://user-images.githubusercontent.com/62676424/124219502-b414d080-dab9-11eb-8b25-fc9eb8c95904.png)
+
+1.1- Esta carpeta se descargará en un archivo comprimido.
+
+![2](https://user-images.githubusercontent.com/62676424/124219634-d1499f00-dab9-11eb-97ca-d6ab49f6836e.png)
+
+2-Una vez se descargue la carpeta, debemos descomprimirla, para ello, daremos clic derecho en el archivo comprimido y seleccionaremos "Extraer aquí".
+
+![3](https://user-images.githubusercontent.com/62676424/124220072-8419fd00-daba-11eb-973a-e85995064149.png)
+
+3-Al descomprimir el archivo, nos debe de aparecer esta carpeta, ingresaremos a ella.
+
+![4](https://user-images.githubusercontent.com/62676424/124220373-04406280-dabb-11eb-93ae-cd8b31727f21.png)
+
+4-Al ingresar a la carpeta, ingresaremos en la carpeta Debug.
+
+![5](https://user-images.githubusercontent.com/62676424/124220465-1fab6d80-dabb-11eb-9c84-19b0f7879cb1.png)
+
+5-Al ingresar a Debug, daremos doble click en Vaccination-Booth, para comenzar la instalación.
+
+![6](https://user-images.githubusercontent.com/62676424/124220599-52edfc80-dabb-11eb-9228-64aa19427a91.png)
+
+5.1-Una vez damos doble click, nos aparecerá un cuadro de diálogo que indica que la instalación ha comenzado.
+
+![7](https://user-images.githubusercontent.com/62676424/124220795-ac562b80-dabb-11eb-8e4d-a4847ba6e2d1.png)
+
+6-Nos aparecerá la ventana del Asistente para la instalación de Vaccination-Booth, daremos click en siguiente.
+
+![8](https://user-images.githubusercontent.com/62676424/124220897-dc053380-dabb-11eb-8b6c-bbf248bd9ab5.png)
+
+7-En la siguiente ventana "Seleccionar carpeta de instalación", nos aseguraremos que esté seleccionado "Solo para este usuario" y damos click en siguiente.
+
+![9](https://user-images.githubusercontent.com/62676424/124221064-330b0880-dabc-11eb-8e9a-c736f8927cbf.png)
+
+8-En la siguiente ventana "Confirmar instalación", damos click en siguiente.
+
+![10](https://user-images.githubusercontent.com/62676424/124221167-6c437880-dabc-11eb-8ac5-33cda31bdbe3.png)
+
+9-Nos aparecerá la ventana "Instalación completada", damos en click en cerrar.
+
+![13](https://user-images.githubusercontent.com/62676424/124221215-8c733780-dabc-11eb-9667-ecc5fe981b0e.png)
+
+10-Nos debe de aparecer el archivo ejecutable en el escritorio.
+
+![14](https://user-images.githubusercontent.com/62676424/124221249-a01e9e00-dabc-11eb-93d0-91e1f4cdb4bc.png)
+
+11-Finalmente, ingresamos al programa para asegurarnos que funcione correctamente.
+
+![15](https://user-images.githubusercontent.com/62676424/124221291-b7f62200-dabc-11eb-892d-f9c82546a1aa.png)
+
 ## **Manual de Usuario**
 
 > ### **Descripción general del software**
