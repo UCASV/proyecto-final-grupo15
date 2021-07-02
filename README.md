@@ -30,17 +30,13 @@
 
 Recursos necesarios: MySQL Server (Versión: 8.0.19), MySQL Workbench (Versión: 8.0.19).
 
-También cabe indicar que al registrar la contraseña de su MySQL esta debe de ser "admin123", para que sea compatible con el instalador y debe tener la base de datos "Proyecto", cuyas instrucciones para crearse e insertar los datos correspondientes están en el script "Proyecto.sql".
+También cabe indicar que al registrar, el usuario debe de ser "root" y la contraseña de su MySQL esta debe de ser "admin123", para que sea compatible con el instalador y debe tener la base de datos "Proyecto", cuyas instrucciones para crearse e insertar los datos correspondientes están en el script "Proyecto.sql".
 
 En caso ya tenga MySQL instalado, para cambiar su contraseña y sea compatible con el programa seguir este tutorial: https://chillyfacts.com/how-to-reset-mysql-root-password/
 
 A continuación, se presentarán una serie de pasos a seguir que le permitirá al usuario descargar e instalar el software de manera correcta en su dispositivo.
 
-1-Descargar la carpeta Vaccination-Booth
-
-![1](https://user-images.githubusercontent.com/62676424/124219502-b414d080-dab9-11eb-8b25-fc9eb8c95904.png)
-
-1.1- Esta carpeta se descargará en un archivo comprimido.
+1- Descargar el archivo comprimido que está en el repositorio.
 
 ![2](https://user-images.githubusercontent.com/62676424/124219634-d1499f00-dab9-11eb-97ca-d6ab49f6836e.png)
 
