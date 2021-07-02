@@ -72,6 +72,7 @@ namespace Proyecto_POO
             lblCitizen.Text = dgvObservation.CurrentRow.Cells[0].Value.ToString();
             var db = new ProyectoContext();
             List<Effectsxcitizen> effectsxcitizens = db.Effectsxcitizens.ToList();
+            // Se asigna el estado de los comboBox como variables tipo bool
             bool cbx1 = cbxSensibility.Checked;
             bool cbx2 = cbxReddering.Checked;
             bool cbx3 = cbxFatigue.Checked;
@@ -82,8 +83,10 @@ namespace Proyecto_POO
             bool cbx8 = cbxAnaphylaxis.Checked;
             bool cbx9 = cbxOthers.Checked;
 
+            // Arreglo con las variables
             bool[] array = new bool[9] { cbx1, cbx2, cbx3, cbx4, cbx5, cbx6, cbx7, cbx8, cbx9 };
 
+            // Contador para determinar el tamaño del arreglo
             int count = 0;
             for (int i = 0; i < 9; i++)
             {
@@ -91,6 +94,7 @@ namespace Proyecto_POO
                     count++;
             }
 
+            // Contador para determinar las posiciones que se agregarán
             int[] idsArray = new int[count];
             int position = 0;
             for (int j = 0; j < 9; j++)
@@ -102,6 +106,8 @@ namespace Proyecto_POO
                 }
             }
 
+            // Si el arreglo tiene longitud mayor a 0, se agregarán en una lista los valores
+            // y luego se insertarán en la base de datos
             if (idsArray.Length > 0)
             {
                 int result = 0;
@@ -121,19 +127,14 @@ namespace Proyecto_POO
                 var savedEffects = db.Effectsxcitizens.OrderBy(dxc => dxc.IdCitizen).ToList();
             }
 
-            // Agregando segunda cita :)
-
+            // Agregando segunda cita
             List<Appointment> appointments = db.Appointments.ToList();
-            /*List<Appointment> appointmentsDose = appointments
-                .Where(a => a.IdCitizen == Convert.ToInt32(dgvObservation.CurrentRow.Cells[0].Value))
-                .ToList();*/
             List<Appointment> firstDose = appointments
                 .Where(a1 => a1.IdDose == 1 && a1.IdCitizen == Convert.ToInt32(dgvObservation.CurrentRow.Cells[0].Value))
                 .ToList();
             List<Appointment> secondDose = appointments
                 .Where(a2 => a2.IdDose == 3 && a2.IdCitizen == Convert.ToInt32(dgvObservation.CurrentRow.Cells[0].Value))
                 .ToList();
-            // firstDose.FirstOrDefault().IdDose
             if (firstDose.Count() > 0)
             {
                 btnPDF.Enabled = true;
@@ -195,6 +196,7 @@ namespace Proyecto_POO
                 MessageBox.Show("La fecha de su nueva cita es: " +
                 resultado + ", en el lugar: " + place + " en la hora: " + Horariofinal, "Operación éxitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            // Proceso para cita de segunda dosis
             else if (secondDose.Count() > 0)
             {
                 btnPDF.Enabled = false;
@@ -210,6 +212,7 @@ namespace Proyecto_POO
                 addWaiting.Dequeue();
             }
 
+            // Se ingresa el empleado que atendió la cita
             var SavedAppointments = db.Appointments
                         .OrderBy(a => a.IdAppointment)
                         .ToList();

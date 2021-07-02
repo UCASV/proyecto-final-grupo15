@@ -125,7 +125,7 @@ namespace Proyecto_POO
                 validateDate();
                 var db = new ProyectoContext();
                 var result = db.Citizens.Where(c => (c.Dui.Equals(Convert.ToInt32(txtDui.Text)))).ToList();
-                //try
+                try
                 {
                     Citizen c = result[0];
                     if (txtName.Text != "" && txtName.Text != string.Empty)
@@ -182,10 +182,10 @@ namespace Proyecto_POO
                     else
                         MessageBox.Show("El campo nombre es un campo requerido, favor rellenarlo.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                /*catch (Exception)
+                catch (Exception)
                 {
                     MessageBox.Show("Algo salió mal. Por favor ingrese solamente valores válidos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }*/
+                }
             }
             else
                 MessageBox.Show("Debe aceptar que desea recibir la dosis de vacuna.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
